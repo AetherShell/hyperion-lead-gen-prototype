@@ -16,7 +16,6 @@ export function SavingsBreakdown() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
-
         <div className="text-center mb-14">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -37,7 +36,6 @@ export function SavingsBreakdown() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-10">
-
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -138,7 +136,7 @@ export function SavingsBreakdown() {
           className="mt-8 text-center"
         >
           <p className="text-xl text-slate-300 font-light">
-            After 5 years, the system is paid off and you own it outright.{" "}
+            After 5 years, the system is paid off and you own it outright.
             <br className="hidden md:block" />
             <strong className="text-white font-semibold">Your payment drops to $50/year. You keep saving ~$120/month — every month — forever.</strong>
           </p>
