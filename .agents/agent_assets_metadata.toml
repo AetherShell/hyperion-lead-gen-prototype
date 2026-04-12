@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "xHJfeBaXLbtvER6_n78fT"
+uri = "file://artifacts/pure-gentle-landing/public/hero-kitchen.png"
+type = "image"
+title = "Modern bright kitchen with water filter"
