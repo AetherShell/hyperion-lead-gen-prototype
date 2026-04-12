@@ -33,7 +33,9 @@ const formSchema = z.object({
 
 export function CTA() {
   const [submitted, setSubmitted] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,12 +47,22 @@ export function CTA() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // Simulate API call
-    setTimeout(() => {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) throw new Error("Server error");
       setSubmitted(true);
-    }, 600);
+    } catch {
+      setSubmitError("Something went wrong. Please try again or call us directly.");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -204,8 +216,11 @@ export function CTA() {
                     )}
                   />
 
-                  <Button type="submit" size="lg" className="w-full h-14 text-lg bg-blue-600 hover:bg-blue-700 mt-4 rounded-xl">
-                    Claim My Free Test <ArrowRight className="ml-2 w-5 h-5" />
+                  {submitError && (
+                    <p className="text-sm text-red-600 text-center font-medium">{submitError}</p>
+                  )}
+                  <Button type="submit" size="lg" disabled={isLoading} className="w-full h-14 text-lg bg-blue-600 hover:bg-blue-700 mt-4 rounded-xl disabled:opacity-70">
+                    {isLoading ? "Submitting..." : <span className="flex items-center gap-2">Claim My Free Test <ArrowRight className="w-5 h-5" /></span>}
                   </Button>
                   <p className="text-xs text-center text-slate-400 mt-4">
                     By submitting, you agree to our privacy policy. No spam, ever.
