@@ -195,10 +195,10 @@ export function Quiz() {
                       <div className="absolute -right-10 -top-10 text-blue-500 opacity-20">
                         <Droplets className="w-40 h-40" />
                       </div>
-                      <h4 className="text-sm font-semibold text-blue-200 uppercase tracking-wider mb-4 relative z-10">With Pure & Gentle</h4>
+                      <h4 className="text-sm font-semibold text-blue-200 uppercase tracking-wider mb-4 relative z-10">With Hyperion Elite</h4>
                       <div className="space-y-4 relative z-10">
                         <div className="flex justify-between items-center">
-                          <span className="text-blue-100 flex items-center gap-1"><CheckCircle className="w-4 h-4"/> Soap Program</span>
+                          <span className="text-blue-100 flex items-center gap-1"><CheckCircle className="w-4 h-4"/> Pure &amp; Gentle Soap Program</span>
                           <span className="font-bold text-green-300">$0/mo</span>
                         </div>
                         <div className="flex justify-between items-center">

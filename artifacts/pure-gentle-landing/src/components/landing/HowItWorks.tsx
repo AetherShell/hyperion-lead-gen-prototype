@@ -15,8 +15,8 @@ export function HowItWorks() {
     },
     {
       icon: <PackageCheck className="w-10 h-10 text-green-500" />,
-      title: "3. The Soap Program",
-      description: "Because soft water requires 80% less soap, we supply 5 years of premium, eco-friendly cleaning products for free."
+      title: "3. The Pure and Gentle Soap Program",
+      description: "Because soft water requires 80% less soap, our partnership with Pure and Gentle supplies you with 5 years of premium, eco-friendly cleaning products — included with your system."
     }
   ];
 

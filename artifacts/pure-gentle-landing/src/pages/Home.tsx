@@ -13,9 +13,9 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xl">
-              P
+              H
             </div>
-            <span className="font-bold text-xl tracking-tight text-slate-900">Pure & Gentle</span>
+            <span className="font-bold text-xl tracking-tight text-slate-900">Hyperion Elite Systems</span>
           </div>
           <button 
             onClick={() => document.getElementById('schedule')?.scrollIntoView({ behavior: 'smooth' })}
@@ -40,12 +40,12 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-slate-400 font-bold text-sm">
-              P
+              H
             </div>
-            <span className="font-semibold text-slate-300">Pure & Gentle Home Solutions</span>
+            <span className="font-semibold text-slate-300">Hyperion Elite Systems</span>
           </div>
           <div className="text-sm">
-            &copy; {new Date().getFullYear()} Pure & Gentle. All rights reserved.
+            &copy; {new Date().getFullYear()} Hyperion Elite Systems. All rights reserved.
           </div>
         </div>
       </footer>

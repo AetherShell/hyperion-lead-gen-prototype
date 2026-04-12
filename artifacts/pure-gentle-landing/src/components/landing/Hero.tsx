@@ -36,7 +36,7 @@ export function Hero() {
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-2xl font-light">
-              Stop throwing money down the drain. A Pure & Gentle system gives you luxurious soft water and pure drinking water while eliminating your household soap and cleaning costs.
+              Stop throwing money down the drain. A Hyperion Elite system gives you luxurious soft water and pure drinking water — while the Pure and Gentle soap program eliminates your household soap and cleaning costs.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

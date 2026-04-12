@@ -57,12 +57,12 @@ export function SavingsBreakdown() {
             {/* With P&G */}
             <div className="p-8 md:p-12 bg-blue-950/20 relative">
               <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">SMART CHOICE</div>
-              <h3 className="text-xl font-semibold text-blue-400 mb-8 uppercase tracking-wider text-center">With Pure & Gentle</h3>
+              <h3 className="text-xl font-semibold text-blue-400 mb-8 uppercase tracking-wider text-center">With Hyperion Elite Systems</h3>
               
               <ul className="space-y-6 mb-8">
                 <li className="flex justify-between items-center text-lg">
-                  <span className="text-slate-300">Monthly Soap & Cleaners</span>
-                  <span className="font-bold text-green-400">$0 <span className="text-xs text-green-400/80 ml-1">(Covered)</span></span>
+                  <span className="text-slate-300">Pure &amp; Gentle Soap Program</span>
+                  <span className="font-bold text-green-400">$0 <span className="text-xs text-green-400/80 ml-1">(Included)</span></span>
                 </li>
                 <li className="flex justify-between items-center text-lg">
                   <span className="text-slate-300">Bottled Water</span>

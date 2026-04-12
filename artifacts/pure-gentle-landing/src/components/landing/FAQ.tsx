@@ -9,7 +9,7 @@ export function FAQ() {
   const faqs = [
     {
       q: "How does the soap program actually work?",
-      a: "Because soft water doesn't contain hard minerals, soaps lather up to 80% better. When you get our system, we provide you with a 5-year supply of high-quality, eco-friendly household cleaners, laundry detergents, and personal care items upfront. You stop buying these at the store, and that savings covers your system payment."
+      a: "Because soft water doesn't contain hard minerals, soaps lather up to 80% better. When you get a Hyperion Elite system, our partner Pure and Gentle provides you with a 5-year supply of high-quality, eco-friendly household cleaners, laundry detergents, and personal care items. You stop buying these at the store, and that savings covers your system payment."
     },
     {
       q: "What happens after the 5 years?",
