@@ -25,3 +25,22 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Project: Hyperion Elite Systems — Lead Generation Landing Page
+
+**Artifact:** `artifacts/pure-gentle-landing` — React + Vite landing page at `/`
+**API:** `artifacts/api-server` — Express API at `/api`
+
+### Features
+- Interactive multi-step soap cost quiz with personalized savings calculator
+- Lead capture form (POST `/api/leads`) saves submissions to the `leads` DB table
+- Branding: Hyperion Elite Systems (water/RO system) + Pure and Gentle (soap program partner)
+
+### Lead Storage
+- Leads saved to PostgreSQL `leads` table (id, name, email, phone, zip_code, preferred_time, created_at)
+- Schema: `lib/db/src/schema/leads.ts`
+- Route: `artifacts/api-server/src/routes/leads.ts`
+
+### Future integrations (not yet set up — user dismissed OAuth flow)
+- **Email notifications**: Use the Resend connector (`connector:ccfg_resend_01K69QKYK789WN202XSE3QS17V`) to send email alerts on new lead submissions
+- **Google Sheets**: Use the Google Sheets connector (`connector:ccfg_google-sheet_E42A9F6CA62546F68A1FECA0E8`) to sync leads to a spreadsheet
