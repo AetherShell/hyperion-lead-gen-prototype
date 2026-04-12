@@ -54,21 +54,17 @@ export function CTA() {
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
 
           <div className="text-white">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-300 text-sm font-medium mb-6">
-              <Phone className="w-3.5 h-3.5" />
-              <span>Prefer to talk to someone first?</span>
-            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight">
-              Get a free callback from a water specialist.
+              Want to talk it through first?
             </h2>
             <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-              Not ready to order online? That's fine. Leave your info and we'll call you — no pressure, no pitch, just honest answers.
+              No pressure. Leave your info and a water specialist will call you at your preferred time. We'll answer your questions and help you figure out if it makes sense for your home.
             </p>
             <div className="space-y-4">
               {[
-                "We test your water and show you the exact numbers for your home",
-                "Zero-obligation — if it doesn't make sense, we'll say so",
-                "Takes about 20 minutes at your kitchen sink",
+                "We can test your water and show you the numbers specific to your home",
+                "The call typically takes about 20 minutes",
+                "No obligation — if it's not the right fit, we'll tell you",
               ].map(item => (
                 <div key={item} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
@@ -84,14 +80,14 @@ export function CTA() {
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
                   <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">We'll call you soon!</h3>
-                <p className="text-slate-500 text-sm">A water specialist will reach out at your preferred time. Check our FAQ below if you have questions in the meantime.</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">We'll be in touch.</h3>
+                <p className="text-slate-500 text-sm">A water specialist will call you at your preferred time. In the meantime, feel free to browse our FAQ above.</p>
               </motion.div>
             ) : (
               <form onSubmit={(e) => { void handleSubmit(e); }} className="space-y-4">
                 <div className="mb-5">
-                  <h3 className="text-xl font-bold text-slate-900">Request a Free Callback</h3>
-                  <p className="text-slate-400 text-sm mt-0.5">We'll reach out at your preferred time — no spam, ever.</p>
+                  <h3 className="text-xl font-bold text-slate-900">Request a Callback</h3>
+                  <p className="text-slate-400 text-sm mt-0.5">We'll reach out at your preferred time.</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -128,10 +124,10 @@ export function CTA() {
 
                 <button type="submit" disabled={loading}
                   className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-bold text-base transition-colors mt-1">
-                  {loading ? "Sending..." : "Request My Free Callback"}
+                  {loading ? "Sending..." : "Request a Callback"}
                 </button>
                 <p className="text-xs text-center text-slate-400">
-                  Or scroll up to order online and skip the call entirely.
+                  Or scroll up to order online if you'd prefer to skip the call.
                 </p>
               </form>
             )}

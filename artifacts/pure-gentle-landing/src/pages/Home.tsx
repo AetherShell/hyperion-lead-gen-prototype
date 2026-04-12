@@ -31,50 +31,35 @@ export default function Home() {
               onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
               className="text-sm font-bold px-5 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm"
             >
-              See My Savings
+              Calculate Savings
             </button>
           </div>
         </div>
       </header>
 
       <main>
-        {/* 1. Hook — pattern interrupt, stop the scroll */}
+        {/* 1. Acknowledge the common approach */}
         <Hero />
 
-        {/* 2. Old Way — name the villain, destroy the old belief */}
+        {/* 2. Explain its limitations — gently */}
         <OldWay />
 
-        {/* 3. New Way — reveal the mechanism, install a new belief */}
+        {/* 3. Introduce a simpler approach */}
         <HowItWorks />
 
-        {/* 4. Offer — show exactly what delivers the new way */}
+        {/* 4. Show why it works — the numbers */}
         <SavingsBreakdown />
 
-        {/* Bridge into the quiz */}
-        <div className="bg-slate-50 pt-16 pb-0">
-          <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-4">
-              Your numbers are different from the average
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3">
-              See exactly what this changes for your household.
-            </h2>
-            <p className="text-lg text-slate-600">
-              The quiz takes 30 seconds. Enter what you actually spend — and see the real math for your home.
-            </p>
-          </div>
-        </div>
-
-        {/* 5. Sale — personalized proof, then straight to close */}
+        {/* 5. Present the offer — personalized calculator */}
         <Quiz />
 
-        {/* 6. Social proof — "others like you made this decision" */}
+        {/* 6. Social proof — real families */}
         <Testimonials />
 
-        {/* 7. Objection handling */}
+        {/* 7. Answer common questions */}
         <FAQ />
 
-        {/* 8. Final close — for anyone not yet ready to order online */}
+        {/* 8. Simple call to action */}
         <CTA />
       </main>
 

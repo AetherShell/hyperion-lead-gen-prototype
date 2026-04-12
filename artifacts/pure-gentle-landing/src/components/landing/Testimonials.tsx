@@ -5,23 +5,20 @@ const reviews = [
   {
     name: "Sarah Jenkins",
     location: "Austin, TX",
-    savings: "$145/month",
-    before: "I was spending $150 a month on soap products and thought that was just normal.",
-    text: "We haven't bought laundry detergent, dish soap, or body wash in three years. My daughter's eczema completely cleared up within a month of soft water. I kept waiting for the catch. There wasn't one — the math just works.",
+    savings: "$145/mo",
+    text: "I honestly wasn't sure how much we spent on soap until I tracked it for a month. It was over $140. We've had the system for three years now and haven't bought laundry detergent, dish soap, or body wash once. My daughter's eczema cleared up too — I think the soft water helped.",
   },
   {
     name: "Michael & Elena Torres",
     location: "Phoenix, AZ",
-    savings: "$180/month",
-    before: "We thought a water softener was a luxury. We were wrong about what it actually does.",
-    text: "We used to buy three cases of bottled water a week and easily spent $150 on cleaning supplies for our family of six. The RO water tastes better than anything we bought at the store, and we haven't set foot in the cleaning aisle since installation.",
+    savings: "$180/mo",
+    text: "We were buying three cases of bottled water a week for a family of six. When we saw the RO system side-by-side with what we were spending, it was a straightforward decision. The water tastes cleaner than anything we bought at the store.",
   },
   {
     name: "David Chen",
     location: "Denver, CO",
-    savings: "$110/month",
-    before: "As an engineer, I was skeptical. So I spent two weeks running the numbers myself.",
-    text: "The monthly payment replaces money we were already spending at the grocery store. Dollar for dollar, it's a break-even from day one — and after the system is paid off, we save over a hundred dollars a month for the rest of our lives. It was the easiest financial decision I've ever made.",
+    savings: "$110/mo",
+    text: "I'm an engineer, so I ran the numbers myself before signing anything. The monthly payment essentially replaces what we were already spending at the grocery store. After the system is paid off, that money stays in our pocket. It was an easy decision.",
   },
 ];
 
@@ -37,14 +34,10 @@ export function Testimonials() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-5">
-              {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />)}
-              <span className="ml-1">4.9 from 200+ installations</span>
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3">
-              They thought it was too good to be true.
+              Families who made the switch.
             </h2>
-            <p className="text-lg text-slate-600">Then they did the math.</p>
+            <p className="text-lg text-slate-600">Real households, real numbers.</p>
           </motion.div>
         </div>
 
@@ -61,7 +54,6 @@ export function Testimonials() {
               <div className="flex gap-1 mb-4">
                 {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
               </div>
-              <p className="text-sm font-semibold text-slate-500 italic mb-3">"{review.before}"</p>
               <p className="text-slate-700 leading-relaxed flex-grow mb-6">"{review.text}"</p>
               <div className="pt-5 border-t border-slate-100 flex justify-between items-end">
                 <div>

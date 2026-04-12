@@ -4,24 +4,24 @@ import { Filter, Droplets, PackageCheck, ArrowDown } from "lucide-react";
 const steps = [
   {
     icon: <Filter className="w-10 h-10 text-blue-600" />,
-    tag: "Step 1 — Attack the Root Cause",
-    title: "The Refiner removes what's costing you money",
-    body: "Hard minerals are stripped from every drop of water entering your home. Immediately, your soap lathers the way it's supposed to. You need 80% less product to get a better result. The monthly soap run stops making sense.",
-    outcome: "80% less soap needed — starting day one",
+    tag: "Step 1",
+    title: "Treat the water at the source",
+    body: "A whole-home water refiner removes the hard minerals before water reaches any faucet, showerhead, or appliance. The result: soap lathers properly, your skin feels softer, and your plumbing stays cleaner. You naturally use less product because it works the way it's supposed to.",
+    outcome: "Up to 80% less soap needed",
   },
   {
     icon: <Droplets className="w-10 h-10 text-cyan-500" />,
-    tag: "Step 2 — Eliminate the Bottled Water Bill",
-    title: "The RO system delivers purer water than bottled",
-    body: "A reverse osmosis system installed under your kitchen sink removes up to 99% of contaminants — chlorine, lead, fluoride, PFAS, microplastics. The water tastes better. The $40/month on cases of bottles stops.",
-    outcome: "$0/month on bottled water — forever",
+    tag: "Step 2",
+    title: "Replace bottled water with purified water on tap",
+    body: "A reverse osmosis system installs under your kitchen sink and filters out up to 99% of contaminants — chlorine, lead, fluoride, microplastics, and PFAS. The water tastes clean and pure. Most families stop buying bottles within the first week.",
+    outcome: "No more monthly bottled water costs",
   },
   {
     icon: <PackageCheck className="w-10 h-10 text-green-500" />,
-    tag: "Step 3 — Lock In the Savings",
-    title: "Pure & Gentle delivers 5 years of products — free",
-    body: "Because your system cuts your soap needs by 80%, we can supply your household's entire cleaning and personal care needs for 5 years — included with the system. No more shopping for laundry detergent, dish soap, shampoo, or cleaners.",
-    outcome: "$120/month in soap costs — gone",
+    tag: "Step 3",
+    title: "Get your soap and cleaning products included",
+    body: "Because soft water reduces how much product you need, our partner Pure & Gentle provides a 5-year supply of household cleaners, laundry detergent, dish soap, shampoo, and personal care products — included with the system. You stop buying them at the store.",
+    outcome: "5-year soap supply included",
   },
 ];
 
@@ -37,14 +37,11 @@ export function HowItWorks() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-5">
-              The new way
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-              The fix isn't a better soap.<br className="hidden md:block" /> It's better water.
+              A simpler approach: treat the water, not the symptoms.
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Treat the source, and everything downstream changes automatically. Here's exactly how the Hyperion Elite system eliminates the costs — step by step.
+              Instead of spending more on soap and bottled water, the Hyperion Elite system addresses the root cause — hard, unfiltered water — so the downstream costs take care of themselves.
             </p>
           </motion.div>
         </div>
@@ -66,7 +63,7 @@ export function HowItWorks() {
                   <div className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">{step.tag}</div>
                   <h3 className="text-xl font-bold text-slate-900 mb-2">{step.title}</h3>
                   <p className="text-slate-500 leading-relaxed mb-4">{step.body}</p>
-                  <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 text-sm font-semibold px-3 py-1.5 rounded-full">
+                  <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 text-sm font-medium px-3 py-1.5 rounded-full">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                     {step.outcome}
                   </div>
@@ -88,9 +85,9 @@ export function HowItWorks() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-10 bg-blue-600 rounded-2xl p-7 text-white text-center"
         >
-          <p className="text-xl font-semibold mb-1">The result: you spend the same $160/month.</p>
+          <p className="text-xl font-semibold mb-1">The monthly cost stays the same: $160.</p>
           <p className="text-blue-100">
-            Except now that money builds toward owning a system — not disappearing into the drain. After 5 years, the payment stops. The soft water and soap program don't.
+            The difference is that now your money goes toward owning something — not replacing consumables every month. After about 5 years, the system is paid off and yours to keep.
           </p>
         </motion.div>
 

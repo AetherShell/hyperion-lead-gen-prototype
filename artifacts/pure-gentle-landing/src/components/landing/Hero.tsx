@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, CircleDollarSign, ShieldCheck, Zap } from "lucide-react";
+import { Star, CircleDollarSign, ShieldCheck, Phone } from "lucide-react";
 
 export function Hero() {
   return (
@@ -21,15 +21,10 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-6 border border-amber-200">
-              <Zap className="w-3.5 h-3.5 fill-amber-600 text-amber-600" />
-              <span>Limited installations available this month</span>
-            </div>
-
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.05] mb-5 tracking-tight">
-              Stop paying{" "}
+              The average family spends{" "}
               <span className="text-blue-600 relative">
-                $1,920 a year
+                $160/month
                 <svg
                   className="absolute -bottom-1.5 left-0 w-full h-3 text-blue-300 opacity-70"
                   viewBox="0 0 100 10"
@@ -38,26 +33,27 @@ export function Hero() {
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                 </svg>
               </span>{" "}
-              for soap and hard water.
+              on soap and bottled water.
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-2xl font-light">
-              One Hyperion Elite system eliminates your soap bill entirely — and pays for itself in soft water, pure drinking water, and 5 years of cleaning products included free.
+              The Hyperion Elite system treats your water at the source — so you need less soap, no bottled water, and your monthly cost stays the same. The difference is what you get for it.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <button
                 onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/25 hover:shadow-2xl hover:shadow-blue-600/30 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 hover:-translate-y-0.5"
               >
                 <CircleDollarSign className="mr-2 w-5 h-5" />
-                See My Savings — 30 Seconds
+                Calculate My Savings
               </button>
               <a
                 href="tel:+18005550100"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl border-2 border-slate-300 text-slate-700 hover:border-blue-400 hover:text-blue-700 transition-all"
               >
-                Call Us Directly
+                <Phone className="mr-2 w-4 h-4" />
+                (800) 555-0100
               </a>
             </div>
 
@@ -71,7 +67,7 @@ export function Hero() {
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
                 <ShieldCheck className="w-4 h-4 text-green-500" />
-                <span>$0 upfront · Free installation</span>
+                <span>$0 upfront · Professional installation included</span>
               </div>
             </div>
           </motion.div>

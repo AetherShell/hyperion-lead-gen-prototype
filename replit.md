@@ -42,7 +42,7 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 - Route: `artifacts/api-server/src/routes/leads.ts`
 
 ### Self-Service Order Flow (`/order`)
-- 4-step flow: Plan Review → Customer Info → Installation Preferences → Agreement + E-Signature
+- 3-step flow: Customer Info → Scheduling → Agreement + E-Signature
 - Canvas-based signature pad (react-signature-canvas) + typed name confirmation
 - Orders saved to PostgreSQL `orders` table with full customer info, signature data, soap/water costs, preferred date
 - Schema: `lib/db/src/schema/orders.ts`

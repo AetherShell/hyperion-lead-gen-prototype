@@ -7,32 +7,36 @@ import {
 
 const faqs = [
   {
-    q: "Isn't this just a regular water softener? I've heard those don't make that big a difference.",
-    a: "This is not a regular water softener. A standard softener only addresses water hardness — it doesn't include a reverse osmosis drinking system, and it certainly doesn't come with a 5-year soap supply. The difference the Pure & Gentle program makes is where the real financial shift happens. You eliminate the entire soap and cleaning category from your monthly budget. That's what makes the math work.",
+    q: "Is this a regular water softener?",
+    a: "It includes a water softener, but that's only one part of the system. You also get a reverse osmosis drinking water system and a 5-year supply of household cleaning products through the Pure & Gentle program. A standalone softener doesn't come with either of those — and those are what make the cost math work.",
   },
   {
-    q: "How does the soap program actually work?",
-    a: "Soft water requires 80% less soap to lather and clean effectively. Because your household needs dramatically less product, our partner Pure and Gentle can supply five full years of premium household cleaners, laundry detergent, dish soap, shampoo, conditioner, and personal care products — all included with your system. They ship directly to your door. You stop buying these at the store.",
+    q: "How does the soap program work?",
+    a: "Soft water requires significantly less soap to lather and clean effectively. Because your household uses less product overall, our partner Pure and Gentle can provide a full 5-year supply of laundry detergent, dish soap, shampoo, conditioner, household cleaners, and personal care products — all included with the system. They ship directly to your door.",
   },
   {
     q: "What happens after the 5 years?",
-    a: "After about 60 months, the system is completely paid off and you own it outright. Your $160/month payment drops to $0. Your only ongoing cost is $50/year for annual maintenance. Because your water is still soft, you still need 80% less soap than the average household — so you continue saving roughly $120/month, every month, for as long as you own the home.",
+    a: "After about 60 months, the system is fully paid off and you own it. Your monthly payment goes to $0. Your only ongoing cost is around $50/year for annual maintenance. Because your water is still soft, you'll continue using far less soap than a typical household — so the savings continue on their own.",
   },
   {
-    q: "Why haven't I heard of this before?",
-    a: "The water treatment industry isn't known for aggressive marketing, and soap companies have no incentive to tell you that your water is making their product perform worse. Most homeowners discover this through a neighbor's referral or an in-home demonstration. Word of mouth is how most of our installations happen — which is also why we can invest in a system that includes $7,200 worth of soap products instead of spending that on advertising.",
+    q: "What does the RO system filter out?",
+    a: "The reverse osmosis system removes up to 99% of common contaminants — including chlorine, lead, fluoride, nitrates, heavy metals, microplastics, and PFAS (sometimes called forever chemicals). Most families find the water tastes noticeably better than what they were buying in bottles.",
   },
   {
-    q: "Is the installation disruptive?",
-    a: "Not at all. Our certified installers typically finish in 3–4 hours. We tie into your main water line — usually in the garage or utility area — and install the RO unit under your kitchen sink. We handle everything cleanly, test all connections, demo the system with you, and leave your home exactly as we found it.",
+    q: "How long does installation take?",
+    a: "Typically 3–4 hours. Our installers handle everything — tying into your main water line (usually in the garage or utility area), setting up the RO unit under the kitchen sink, testing all connections, and walking you through how it works. We clean up after ourselves.",
   },
   {
-    q: "What does the RO system actually filter out?",
-    a: "Our reverse osmosis system removes up to 99% of contaminants — chlorine, lead, fluoride, nitrates, heavy metals, microplastics, and PFAS (forever chemicals). The water tastes noticeably cleaner than municipal tap, and in blind taste tests, most families prefer it over the bottled water they were buying.",
+    q: "Do I need to own my home?",
+    a: "Homeowners can move forward right away. If you rent, you'll need written approval from your landlord before installation. Our team can help you with that conversation if needed.",
   },
   {
-    q: "What if I decide it's not for me after I order?",
-    a: "You have 3 business days from signing to cancel without penalty — no questions asked, no fees. After installation, if you experience any issue with the system or the products, our team handles it under warranty. We stand behind the product because we know the math works for the overwhelming majority of homeowners.",
+    q: "What if I change my mind after ordering?",
+    a: "You have 3 business days from signing to cancel with no penalty and no questions asked. After installation, any issues with the system or the products are handled under warranty.",
+  },
+  {
+    q: "Is there a warranty?",
+    a: "Yes. The system comes with a 1-year warranty covering parts and labor from the installation date. The soap supply is delivered within 30 days of installation. We stand behind the product because the vast majority of families see exactly the results we describe.",
   },
 ];
 
@@ -43,10 +47,10 @@ export function FAQ() {
 
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3">
-            Still skeptical? Good.
+            Common questions.
           </h2>
           <p className="text-lg text-slate-600">
-            Every common objection — answered honestly.
+            Straightforward answers to the things people ask most.
           </p>
         </div>
 
