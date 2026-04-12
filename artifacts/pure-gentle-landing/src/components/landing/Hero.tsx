@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
-import { Droplet, CircleDollarSign, CheckCircle2 } from "lucide-react";
+import { Star, CircleDollarSign, ShieldCheck, Zap } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-20 pb-32 overflow-hidden">
+    <section className="relative min-h-[92vh] flex items-center pt-20 pb-28 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/hero-kitchen.png" 
-          alt="Modern clean kitchen" 
+        <img
+          src="/hero-kitchen.png"
+          alt="Modern clean kitchen"
           className="w-full h-full object-cover object-center opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/90 via-blue-50/80 to-transparent mix-blend-multiply" />
-        <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50/95 via-blue-50/85 to-transparent" />
+        <div className="absolute inset-0 bg-white/55 backdrop-blur-[2px]" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -19,48 +19,59 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-6">
-              <Droplet className="w-4 h-4" />
-              <span>Smarter water for your home</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-6 border border-amber-200">
+              <Zap className="w-3.5 h-3.5 fill-amber-600 text-amber-600" />
+              <span>Limited installations available this month</span>
             </div>
-            
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6 tracking-tight">
-              Is your hard water secretly costing you <span className="text-blue-600 relative">
-                $1,920 a year?
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-blue-300 opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
+
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.05] mb-5 tracking-tight">
+              Stop paying{" "}
+              <span className="text-blue-600 relative">
+                $1,920 a year
+                <svg
+                  className="absolute -bottom-1.5 left-0 w-full h-3 text-blue-300 opacity-70"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                 </svg>
-              </span>
+              </span>{" "}
+              for soap and hard water.
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-2xl font-light">
-              Stop throwing money down the drain. A Hyperion Elite system gives you luxurious soft water and pure drinking water — while the Pure and Gentle soap program eliminates your household soap and cleaning costs.
+              One Hyperion Elite system eliminates your soap bill entirely — and pays for itself in soft water, pure drinking water, and 5 years of cleaning products included free.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={() => document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <button
+                onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/25 hover:shadow-2xl hover:shadow-blue-600/30 hover:-translate-y-0.5"
               >
-                Calculate Your Savings
-                <CircleDollarSign className="ml-2 w-5 h-5" />
+                <CircleDollarSign className="mr-2 w-5 h-5" />
+                See My Savings — 30 Seconds
               </button>
+              <a
+                href="tel:+18005550100"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl border-2 border-slate-300 text-slate-700 hover:border-blue-400 hover:text-blue-700 transition-all"
+              >
+                Call Us Directly
+              </a>
             </div>
 
-            <div className="mt-10 flex items-center gap-6 text-sm text-slate-600 font-medium">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-blue-500" />
-                <span>$0 Upfront</span>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <div className="flex items-center gap-1.5">
+                {[1,2,3,4,5].map(i => (
+                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
+                <span className="text-sm font-semibold text-slate-700 ml-1">4.9</span>
+                <span className="text-sm text-slate-500">(200+ homeowners)</span>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-blue-500" />
-                <span>Free Installation</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-blue-500" />
-                <span>Lifetime Warranty</span>
+              <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
+                <ShieldCheck className="w-4 h-4 text-green-500" />
+                <span>$0 upfront · Free installation</span>
               </div>
             </div>
           </motion.div>

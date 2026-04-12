@@ -1,236 +1,157 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { CalendarCheck, ArrowRight, ShieldCheck } from "lucide-react";
+import { Phone, CheckCircle } from "lucide-react";
 
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-const formSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Valid email is required"),
-  phone: z.string().min(10, "Valid phone number is required"),
-  zipCode: z.string().min(5, "Zip code is required"),
-  time: z.string().min(1, "Please select a preferred time"),
-});
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export function CTA() {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "" });
+  const [errors, setErrors] = useState<Partial<typeof form>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      zipCode: "",
-      time: "",
-    },
-  });
+  function set(field: keyof typeof form, value: string) {
+    setForm(f => ({ ...f, [field]: value }));
+    setErrors(e => ({ ...e, [field]: undefined }));
+  }
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-    setSubmitError(null);
+  function validate() {
+    const e: Partial<typeof form> = {};
+    if (!form.name.trim()) e.name = "Required";
+    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required";
+    if (!form.phone.trim() || form.phone.replace(/\D/g,"").length < 10) e.phone = "Valid phone required";
+    if (!form.zipCode.trim() || form.zipCode.length < 5) e.zipCode = "Required";
+    if (!form.time) e.time = "Required";
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!validate()) return;
+    setLoading(true); setSubmitError("");
     try {
-      const res = await fetch("/api/leads", {
+      const res = await fetch(`${BASE}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, zipCode: form.zipCode, time: form.time }),
       });
-      if (!res.ok) throw new Error("Server error");
+      if (!res.ok) throw new Error();
       setSubmitted(true);
     } catch {
-      setSubmitError("Something went wrong. Please try again or call us directly.");
+      setSubmitError("Something went wrong. Please call us directly.");
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   }
 
   return (
-    <section id="schedule" className="py-24 bg-blue-600 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-600/50 to-blue-800/80 pointer-events-none"></div>
+    <section id="schedule" className="py-20 bg-slate-900 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-slate-900 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+
           <div className="text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">Ready to stop paying for soap?</h2>
-            <p className="text-xl text-blue-100 mb-10 leading-relaxed font-light">
-              Schedule a free, zero-pressure water test and consultation. We'll test your water, show you the exact math for your home, and let you decide.
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600/20 border border-blue-500/30 text-blue-300 text-sm font-medium mb-6">
+              <Phone className="w-3.5 h-3.5" />
+              <span>Prefer to talk to someone first?</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight">
+              Get a free callback from a water specialist.
+            </h2>
+            <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+              Not ready to order online? That's fine. Leave your info and we'll call you — no pressure, no pitch, just honest answers.
             </p>
-            
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center shrink-0">
-                  <ShieldCheck className="w-6 h-6 text-white" />
+            <div className="space-y-4">
+              {[
+                "We test your water and show you the exact numbers for your home",
+                "Zero-obligation — if it doesn't make sense, we'll say so",
+                "Takes about 20 minutes at your kitchen sink",
+              ].map(item => (
+                <div key={item} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                  <span className="text-slate-300 text-sm">{item}</span>
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white">No obligation</h4>
-                  <p className="text-blue-200 text-sm mt-1">If the math doesn't make sense for your home, we'll tell you.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center shrink-0">
-                  <CalendarCheck className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white">Quick & Easy</h4>
-                  <p className="text-blue-200 text-sm mt-1">The consultation takes about 20 minutes right at your kitchen sink.</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-8 shadow-2xl">
+          <div className="bg-white rounded-2xl p-8 shadow-2xl">
             {submitted ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
-              >
-                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CalendarCheck className="w-10 h-10 text-green-600" />
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+                  <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-4">Request Received!</h3>
-                <p className="text-slate-600 text-lg">
-                  Thank you! One of our water specialists will call you shortly to confirm your appointment time.
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="mt-8"
-                  onClick={() => {
-                    setSubmitted(false);
-                    form.reset();
-                  }}
-                >
-                  Schedule Another
-                </Button>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">We'll call you soon!</h3>
+                <p className="text-slate-500 text-sm">A water specialist will reach out at your preferred time. Check our FAQ below if you have questions in the meantime.</p>
               </motion.div>
             ) : (
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                  <div className="mb-6 text-center lg:text-left">
-                    <h3 className="text-2xl font-bold text-slate-900">Request Consultation</h3>
-                    <p className="text-slate-500 text-sm mt-1">Fill out the form below to get started.</p>
-                  </div>
+              <form onSubmit={(e) => { void handleSubmit(e); }} className="space-y-4">
+                <div className="mb-5">
+                  <h3 className="text-xl font-bold text-slate-900">Request a Free Callback</h3>
+                  <p className="text-slate-400 text-sm mt-0.5">We'll reach out at your preferred time — no spam, ever.</p>
+                </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-slate-700">Full Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="John Doe" className="bg-slate-50 border-slate-200" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-slate-700">Email</FormLabel>
-                          <FormControl>
-                            <Input type="email" placeholder="john@example.com" className="bg-slate-50 border-slate-200" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <Fld label="Your Name" error={errors.name}>
+                    <input type="text" value={form.name} onChange={e => set("name", e.target.value)}
+                      placeholder="Jane Smith" className={inp(errors.name)} />
+                  </Fld>
+                  <Fld label="Phone Number" error={errors.phone}>
+                    <input type="tel" value={form.phone} onChange={e => set("phone", e.target.value)}
+                      placeholder="(555) 123-4567" className={inp(errors.phone)} />
+                  </Fld>
+                </div>
+                <Fld label="Email" error={errors.email}>
+                  <input type="email" value={form.email} onChange={e => set("email", e.target.value)}
+                    placeholder="jane@example.com" className={inp(errors.email)} />
+                </Fld>
+                <div className="grid grid-cols-2 gap-4">
+                  <Fld label="ZIP Code" error={errors.zipCode}>
+                    <input type="text" value={form.zipCode} onChange={e => set("zipCode", e.target.value)}
+                      placeholder="85001" maxLength={5} className={inp(errors.zipCode)} />
+                  </Fld>
+                  <Fld label="Best Time to Call" error={errors.time}>
+                    <select value={form.time} onChange={e => set("time", e.target.value)} className={inp(errors.time)}>
+                      <option value="">Select</option>
+                      <option value="morning">Morning (8am – 12pm)</option>
+                      <option value="afternoon">Afternoon (12pm – 5pm)</option>
+                      <option value="evening">Evening (5pm – 8pm)</option>
+                      <option value="anytime">Anytime</option>
+                    </select>
+                  </Fld>
+                </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-slate-700">Phone Number</FormLabel>
-                          <FormControl>
-                            <Input type="tel" placeholder="(555) 123-4567" className="bg-slate-50 border-slate-200" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="zipCode"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-slate-700">Zip Code</FormLabel>
-                          <FormControl>
-                            <Input placeholder="12345" className="bg-slate-50 border-slate-200" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                {submitError && <p className="text-sm text-red-600">{submitError}</p>}
 
-                  <FormField
-                    control={form.control}
-                    name="time"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-slate-700">Preferred Contact Time</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger className="bg-slate-50 border-slate-200">
-                              <SelectValue placeholder="Select a time" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="morning">Morning (8am - 12pm)</SelectItem>
-                            <SelectItem value="afternoon">Afternoon (12pm - 4pm)</SelectItem>
-                            <SelectItem value="evening">Evening (4pm - 8pm)</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  {submitError && (
-                    <p className="text-sm text-red-600 text-center font-medium">{submitError}</p>
-                  )}
-                  <Button type="submit" size="lg" disabled={isLoading} className="w-full h-14 text-lg bg-blue-600 hover:bg-blue-700 mt-4 rounded-xl disabled:opacity-70">
-                    {isLoading ? "Submitting..." : <span className="flex items-center gap-2">Claim My Free Test <ArrowRight className="w-5 h-5" /></span>}
-                  </Button>
-                  <p className="text-xs text-center text-slate-400 mt-4">
-                    By submitting, you agree to our privacy policy. No spam, ever.
-                  </p>
-                </form>
-              </Form>
+                <button type="submit" disabled={loading}
+                  className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-bold text-base transition-colors mt-1">
+                  {loading ? "Sending..." : "Request My Free Callback"}
+                </button>
+                <p className="text-xs text-center text-slate-400">
+                  Or scroll up to order online and skip the call entirely.
+                </p>
+              </form>
             )}
           </div>
         </div>
       </div>
     </section>
   );
+}
+
+function Fld({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-slate-700 mb-1">{label}</label>
+      {children}
+      {error && <p className="text-xs text-red-500 mt-0.5">{error}</p>}
+    </div>
+  );
+}
+
+function inp(error?: string) {
+  return `w-full px-3.5 py-2.5 rounded-lg border text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${error ? "border-red-400 bg-red-50" : "border-slate-200 bg-slate-50"}`;
 }

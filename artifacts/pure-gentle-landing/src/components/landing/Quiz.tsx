@@ -427,9 +427,10 @@ export function Quiz() {
                     >
                       Get Started — Order Online
                     </Button>
+                    <p className="text-xs text-slate-400">Takes 5 minutes online. No sales call required.</p>
                     <button
                       onClick={handleReset}
-                      className="text-slate-500 hover:text-slate-700 text-sm flex items-center gap-2 font-medium transition-colors"
+                      className="text-slate-400 hover:text-slate-600 text-sm flex items-center gap-2 transition-colors"
                     >
                       <RefreshCw className="w-4 h-4" /> Recalculate
                     </button>
