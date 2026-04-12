@@ -1,42 +1,32 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Droplets, Wallet, ArrowRight, RotateCcw, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowRight, RotateCcw, CheckCircle, Sparkles } from "lucide-react";
 import { useLocation } from "wouter";
-
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export function Quiz() {
   const [, navigate] = useLocation();
   const [step, setStep] = useState(1);
   const [soapSpend, setSoapSpend] = useState<string>("120");
-  const [waterSpend, setWaterSpend] = useState<string>("40");
   const [bottledWaterSpend, setBottledWaterSpend] = useState<string>("40");
-  const [people, setPeople] = useState<string>("4");
   const [hasHardWater, setHasHardWater] = useState<boolean | null>(null);
-  const [usesSoap, setUsesSoap] = useState<boolean | null>(null);
   const [result, setResult] = useState<null | {
     monthlySoapSpend: number;
     monthlyBottledWaterSpend: number;
-    monthlyWaterSpend: number;
     totalCurrentSpend: number;
     annualSavings: number;
     fiveYearSavings: number;
   }>(null);
 
-  const total = Number(soapSpend || 0) + Number(waterSpend || 0) + Number(bottledWaterSpend || 0);
-
   const handleCalculate = () => {
     const monthlySoapSpend = Number(soapSpend || 0);
     const monthlyBottledWaterSpend = Number(bottledWaterSpend || 0);
-    const monthlyWaterSpend = Number(waterSpend || 0);
-    const totalCurrentSpend = monthlySoapSpend + monthlyBottledWaterSpend + monthlyWaterSpend;
+    const totalCurrentSpend = monthlySoapSpend + monthlyBottledWaterSpend;
     const annualSavings = Math.max(0, totalCurrentSpend - 160) * 12;
     const fiveYearSavings = annualSavings * 5;
     setResult({
       monthlySoapSpend,
       monthlyBottledWaterSpend,
-      monthlyWaterSpend,
       totalCurrentSpend,
       annualSavings,
       fiveYearSavings,
@@ -51,11 +41,8 @@ export function Quiz() {
   const handleReset = () => {
     setStep(1);
     setHasHardWater(null);
-    setUsesSoap(null);
     setSoapSpend("120");
-    setWaterSpend("40");
     setBottledWaterSpend("40");
-    setPeople("4");
     setResult(null);
   };
 
@@ -79,13 +66,7 @@ export function Quiz() {
         <div className="bg-slate-50 rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm">
           <AnimatePresence mode="wait">
             {step === 1 && (
-              <motion.div
-                key="s1"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="space-y-8"
-              >
+              <motion.div key="s1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">Do you have hard water at home?</h3>
                   <p className="text-slate-600">If your faucets leave spots or soap doesn't lather well, the answer is probably yes.</p>
@@ -98,40 +79,28 @@ export function Quiz() {
             )}
 
             {step === 2 && (
-              <motion.div
-                key="s2"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="space-y-8"
-              >
+              <motion.div key="s2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">How much do you spend on bottled water each month?</h3>
                   <p className="text-slate-600">This is the money we can potentially replace with purified water on tap.</p>
                 </div>
                 <div className="grid sm:grid-cols-3 gap-4">
-                  {[["20", "$20"], ["40", "$40"], ["80", "$80+"]].map(([value, label]) => (
-                    <button key={value} onClick={() => { setWaterSpend(value); setStep(3); }} className="h-20 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50 transition-all font-semibold text-lg">{label}</button>
+                  {[ ["20", "$20"], ["40", "$40"], ["80", "$80+"] ].map(([value, label]) => (
+                    <button key={value} onClick={() => { setBottledWaterSpend(value); setStep(3); }} className="h-20 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50 transition-all font-semibold text-lg">{label}</button>
                   ))}
                 </div>
               </motion.div>
             )}
 
             {step === 3 && (
-              <motion.div
-                key="s3"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="space-y-8"
-              >
+              <motion.div key="s3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                 <div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-2">How much do you spend on soap, detergent, and cleaners?</h3>
                   <p className="text-slate-600">Most families with hard water spend far more than they realize.</p>
                 </div>
                 <div className="grid sm:grid-cols-3 gap-4">
                   {["80", "120", "160"].map(value => (
-                    <button key={value} onClick={handleCalculate} className="h-20 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50 transition-all font-semibold text-lg">${value}</button>
+                    <button key={value} onClick={() => { setSoapSpend(value); handleCalculate(); }} className="h-20 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50 transition-all font-semibold text-lg">${value}</button>
                   ))}
                 </div>
                 <div className="text-center">
@@ -141,12 +110,7 @@ export function Quiz() {
             )}
 
             {step === 4 && result && (
-              <motion.div
-                key="s4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="space-y-8"
-              >
+              <motion.div key="s4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-8">
                 <div className="text-center">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4">
                     <CheckCircle className="w-3.5 h-3.5" />
