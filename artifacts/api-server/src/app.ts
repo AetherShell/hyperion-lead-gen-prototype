@@ -1,10 +1,30 @@
 import express, { type Express } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
+import session from "express-session";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
+declare module "express-session" {
+  interface SessionData {
+    adminAuthenticated: boolean;
+  }
+}
+
 const app: Express = express();
+
+app.use(
+  session({
+    secret: process.env["SESSION_SECRET"] ?? "fallback-dev-secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env["NODE_ENV"] === "production",
+      maxAge: 1000 * 60 * 60 * 8,
+    },
+  }),
+);
 
 app.use(
   pinoHttp({
