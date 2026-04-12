@@ -1,7 +1,8 @@
 import { Hero } from "@/components/landing/Hero";
-import { Quiz } from "@/components/landing/Quiz";
+import { OldWay } from "@/components/landing/OldWay";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { SavingsBreakdown } from "@/components/landing/SavingsBreakdown";
+import { Quiz } from "@/components/landing/Quiz";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { FAQ } from "@/components/landing/FAQ";
 import { CTA } from "@/components/landing/CTA";
@@ -37,12 +38,43 @@ export default function Home() {
       </header>
 
       <main>
+        {/* 1. Hook — pattern interrupt, stop the scroll */}
         <Hero />
-        <Quiz />
+
+        {/* 2. Old Way — name the villain, destroy the old belief */}
+        <OldWay />
+
+        {/* 3. New Way — reveal the mechanism, install a new belief */}
         <HowItWorks />
+
+        {/* 4. Offer — show exactly what delivers the new way */}
         <SavingsBreakdown />
+
+        {/* Bridge into the quiz */}
+        <div className="bg-slate-50 pt-16 pb-0">
+          <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold mb-4">
+              Your numbers are different from the average
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3">
+              See exactly what this changes for your household.
+            </h2>
+            <p className="text-lg text-slate-600">
+              The quiz takes 30 seconds. Enter what you actually spend — and see the real math for your home.
+            </p>
+          </div>
+        </div>
+
+        {/* 5. Sale — personalized proof, then straight to close */}
+        <Quiz />
+
+        {/* 6. Social proof — "others like you made this decision" */}
         <Testimonials />
+
+        {/* 7. Objection handling */}
         <FAQ />
+
+        {/* 8. Final close — for anyone not yet ready to order online */}
         <CTA />
       </main>
 

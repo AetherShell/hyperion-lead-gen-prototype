@@ -1,45 +1,69 @@
+import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
-export function Testimonials() {
-  const reviews = [
-    {
-      name: "Sarah Jenkins",
-      location: "Austin, TX",
-      savings: "$145/month",
-      text: "I was skeptical about the soap program, but the products are actually incredible. We haven't bought laundry detergent or body wash in three years. Plus, my daughter's eczema completely cleared up after a month of soft water. The math made it a no-brainer."
-    },
-    {
-      name: "Michael & Elena Torres",
-      location: "Phoenix, AZ",
-      savings: "$180/month",
-      text: "We used to buy three cases of bottled water a week and easily spent $150 on cleaning supplies for our family of six. The RO system water tastes better than bottled, and the refiner makes the showers feel amazing. It literally pays for itself."
-    },
-    {
-      name: "David Chen",
-      location: "Denver, CO",
-      savings: "$110/month",
-      text: "As an engineer, I crunched all the numbers before signing. The fact that the monthly payment just replaces money we were already spending at the grocery store made it an easy decision. Installation was quick, clean, and professional."
-    }
-  ];
+const reviews = [
+  {
+    name: "Sarah Jenkins",
+    location: "Austin, TX",
+    savings: "$145/month",
+    before: "I was spending $150 a month on soap products and thought that was just normal.",
+    text: "We haven't bought laundry detergent, dish soap, or body wash in three years. My daughter's eczema completely cleared up within a month of soft water. I kept waiting for the catch. There wasn't one — the math just works.",
+  },
+  {
+    name: "Michael & Elena Torres",
+    location: "Phoenix, AZ",
+    savings: "$180/month",
+    before: "We thought a water softener was a luxury. We were wrong about what it actually does.",
+    text: "We used to buy three cases of bottled water a week and easily spent $150 on cleaning supplies for our family of six. The RO water tastes better than anything we bought at the store, and we haven't set foot in the cleaning aisle since installation.",
+  },
+  {
+    name: "David Chen",
+    location: "Denver, CO",
+    savings: "$110/month",
+    before: "As an engineer, I was skeptical. So I spent two weeks running the numbers myself.",
+    text: "The monthly payment replaces money we were already spending at the grocery store. Dollar for dollar, it's a break-even from day one — and after the system is paid off, we save over a hundred dollars a month for the rest of our lives. It was the easiest financial decision I've ever made.",
+  },
+];
 
+export function Testimonials() {
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">Real Families, Real Savings</h2>
-          <p className="text-lg text-slate-600">Join thousands of homeowners who stopped paying for hard water.</p>
+
+        <div className="text-center mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-semibold mb-5">
+              {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />)}
+              <span className="ml-1">4.9 from 200+ installations</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3">
+              They thought it was too good to be true.
+            </h2>
+            <p className="text-lg text-slate-600">Then they did the math.</p>
+          </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {reviews.map((review, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-3xl shadow-lg shadow-slate-200/50 border border-slate-100 flex flex-col">
-              <div className="flex gap-1 mb-6">
-                {[1, 2, 3, 4, 5].map(star => (
-                  <Star key={star} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
+        <div className="grid md:grid-cols-3 gap-7 max-w-6xl mx-auto">
+          {reviews.map((review, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col"
+            >
+              <div className="flex gap-1 mb-4">
+                {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
               </div>
-              <p className="text-slate-700 mb-8 flex-grow leading-relaxed">"{review.text}"</p>
-              <div className="pt-6 border-t border-slate-100 flex justify-between items-end">
+              <p className="text-sm font-semibold text-slate-500 italic mb-3">"{review.before}"</p>
+              <p className="text-slate-700 leading-relaxed flex-grow mb-6">"{review.text}"</p>
+              <div className="pt-5 border-t border-slate-100 flex justify-between items-end">
                 <div>
                   <div className="font-semibold text-slate-900">{review.name}</div>
                   <div className="text-sm text-slate-500">{review.location}</div>
@@ -49,9 +73,10 @@ export function Testimonials() {
                   <div className="font-bold text-slate-900">{review.savings}</div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
