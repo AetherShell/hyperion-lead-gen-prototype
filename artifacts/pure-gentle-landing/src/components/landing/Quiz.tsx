@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLocation } from "wouter";
 import { Calculator, ArrowRight, RefreshCw, Droplets, Sparkles, CheckCircle } from "lucide-react";
 
 const CATEGORIES = [
@@ -48,6 +49,7 @@ const DEFAULT_CATEGORY_VALUES: Record<string, number> = Object.fromEntries(
 );
 
 export function Quiz() {
+  const [, navigate] = useLocation();
   const [step, setStep] = useState(1);
   const [people, setPeople] = useState<number | null>(null);
   const [soapMode, setSoapMode] = useState<"quick" | "detailed">("quick");
@@ -418,12 +420,12 @@ export function Quiz() {
                   <div className="flex flex-col items-center gap-4 pt-4">
                     <Button
                       onClick={() =>
-                        document.getElementById("schedule")?.scrollIntoView({ behavior: "smooth" })
+                        navigate(`/order?soap=${effectiveSoapCost}&water=${waterCost[0]}`)
                       }
                       size="lg"
                       className="w-full sm:w-auto px-12 h-16 rounded-xl text-xl bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-600/20 transition-all hover:-translate-y-1"
                     >
-                      Schedule Free Consultation
+                      Get Started — Order Online
                     </Button>
                     <button
                       onClick={handleReset}

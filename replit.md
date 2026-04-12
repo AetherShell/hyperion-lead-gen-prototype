@@ -41,6 +41,19 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 - Schema: `lib/db/src/schema/leads.ts`
 - Route: `artifacts/api-server/src/routes/leads.ts`
 
+### Self-Service Order Flow (`/order`)
+- 4-step flow: Plan Review → Customer Info → Installation Preferences → Agreement + E-Signature
+- Canvas-based signature pad (react-signature-canvas) + typed name confirmation
+- Orders saved to PostgreSQL `orders` table with full customer info, signature data, soap/water costs, preferred date
+- Schema: `lib/db/src/schema/orders.ts`
+- Route: `artifacts/api-server/src/routes/orders.ts`
+- Quiz results CTA navigates to /order with soap and water cost query params
+
+### Admin Dashboard (`/admin`)
+- Password protected (ADMIN_PASSWORD env var)
+- Shows Orders tab (signed work orders with all details) and Leads tab (consultation requests)
+- Summary stats: Total Orders, Total Leads, Pending Orders
+
 ### Future integrations (not yet set up — user dismissed OAuth flow)
 - **Email notifications**: Use the Resend connector (`connector:ccfg_resend_01K69QKYK789WN202XSE3QS17V`) to send email alerts on new lead submissions
 - **Google Sheets**: Use the Google Sheets connector (`connector:ccfg_google-sheet_E42A9F6CA62546F68A1FECA0E8`) to sync leads to a spreadsheet
