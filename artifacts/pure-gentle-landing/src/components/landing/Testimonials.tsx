@@ -1,24 +1,21 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import review1 from "@assets/Screenshot_2026-04-12_172053_1776039905038.png";
+import review2 from "@assets/Screenshot_2026-04-12_172116_1776039905038.png";
+import review3 from "@assets/Screenshot_2026-04-12_172312_1776039905038.png";
 
 const reviews = [
   {
-    name: "Sarah Jenkins",
-    location: "Austin, TX",
-    savings: "$145/mo",
-    text: "I honestly wasn't sure how much we spent on soap until I tracked it for a month. It was over $140. We've had the system for three years now and haven't bought laundry detergent, dish soap, or body wash once. My daughter's eczema cleared up too — I think the soft water helped.",
+    image: review1,
+    alt: "Yelp review from Sophie Y. in Phoenix, AZ",
   },
   {
-    name: "Michael & Elena Torres",
-    location: "Phoenix, AZ",
-    savings: "$180/mo",
-    text: "We were buying three cases of bottled water a week for a family of six. When we saw the RO system side-by-side with what we were spending, it was a straightforward decision. The water tastes cleaner than anything we bought at the store.",
+    image: review2,
+    alt: "Yelp review from David M. in Everett, WA",
   },
   {
-    name: "David Chen",
-    location: "Denver, CO",
-    savings: "$110/mo",
-    text: "I'm an engineer, so I ran the numbers myself before signing anything. The monthly payment essentially replaces what we were already spending at the grocery store. After the system is paid off, that money stays in our pocket. It was an easy decision.",
+    image: review3,
+    alt: "Yelp review from Eileen L. in Dublin, CA",
   },
 ];
 
@@ -49,22 +46,12 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm flex flex-col"
+              className="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex flex-col"
             >
               <div className="flex gap-1 mb-4">
-                {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+                {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
               </div>
-              <p className="text-slate-700 leading-relaxed flex-grow mb-6">"{review.text}"</p>
-              <div className="pt-5 border-t border-slate-100 flex justify-between items-end">
-                <div>
-                  <div className="font-semibold text-slate-900">{review.name}</div>
-                  <div className="text-sm text-slate-500">{review.location}</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-xs text-green-600 font-bold uppercase tracking-wide">Saving</div>
-                  <div className="font-bold text-slate-900">{review.savings}</div>
-                </div>
-              </div>
+              <img src={review.image} alt={review.alt} className="w-full rounded-xl border border-slate-200 object-cover" />
             </motion.div>
           ))}
         </div>
