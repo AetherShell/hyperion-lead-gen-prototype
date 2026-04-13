@@ -25,10 +25,10 @@ export function SavingsBreakdown() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-              Here's how the numbers work.
+              Here’s how the numbers work.
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              The system costs $160/month — roughly the same amount a typical household already spends on soap and bottled water. You're not adding a new expense. You're redirecting one you already have.
+              The system costs $160/month — roughly the same amount a typical household already spends on soap and bottled water. You’re not adding a new expense. You’re redirecting one you already have.
             </p>
           </motion.div>
         </div>
@@ -98,7 +98,7 @@ export function SavingsBreakdown() {
                 <span className="text-slate-300">Monthly total</span>
                 <span className="text-3xl font-bold text-blue-400">$160</span>
               </div>
-              <p className="text-sm text-slate-400 text-right mt-1">Same cost. You own the system when it's done.</p>
+              <p className="text-sm text-slate-400 text-right mt-1">Same cost. You own the system when it’s done.</p>
             </div>
           </motion.div>
         </div>
@@ -110,7 +110,7 @@ export function SavingsBreakdown() {
           transition={{ duration: 0.5 }}
           className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-7"
         >
-          <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-5">What's included in the $160/month</div>
+          <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-5">What’s included in the $160/month</div>
           <div className="grid sm:grid-cols-2 gap-3">
             {included.map(({ icon, item, detail }) => (
               <div key={item} className="flex items-center justify-between gap-3 bg-slate-800/60 rounded-xl px-4 py-3">
@@ -132,9 +132,9 @@ export function SavingsBreakdown() {
           className="mt-8 text-center"
         >
           <p className="text-xl text-slate-300 font-light">
-            After about 5 years, the system is paid off.{" "}
+            After about 5 years, the system is paid off.
             <br className="hidden md:block" />
-            <span className="text-white font-semibold">Your only ongoing cost is $50/year for maintenance. The savings continue.</span>
+            <span className="text-white font-semibold">Your only ongoing cost is roughly $50/year for maintenance. The savings continue.</span>
           </p>
         </motion.div>
 
