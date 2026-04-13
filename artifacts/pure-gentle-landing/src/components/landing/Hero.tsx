@@ -62,8 +62,6 @@ export function Hero() {
                 {[1,2,3,4,5].map(i => (
                   <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
-                <span className="text-sm font-semibold text-slate-700 ml-1">4.9</span>
-                <span className="text-sm text-slate-500">(200+ homeowners)</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
                 <ShieldCheck className="w-4 h-4 text-green-500" />
