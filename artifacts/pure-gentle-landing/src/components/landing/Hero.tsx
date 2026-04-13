@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, CircleDollarSign, ShieldCheck, Phone } from "lucide-react";
+import { CircleDollarSign, ShieldCheck, Phone } from "lucide-react";
 
 export function Hero() {
   return (
@@ -57,16 +57,9 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-              <div className="flex items-center gap-1.5">
-                {[1,2,3,4,5].map(i => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
-                <ShieldCheck className="w-4 h-4 text-green-500" />
-                <span>$0 upfront · Professional installation included</span>
-              </div>
+            <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
+              <ShieldCheck className="w-4 h-4 text-green-500" />
+              <span>$0 upfront · Professional installation included</span>
             </div>
           </motion.div>
         </div>
