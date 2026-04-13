@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, RotateCcw, CheckCircle, PhoneCall, FileText, ShieldCheck, ChevronRight } from "lucide-react";
+import { ArrowRight, RotateCcw, CheckCircle, PhoneCall, ShieldCheck, ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
 
 export function Quiz() {
@@ -9,6 +9,7 @@ export function Quiz() {
   const [step, setStep] = useState(1);
   const [soapSpend, setSoapSpend] = useState<string>("120");
   const [bottledWaterSpend, setBottledWaterSpend] = useState<string>("40");
+  const [consultationPulse, setConsultationPulse] = useState(false);
   const [result, setResult] = useState<null | {
     monthlySoapSpend: number;
     monthlyBottledWaterSpend: number;
@@ -34,7 +35,14 @@ export function Quiz() {
   };
 
   const handleConsultation = () => {
-    navigate("/#schedule");
+    const el = document.getElementById("consultation-form");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setConsultationPulse(true);
+      window.setTimeout(() => setConsultationPulse(false), 1200);
+      const firstInput = el.querySelector<HTMLInputElement>("input, select, textarea");
+      window.setTimeout(() => firstInput?.focus(), 350);
+    }
   };
 
   const handleOrder = () => {
@@ -156,7 +164,7 @@ export function Quiz() {
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className={`grid md:grid-cols-2 gap-4 transition-all ${consultationPulse ? "ring-2 ring-blue-400 ring-offset-4 ring-offset-white rounded-2xl" : ""}`}>
                     <div className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-6 flex flex-col">
                       <div className="text-sm font-semibold text-blue-700 uppercase tracking-wider mb-3">Primary option</div>
                       <h5 className="text-xl font-bold text-slate-900 mb-2">Get a Free Consultation</h5>
