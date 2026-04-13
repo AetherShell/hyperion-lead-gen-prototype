@@ -5,22 +5,22 @@ const steps = [
   {
     icon: <Filter className="w-10 h-10 text-blue-600" />,
     tag: "Step 1",
-    title: "Treat the water at the source",
-    body: "A whole-home water refiner removes the hard minerals before water reaches any faucet, showerhead, or appliance. The result: soap lathers properly, your skin feels softer, and your plumbing stays cleaner. You naturally use less product because it works the way it's supposed to.",
-    outcome: "Up to 80% less soap needed",
+    title: "Refine the water at the source — not just soften it",
+    body: "A water refiner does everything a softener does — removes hard minerals so soap works properly, your skin feels better, and your plumbing stays clean. But it goes further. It also filters out chemicals like chlorine, arsenic, and uranium that are common in Southwest groundwater. A basic softener can't do that. In desert areas, a refiner is what's needed for the safest possible water throughout your home.",
+    outcome: "Soft water + chemical filtration in one system",
   },
   {
     icon: <Droplets className="w-10 h-10 text-cyan-500" />,
     tag: "Step 2",
     title: "Replace bottled water with purified water on tap",
-    body: "A reverse osmosis system installs under your kitchen sink and filters out up to 99% of contaminants — chlorine, lead, fluoride, microplastics, and PFAS. The water tastes clean and pure. Most families stop buying bottles within the first week.",
+    body: "A reverse osmosis system installs under your kitchen sink and filters out up to 99% of remaining contaminants — lead, fluoride, microplastics, and PFAS. The water tastes clean and pure. Most families stop buying bottles within the first week.",
     outcome: "No more monthly bottled water costs",
   },
   {
     icon: <PackageCheck className="w-10 h-10 text-green-500" />,
     tag: "Step 3",
     title: "Get your soap and cleaning products included",
-    body: "Because soft water reduces how much product you need, our partner Pure & Gentle provides a 5-year supply of household cleaners, laundry detergent, dish soap, shampoo, and personal care products — included with the system. You stop buying them at the store.",
+    body: "Because refined water reduces how much product you need, our partner Pure & Gentle provides a 5-year supply of household cleaners, laundry detergent, dish soap, shampoo, and personal care products — included with the system. You stop buying them at the store.",
     outcome: "5-year soap supply included",
   },
 ];

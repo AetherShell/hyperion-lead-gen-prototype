@@ -34,7 +34,10 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 ### Features
 - Interactive multi-step soap cost quiz with personalized savings calculator
 - Lead capture form (POST `/api/leads`) saves submissions to the `leads` DB table
-- Branding: Hyperion Elite Systems (water/RO system) + Pure and Gentle (soap program partner)
+- Branding: Hyperion Elite Systems (water refiner + RO system) + Pure and Gentle (soap program partner)
+- **Product distinction:** The system uses a water REFINER, not a basic softener. A refiner removes hardness AND chemicals (chlorine, arsenic, uranium) — essential for Southwest/desert groundwater. Softeners only handle hardness and cost ~1/4 as much. Copy uses "softener" only for comparison, never to describe the product itself.
+- Target geography: Southwest USA / desert areas where groundwater contaminants make a refiner necessary
+- After payoff (~5 years): ~$50/yr maintenance (RO service + salt for refiner)
 
 ### Lead Storage
 - Leads saved to PostgreSQL `leads` table (id, name, email, phone, zip_code, preferred_time, created_at)

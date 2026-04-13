@@ -265,7 +265,7 @@ export default function Order() {
               <div className="px-5 py-4 space-y-3 text-sm text-slate-700 leading-relaxed max-h-56 overflow-y-auto">
                 <p><strong>Customer:</strong> {form.name || "—"} &nbsp;·&nbsp; <strong>Address:</strong> {[form.address, form.city, form.state, form.zipCode].filter(Boolean).join(", ") || "—"}</p>
                 <p><strong>System:</strong> Hyperion Elite Water Refiner + RO System &nbsp;·&nbsp; <strong>Price:</strong> $10,990 &nbsp;·&nbsp; <strong>Payment:</strong> $160/month (~60 months)</p>
-                <p><strong>Included:</strong> Whole-home softener, RO drinking water system, professional installation, Pure &amp; Gentle 5-year soap supply, roughly $50/yr maintenance after payoff on the RO system and salt for the softener.</p>
+                <p><strong>Included:</strong> Whole-home water refiner (softening + chemical filtration), RO drinking water system, professional installation, Pure &amp; Gentle 5-year soap supply. After payoff: roughly $50/yr for RO maintenance and salt.</p>
                 <p><strong>Scope:</strong> Hyperion Elite Systems agrees to supply and install the above system at the listed address. Installer will demonstrate operation at completion.</p>
                 <p><strong>Customer Representations:</strong> Customer confirms they are the homeowner or have landlord written approval. Customer will provide access to main water shutoff valve during the scheduled visit.</p>
                 <p><strong>Warranty:</strong> 1-year limited warranty on materials and workmanship from installation date. Soap supply delivered within 30 days of installation.</p>

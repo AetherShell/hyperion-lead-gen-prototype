@@ -37,7 +37,7 @@ export function Hero() {
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-2xl font-light">
-              The Hyperion Elite system treats your water at the source — so you need less soap, no bottled water, and your monthly cost stays the same. The difference is what you get for it.
+              The Hyperion Elite system refines your water at the source — removing hardness and chemicals like chlorine, arsenic, and uranium. You need less soap, no bottled water, and your monthly cost stays the same. The difference is what you get for it.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">

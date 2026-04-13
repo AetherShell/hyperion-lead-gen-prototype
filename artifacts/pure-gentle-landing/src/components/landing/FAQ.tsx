@@ -7,20 +7,20 @@ import {
 
 const faqs = [
   {
-    q: "Is this a regular water softener?",
-    a: "It includes a water softener, but that's only one part of the system. You also get a reverse osmosis drinking water system and a 5-year supply of household cleaning products through the Pure & Gentle program. A standalone softener doesn't come with either of those — and those are what make the cost math work.",
+    q: "How is a water refiner different from a water softener?",
+    a: "A water softener removes hard minerals — calcium and magnesium — which helps with soap performance and scale buildup. A water refiner does all of that, plus it filters out chemicals like chlorine, arsenic, and uranium. In most of the U.S., a softener is fine. In the Southwest, where groundwater often contains elevated levels of these contaminants, a refiner is what's needed to get the safest water throughout your home. That's why the Hyperion Elite system uses a refiner, not just a softener — and it's also why the system costs more than a basic softener, which typically runs about a quarter of the price.",
   },
   {
     q: "How does the soap program work?",
-    a: "Soft water requires significantly less soap to lather and clean effectively. Because your household uses less product overall, our partner Pure and Gentle can provide a full 5-year supply of laundry detergent, dish soap, shampoo, conditioner, household cleaners, and personal care products — all included with the system. They ship directly to your door.",
+    a: "Refined, soft water requires significantly less soap to lather and clean effectively. Because your household uses less product overall, our partner Pure and Gentle can provide a full 5-year supply of laundry detergent, dish soap, shampoo, conditioner, household cleaners, and personal care products — all included with the system. They ship directly to your door.",
   },
   {
     q: "What happens after the 5 years?",
-    a: "After about 60 months, the system is fully paid off and you own it. Your monthly payment goes to $0. Your only ongoing cost is around $50/year for annual maintenance on the RO system and salt for the softener. Because your water is still soft, you'll continue using far less soap than a typical household — so the savings continue on their own.",
+    a: "After about 60 months, the system is fully paid off and you own it. Your monthly payment goes to $0. Your only ongoing cost is around $50/year for annual maintenance on the RO system and salt for the refiner. Because your water is still refined and soft, you'll continue using far less soap than a typical household — so the savings continue on their own.",
   },
   {
     q: "What does the RO system filter out?",
-    a: "The reverse osmosis system removes up to 99% of common contaminants — including chlorine, lead, fluoride, nitrates, heavy metals, microplastics, and PFAS (sometimes called forever chemicals). Most families find the water tastes noticeably better than what they were buying in bottles.",
+    a: "The reverse osmosis system removes up to 99% of common contaminants — including lead, fluoride, nitrates, heavy metals, microplastics, and PFAS (sometimes called forever chemicals). It provides a second layer of purification specifically for your drinking and cooking water, on top of the whole-home refiner.",
   },
   {
     q: "How long does installation take?",

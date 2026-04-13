@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShoppingCart, Droplets, Wrench, TrendingUp } from "lucide-react";
+import { ShoppingCart, Droplets, Wrench, TrendingUp, FlaskConical } from "lucide-react";
 
 const points = [
   {
@@ -11,6 +11,11 @@ const points = [
     icon: <Droplets className="w-6 h-6 text-slate-500" />,
     headline: "Bottled water is convenient, but it's a recurring cost.",
     body: "Between cases of water for drinking and the fridge, families typically spend $30–80/month. That's money you spend every single month, indefinitely.",
+  },
+  {
+    icon: <FlaskConical className="w-6 h-6 text-slate-500" />,
+    headline: "In the Southwest, hard water is only part of the problem.",
+    body: "Desert groundwater often contains elevated levels of arsenic, uranium, chlorine, and other chemicals. You're showering in it, cooking with it, and drinking it. A basic water softener only handles hardness — it doesn't remove these contaminants.",
   },
   {
     icon: <Wrench className="w-6 h-6 text-slate-500" />,
@@ -40,7 +45,7 @@ export function OldWay() {
               How most families handle hard water today.
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
-              There's nothing wrong with buying soap and bottled water — it's what everyone does. But when you look at the numbers over time, the pattern is worth understanding.
+              There's nothing wrong with buying soap and bottled water — it's what everyone does. But when you look at the numbers over time, and what's actually in your water, the pattern is worth understanding.
             </p>
           </motion.div>
         </div>
@@ -53,7 +58,7 @@ export function OldWay() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-slate-50 border border-slate-200 rounded-2xl p-6"
+              className={`bg-slate-50 border border-slate-200 rounded-2xl p-6 ${i === points.length - 1 && points.length % 2 !== 0 ? "md:col-span-2 md:max-w-lg md:mx-auto" : ""}`}
             >
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
