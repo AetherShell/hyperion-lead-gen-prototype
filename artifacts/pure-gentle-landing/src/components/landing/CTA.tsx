@@ -127,7 +127,7 @@ export function CTA() {
                   {loading ? "Sending..." : "Request a Callback"}
                 </button>
                 <p className="text-xs text-center text-slate-400">
-                  Or scroll up to order online if you'd prefer to skip the call.
+                  Or scroll up to get started online if you'd rather not wait for a call.
                 </p>
               </form>
             )}

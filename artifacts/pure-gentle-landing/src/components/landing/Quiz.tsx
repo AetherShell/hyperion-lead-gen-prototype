@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, RotateCcw, CheckCircle } from "lucide-react";
+import { ArrowRight, RotateCcw, CheckCircle, PhoneCall, FileText, ShieldCheck, ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
 
 export function Quiz() {
@@ -33,6 +33,10 @@ export function Quiz() {
     setStep(4);
   };
 
+  const handleConsultation = () => {
+    navigate("/#schedule");
+  };
+
   const handleOrder = () => {
     navigate(`/order?soap=${result?.monthlySoapSpend ?? soapSpend}&water=${result?.monthlyBottledWaterSpend ?? bottledWaterSpend}`);
   };
@@ -53,7 +57,7 @@ export function Quiz() {
             Run the numbers for your household.
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Three quick questions. We'll show you how your current spending compares to the system cost — so you can decide if it makes sense.
+            Three quick questions. We'll show you how your current spending compares to the system cost — so you can decide what feels right.
           </p>
         </div>
 
@@ -140,17 +144,54 @@ export function Quiz() {
                   </div>
                 )}
 
+                <div className="bg-white rounded-3xl border border-slate-200 p-6 md:p-8">
+                  <div className="max-w-2xl mx-auto text-center mb-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 text-blue-700 text-sm font-semibold mb-4">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      What most people do next
+                    </div>
+                    <h4 className="text-2xl font-bold text-slate-900 mb-3">You do not need to decide today.</h4>
+                    <p className="text-slate-600 leading-relaxed">
+                      It is normal to have questions before moving forward. Some homeowners want to talk it through first. Others already know they want the system and prefer to get started now. Both are fine.
+                    </p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-6 flex flex-col">
+                      <div className="text-sm font-semibold text-blue-700 uppercase tracking-wider mb-3">Primary option</div>
+                      <h5 className="text-xl font-bold text-slate-900 mb-2">Get a Free Consultation</h5>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-grow">
+                        Low pressure. We answer questions, review your water, and help you understand whether it makes sense for your home. No obligation.
+                      </p>
+                      <Button onClick={handleConsultation} className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold">
+                        Get a Free Consultation
+                        <PhoneCall className="w-4 h-4 ml-2" />
+                      </Button>
+                      <div className="text-xs text-slate-500 mt-3 text-center">A simple conversation, not a sales pitch.</div>
+                    </div>
+
+                    <div className="rounded-2xl border border-slate-200 bg-white p-6 flex flex-col">
+                      <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Secondary option</div>
+                      <h5 className="text-xl font-bold text-slate-900 mb-2">Move Forward / Get Started</h5>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-grow">
+                        If you already know you want to move ahead, you can go straight to the order flow and schedule installation.
+                      </p>
+                      <Button onClick={handleOrder} variant="outline" className="w-full h-12 rounded-xl border-slate-300 text-slate-800 font-bold">
+                        Move Forward
+                        <ChevronRight className="w-4 h-4 ml-2" />
+                      </Button>
+                      <div className="text-xs text-slate-500 mt-3 text-center">For homeowners ready to proceed now.</div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Button onClick={handleOrder} className="flex-1 h-14 text-lg rounded-xl bg-blue-600 hover:bg-blue-700">
-                    Get Started — Order Online
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
                   <Button onClick={handleReset} variant="outline" className="h-14 rounded-xl">
                     <RotateCcw className="w-4 h-4 mr-2" />
                     Recalculate
                   </Button>
                 </div>
-                <p className="text-xs text-slate-400 text-center">Takes about 5 minutes. No sales call required unless you want one.</p>
+                <p className="text-xs text-slate-400 text-center">We’ll help you choose the right next step, even if that step is just a conversation.</p>
               </motion.div>
             )}
           </AnimatePresence>
