@@ -1,31 +1,26 @@
 import { motion } from "framer-motion";
-import { ShoppingCart, Droplets, Wrench, TrendingUp, FlaskConical } from "lucide-react";
+import { ShoppingCart, Droplets, Wrench, FlaskConical } from "lucide-react";
 
 const points = [
   {
-    icon: <ShoppingCart className="w-6 h-6 text-slate-500" />,
-    headline: "Soap, detergent, and cleaners add up quietly.",
-    body: "Most households with hard water spend around $120/month on soap products. It doesn't feel like a lot per trip — but it's $1,440 a year, and none of it addresses the root cause.",
+    icon: <FlaskConical className="w-6 h-6 text-slate-500" />,
+    headline: "Desert groundwater often carries more than just hard minerals.",
+    body: "In parts of the Southwest, tap water can contain elevated levels of arsenic, uranium, chlorine, and other chemicals. A basic water softener only addresses hardness — it doesn't filter these out. That means they're in your shower, your cooking water, and what your family drinks.",
   },
   {
     icon: <Droplets className="w-6 h-6 text-slate-500" />,
-    headline: "Bottled water is convenient, but it's a recurring cost.",
-    body: "Between cases of water for drinking and the fridge, families typically spend $30–80/month. That's money you spend every single month, indefinitely.",
+    headline: "Bottled water helps, but it adds up.",
+    body: "Most families spend somewhere between $30 and $80 a month on bottled water, depending on household size. It solves the drinking water problem, but it doesn't address the rest of the water in your home.",
   },
   {
-    icon: <FlaskConical className="w-6 h-6 text-slate-500" />,
-    headline: "In the Southwest, hard water is only part of the problem.",
-    body: "Desert groundwater often contains elevated levels of arsenic, uranium, chlorine, and other chemicals. You're showering in it, cooking with it, and drinking it. A basic water softener only handles hardness — it doesn't remove these contaminants.",
+    icon: <ShoppingCart className="w-6 h-6 text-slate-500" />,
+    headline: "Hard water means using more soap than you probably realize.",
+    body: "When water is hard, soap doesn't lather as well. You end up using more detergent, more shampoo, more dish soap — and still dealing with spots and buildup. It's not dramatic, but over time the cost and hassle are real.",
   },
   {
     icon: <Wrench className="w-6 h-6 text-slate-500" />,
-    headline: "Hard water is tough on your home, too.",
-    body: "Mineral buildup reduces the efficiency of your water heater, shortens appliance lifespans, and causes scale in your pipes. It's not urgent — but the long-term cost is real.",
-  },
-  {
-    icon: <TrendingUp className="w-6 h-6 text-slate-500" />,
-    headline: "Switching brands or buying premium products doesn't change the math.",
-    body: "Hard water reduces soap's ability to lather by up to 80%. So you use more, regardless of the brand. Better soap doesn't fix a water problem.",
+    headline: "Your pipes and appliances feel it too.",
+    body: "Mineral scale builds up inside your water heater, dishwasher, and plumbing over time. It reduces efficiency and can shorten their lifespan. It's the kind of thing you don't notice until something breaks.",
   },
 ];
 
@@ -42,10 +37,10 @@ export function OldWay() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-5">
-              How most families handle hard water today.
+              What most families are dealing with.
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
-              There's nothing wrong with buying soap and bottled water — it's what everyone does. But when you look at the numbers over time, and what's actually in your water, the pattern is worth understanding.
+              If your water leaves spots, your skin feels dry after a shower, or you buy bottled water because the tap doesn't taste right — you're not imagining it. Here's what's usually going on.
             </p>
           </motion.div>
         </div>
@@ -58,7 +53,7 @@ export function OldWay() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className={`bg-slate-50 border border-slate-200 rounded-2xl p-6 ${i === points.length - 1 && points.length % 2 !== 0 ? "md:col-span-2 md:max-w-lg md:mx-auto" : ""}`}
+              className="bg-slate-50 border border-slate-200 rounded-2xl p-6"
             >
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
@@ -81,8 +76,8 @@ export function OldWay() {
           className="mt-12 bg-blue-50 border border-blue-200 rounded-2xl p-6 md:p-8 text-center"
         >
           <p className="text-lg text-slate-800 leading-relaxed">
-            None of this means you're doing anything wrong.{" "}
-            <span className="font-semibold text-slate-900">It just means there might be a more practical way to handle it.</span>
+            None of this is unusual — it's just how most tap water works in this part of the country.{" "}
+            <span className="font-semibold text-slate-900">The question is whether there's a practical way to deal with all of it at once.</span>
           </p>
         </motion.div>
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CircleDollarSign, ShieldCheck, Phone } from "lucide-react";
+import { Droplets, Phone } from "lucide-react";
 
 export function Hero() {
   return (
@@ -22,9 +22,9 @@ export function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-[1.05] mb-5 tracking-tight">
-              The average family spends{" "}
+              Do you know what's{" "}
               <span className="text-blue-600 relative">
-                $160/month
+                in your water?
                 <svg
                   className="absolute -bottom-1.5 left-0 w-full h-3 text-blue-300 opacity-70"
                   viewBox="0 0 100 10"
@@ -32,12 +32,11 @@ export function Hero() {
                 >
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                 </svg>
-              </span>{" "}
-              on soap and bottled water.
+              </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-2xl font-light">
-              The Hyperion Elite system refines your water at the source — removing hardness and chemicals like chlorine, arsenic, and uranium. You need less soap, no bottled water, and your monthly cost stays the same. The difference is what you get for it.
+              In much of the Southwest, tap water contains hard minerals, chlorine, arsenic, and other chemicals you can't see or taste. The Hyperion Elite system removes them at the source — so every faucet in your home delivers clean, refined water.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -45,8 +44,8 @@ export function Hero() {
                 onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 hover:-translate-y-0.5"
               >
-                <CircleDollarSign className="mr-2 w-5 h-5" />
-                Calculate My Savings
+                <Droplets className="mr-2 w-5 h-5" />
+                See How It Works
               </button>
               <a
                 href="tel:+18005550100"
@@ -57,9 +56,12 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
-              <ShieldCheck className="w-4 h-4 text-green-500" />
-              <span>$0 upfront · Professional installation included</span>
+            <div className="flex items-center gap-5 text-sm text-slate-600 font-medium">
+              <span>$0 upfront</span>
+              <span className="w-1 h-1 rounded-full bg-slate-400" />
+              <span>Professional installation included</span>
+              <span className="w-1 h-1 rounded-full bg-slate-400" />
+              <span>Lifetime warranty</span>
             </div>
           </motion.div>
         </div>

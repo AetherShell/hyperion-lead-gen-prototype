@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, RotateCcw, CheckCircle, PhoneCall, ShieldCheck, ChevronRight } from "lucide-react";
+import { RotateCcw, CheckCircle, PhoneCall, ShieldCheck, ChevronRight, TestTube } from "lucide-react";
 import { useLocation } from "wouter";
 
 export function Quiz() {
@@ -15,8 +15,8 @@ export function Quiz() {
     monthlySoapSpend: number;
     monthlyBottledWaterSpend: number;
     totalCurrentSpend: number;
-    annualSavings: number;
-    fiveYearSavings: number;
+    annualSavingsLow: number;
+    annualSavingsHigh: number;
   }>(null);
 
   const handleCalculate = (soap?: string) => {
@@ -25,14 +25,15 @@ export function Quiz() {
     const householdPeople = Math.max(1, Number(peopleInHome ?? 1));
     const monthlyBottledWaterSpend = perPersonBottledWaterSpend * householdPeople;
     const totalCurrentSpend = monthlySoapSpend + monthlyBottledWaterSpend;
-    const annualSavings = Math.max(0, totalCurrentSpend - 160) * 12;
-    const fiveYearSavings = annualSavings * 5;
+    const rawMonthly = Math.max(0, totalCurrentSpend - 160);
+    const annualSavingsLow = Math.round(rawMonthly * 12 * 0.75);
+    const annualSavingsHigh = rawMonthly * 12;
     setResult({
       monthlySoapSpend,
       monthlyBottledWaterSpend,
       totalCurrentSpend,
-      annualSavings,
-      fiveYearSavings,
+      annualSavingsLow,
+      annualSavingsHigh,
     });
     setStep(4);
   };
@@ -66,10 +67,10 @@ export function Quiz() {
       <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-            Run the numbers for your household.
+            See how the numbers look for your household.
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Three quick questions. We'll show you how your current spending compares to the system cost — so you can decide what feels right.
+            Three quick questions. We'll give you a rough estimate of how your current spending compares to the system cost.
           </p>
         </div>
 
@@ -105,8 +106,8 @@ export function Quiz() {
             {step === 3 && (
               <motion.div key="s3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">How much do you spend on soap, detergent, and cleaning products?</h3>
-                  <p className="text-slate-600">Think about laundry detergent, dish soap, hand soap, shampoo, household cleaners — all of it.</p>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Roughly how much do you spend on soap, detergent, and cleaning products?</h3>
+                  <p className="text-slate-600">Think about laundry detergent, dish soap, hand soap, shampoo, household cleaners — all of it. A rough guess is fine.</p>
                 </div>
                 <div className="grid sm:grid-cols-3 gap-4">
                   {[ ["80", "Around $80"], ["120", "Around $120"], ["160", "$160+"] ].map(([value, label]) => (
@@ -124,35 +125,37 @@ export function Quiz() {
                 <div className="text-center">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4">
                     <CheckCircle className="w-3.5 h-3.5" />
-                    Your estimate is ready
+                    Your rough estimate
                   </div>
                   <h3 className="text-3xl font-bold text-slate-900 mb-3">
                     You're spending roughly ${result.totalCurrentSpend}/month on soap and bottled water.
                   </h3>
                   <p className="text-slate-600 max-w-2xl mx-auto">
-                    The Hyperion Elite system costs $160/month and replaces both of those expenses — including a 5-year supply of cleaning products through the Pure & Gentle program.
+                    The Hyperion Elite system costs $160/month and replaces both of those expenses — including a 5-year supply of cleaning products through the Pure & Gentle program. Your actual numbers may vary.
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-4">
-                  <Stat label="Soap & cleaners" value={`$${result.monthlySoapSpend}/mo`} />
-                  <Stat label="Bottled water" value={`$${result.monthlyBottledWaterSpend}/mo`} />
-                  <Stat label="Your total" value={`$${result.totalCurrentSpend}/mo`} highlight />
+                  <Stat label="Soap & cleaners" value={`~$${result.monthlySoapSpend}/mo`} />
+                  <Stat label="Bottled water" value={`~$${result.monthlyBottledWaterSpend}/mo`} />
+                  <Stat label="Estimated total" value={`~$${result.totalCurrentSpend}/mo`} highlight />
                 </div>
 
-                {result.annualSavings > 0 && (
+                {result.annualSavingsHigh > 0 && (
                   <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 text-center">
-                    <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Estimated net savings, first year</div>
-                    <div className="text-5xl font-bold text-blue-600 mb-2">${result.annualSavings.toLocaleString()}</div>
-                    <p className="text-slate-500 text-sm">After the system is paid off (~5 years), you save the full ${result.totalCurrentSpend}/month going forward.</p>
+                    <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Estimated net savings range, first year</div>
+                    <div className="text-4xl font-bold text-blue-600 mb-2">
+                      ${result.annualSavingsLow.toLocaleString()} – ${result.annualSavingsHigh.toLocaleString()}
+                    </div>
+                    <p className="text-slate-500 text-sm">This is a rough estimate. A free in-home water test can give you more accurate numbers for your specific situation.</p>
                   </div>
                 )}
 
-                {result.annualSavings === 0 && (
+                {result.annualSavingsHigh === 0 && (
                   <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 text-center">
-                    <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Your monthly cost stays the same</div>
-                    <div className="text-3xl font-bold text-blue-600 mb-2">$160/month</div>
-                    <p className="text-slate-500 text-sm">You spend the same amount — but now you're building equity in a system you'll own. After ~5 years, the payment stops and you save ${result.totalCurrentSpend}/month going forward.</p>
+                    <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Your monthly cost stays about the same</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-2">~$160/month</div>
+                    <p className="text-slate-500 text-sm">You'd be spending a similar amount — but building equity in a system you'll own, instead of buying consumables. Once paid off (typically 8–15 years), the ongoing cost drops significantly.</p>
                   </div>
                 )}
 
@@ -162,37 +165,39 @@ export function Quiz() {
                       <ShieldCheck className="w-3.5 h-3.5" />
                       What most people do next
                     </div>
-                    <h4 className="text-2xl font-bold text-slate-900 mb-3">You do not need to decide today.</h4>
+                    <h4 className="text-2xl font-bold text-slate-900 mb-3">You don't need to decide right now.</h4>
                     <p className="text-slate-600 leading-relaxed">
-                      It is normal to have questions before moving forward. Some homeowners want to talk it through first. Others already know they want the system and prefer to get started now. Both are fine.
+                      Most homeowners have questions first — and that's completely normal. A quick call or a free in-home water test is usually the best next step to see if it makes sense for your home.
                     </p>
                   </div>
 
                   <div className={`grid md:grid-cols-2 gap-4 transition-all ${consultationPulse ? "ring-2 ring-blue-400 ring-offset-4 ring-offset-white rounded-2xl" : ""}`}>
                     <div className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-6 flex flex-col">
-                      <div className="text-sm font-semibold text-blue-700 uppercase tracking-wider mb-3">Primary option</div>
-                      <h5 className="text-xl font-bold text-slate-900 mb-2">Get a Free Consultation</h5>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-grow">
-                        Low pressure. We answer questions, review your water, and help you understand whether it makes sense for your home. No obligation.
+                      <div className="text-sm font-semibold text-blue-700 uppercase tracking-wider mb-3">Recommended</div>
+                      <h5 className="text-xl font-bold text-slate-900 mb-2">Talk to a Water Specialist</h5>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-2 flex-grow">
+                        A 20-minute call to answer your questions and help you figure out if this is right for your home. No pressure, no obligation.
                       </p>
+                      <div className="flex items-start gap-2 mb-5">
+                        <TestTube className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                        <span className="text-xs text-slate-500">Includes a free in-home water test if you'd like one.</span>
+                      </div>
                       <Button onClick={handleConsultation} className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold">
-                        Get a Free Consultation
+                        Request a Callback
                         <PhoneCall className="w-4 h-4 ml-2" />
                       </Button>
-                      <div className="text-xs text-slate-500 mt-3 text-center">A simple conversation, not a sales pitch.</div>
                     </div>
 
                     <div className="rounded-2xl border border-slate-200 bg-white p-6 flex flex-col">
-                      <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Secondary option</div>
-                      <h5 className="text-xl font-bold text-slate-900 mb-2">Move Forward / Get Started</h5>
+                      <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Already decided?</div>
+                      <h5 className="text-xl font-bold text-slate-900 mb-2">Move Forward</h5>
                       <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-grow">
-                        If you already know you want to move ahead, you can go straight to the order flow and schedule installation.
+                        If you've done your research and want to get started, you can go straight to the order flow and schedule installation.
                       </p>
                       <Button onClick={handleOrder} variant="outline" className="w-full h-12 rounded-xl border-slate-300 text-slate-800 font-bold">
                         Move Forward
                         <ChevronRight className="w-4 h-4 ml-2" />
                       </Button>
-                      <div className="text-xs text-slate-500 mt-3 text-center">For homeowners ready to proceed now.</div>
                     </div>
                   </div>
                 </div>
@@ -203,7 +208,7 @@ export function Quiz() {
                     Recalculate
                   </Button>
                 </div>
-                <p className="text-xs text-slate-400 text-center">We’ll help you choose the right next step, even if that step is just a conversation.</p>
+                <p className="text-xs text-slate-400 text-center">These estimates are based on averages and your inputs. Your actual savings depend on your specific water conditions and usage.</p>
               </motion.div>
             )}
           </AnimatePresence>

@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, CheckCircle } from "lucide-react";
+import { Phone, CheckCircle, TestTube } from "lucide-react";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export function CTA() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "" });
-  const [errors, setErrors] = useState<Partial<typeof form>>({});
+  const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "", waterTest: false });
+  const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
-  function set(field: keyof typeof form, value: string) {
+  function set(field: keyof typeof form, value: string | boolean) {
     setForm(f => ({ ...f, [field]: value }));
     setErrors(e => ({ ...e, [field]: undefined }));
   }
 
   function validate() {
-    const e: Partial<typeof form> = {};
+    const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = "Required";
     if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required";
     if (!form.phone.trim() || form.phone.replace(/\D/g,"").length < 10) e.phone = "Valid phone required";
@@ -35,7 +35,7 @@ export function CTA() {
       const res = await fetch(`${BASE}/api/leads`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, zipCode: form.zipCode, time: form.time }),
+        body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, zipCode: form.zipCode, time: form.time, waterTest: form.waterTest }),
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
@@ -62,8 +62,8 @@ export function CTA() {
             </p>
             <div className="space-y-4">
               {[
-                "We can test your water and show you the numbers specific to your home",
-                "The call typically takes about 20 minutes",
+                "A 20-minute conversation — questions, not a pitch",
+                "We can schedule a free in-home water test if you want one",
                 "No obligation — if it's not the right fit, we'll tell you",
               ].map(item => (
                 <div key={item} className="flex items-start gap-3">
@@ -120,6 +120,18 @@ export function CTA() {
                   </Fld>
                 </div>
 
+                <label className="flex items-start gap-3 p-3 rounded-xl bg-blue-50 border border-blue-100 cursor-pointer select-none">
+                  <input type="checkbox" checked={form.waterTest} onChange={e => set("waterTest", e.target.checked)}
+                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
+                  <div>
+                    <div className="flex items-center gap-1.5 text-sm font-medium text-slate-800">
+                      <TestTube className="w-3.5 h-3.5 text-blue-600" />
+                      I'd also like a free in-home water test
+                    </div>
+                    <div className="text-xs text-slate-500 mt-0.5">A technician tests your water on-site in about 15 minutes. No charge, no obligation.</div>
+                  </div>
+                </label>
+
                 {submitError && <p className="text-sm text-red-600">{submitError}</p>}
 
                 <button type="submit" disabled={loading}
@@ -127,7 +139,7 @@ export function CTA() {
                   {loading ? "Sending..." : "Request a Callback"}
                 </button>
                 <p className="text-xs text-center text-slate-400">
-                  Click calculate savings above to get started online to move forward without waiting for a call.
+                  You can also scroll up and use the calculator to explore your options on your own.
                 </p>
               </form>
             )}

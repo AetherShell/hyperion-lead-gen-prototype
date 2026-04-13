@@ -15,7 +15,11 @@ const faqs = [
     a: "Refined, soft water requires significantly less soap to lather and clean effectively. Because your household uses less product overall, our partner Pure and Gentle can provide a full 5-year supply of laundry detergent, dish soap, shampoo, conditioner, household cleaners, and personal care products — all included with the system. They ship directly to your door.",
   },
   {
-    q: "What happens after the 5 years?",
+    q: "What does the in-home water test involve?",
+    a: "A technician comes to your home and tests your water on the spot — usually takes about 15 minutes. They'll measure hardness, TDS (total dissolved solids), chlorine, and check for common contaminants. You get the results right there. There's no charge and no obligation. It just gives you accurate data about your specific water so you can make an informed decision.",
+  },
+  {
+    q: "What happens after the 5 years of soap?",
     a: "In many cases, the payment continues well beyond 5 years. The typical financing term is closer to 8–15 years, depending on credit and lender terms. After the system is paid off, you own it. Ongoing annual service is separate and usually includes about $180 for RO service plus about $340 for alkaline filters each year. Because your water is still refined and soft, you'll continue using far less soap than a typical household — so the savings continue on their own.",
   },
   {

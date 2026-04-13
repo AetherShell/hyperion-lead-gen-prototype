@@ -31,16 +31,30 @@ See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and pa
 **Artifact:** `artifacts/pure-gentle-landing` — React + Vite landing page at `/`
 **API:** `artifacts/api-server` — Express API at `/api`
 
+### Conversion Strategy (Applied)
+The landing page follows a trust-first, skeptic-friendly conversion strategy:
+- **Hero**: Water-quality-first headline ("Do you know what's in your water?"), not cost-first
+- **Problem section**: Grounded descriptions of real water issues (contaminants, hard water, appliance damage) with softened cost ranges, no inflated claims
+- **How It Works**: 3-step explanation (refiner, RO, soap program) with accurate 8–15 year financing timeline
+- **Cost comparison**: Side-by-side with ranges (~$80–160/mo soap, ~$30–80/mo bottled water per person), not exact numbers
+- **Calculator**: Outputs savings as rough ranges (75%–100% of calculated savings), with disclaimers about estimates
+- **Decision flow**: Primary CTA = "Talk to a Water Specialist" (callback), Secondary = "Move Forward" (order). Reassurance that it's normal not to decide immediately.
+- **In-home water test**: Integrated naturally as free, no-obligation option — mentioned in quiz results, FAQ, and CTA form checkbox
+- **No hype**: No urgency, no exaggerated claims, no "80% lather" statistics, no "secret method" language
+
 ### Features
-- Interactive multi-step soap cost quiz with personalized savings calculator
-- Lead capture form (POST `/api/leads`) saves submissions to the `leads` DB table
+- Interactive multi-step quiz with personalized savings calculator (outputs ranges)
+- Lead capture form (POST `/api/leads`) with optional water test checkbox
+- Self-service order flow at `/order` with e-signature
 - Branding: Hyperion Elite Systems (water refiner + RO system) + Pure and Gentle (soap program partner)
-- **Product distinction:** The system uses a water REFINER, not a basic softener. A refiner removes hardness AND chemicals (chlorine, arsenic, uranium) — essential for Southwest/desert groundwater. Softeners only handle hardness and cost ~1/4 as much. Copy uses "softener" only for comparison, never to describe the product itself.
+- **Product distinction:** The system uses a water REFINER, not a basic softener. A refiner removes hardness AND chemicals (chlorine, arsenic, uranium) — essential for Southwest/desert groundwater. Softeners only handle hardness and cost ~1/4 as much.
 - Target geography: Southwest USA / desert areas where groundwater contaminants make a refiner necessary
-- After payoff (~5 years): ~$50/yr maintenance (RO service + salt for refiner)
+- **Financing:** $160/mo, typically 8–15 years depending on credit. Do NOT say "paid off in 5 years."
+- **Warranty:** LIFETIME — if anything breaks we fix it; if it can't be fixed, we replace with new system.
+- **Maintenance after payoff:** $180/yr RO service + $340/yr alkaline filters (~$520/yr total)
 
 ### Lead Storage
-- Leads saved to PostgreSQL `leads` table (id, name, email, phone, zip_code, preferred_time, created_at)
+- Leads saved to PostgreSQL `leads` table (id, name, email, phone, zip_code, preferred_time, water_test, created_at)
 - Schema: `lib/db/src/schema/leads.ts`
 - Route: `artifacts/api-server/src/routes/leads.ts`
 

@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Check, X, PackageCheck, Droplets, Filter, Wrench } from "lucide-react";
+import { Check, X, PackageCheck, Droplets, Filter, Wrench, ShieldCheck } from "lucide-react";
 
 const included = [
   { icon: <Filter className="w-4 h-4" />, item: "Whole-home water refiner", detail: "Installed" },
   { icon: <Droplets className="w-4 h-4" />, item: "Under-sink reverse osmosis system", detail: "Installed" },
   { icon: <PackageCheck className="w-4 h-4" />, item: "Pure & Gentle 5-year soap supply", detail: "$7,200 value" },
   { icon: <Wrench className="w-4 h-4" />, item: "Professional installation", detail: "Included" },
-  { icon: <Check className="w-4 h-4" />, item: "1-year parts & labor warranty", detail: "Included" },
-  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "$180 RO + $340 alkaline filters" },
+  { icon: <ShieldCheck className="w-4 h-4" />, item: "Lifetime warranty", detail: "Parts & labor" },
+  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "~$180 RO + ~$340 filters" },
 ];
 
 export function SavingsBreakdown() {
@@ -25,10 +25,10 @@ export function SavingsBreakdown() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-              Here’s how the numbers work.
+              Here's how the cost compares.
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              The system costs $160/month — and for many households, that replaces roughly $120/month in soap plus about $40 per person each month in bottled water.
+              These are rough ranges — every household is different. The calculator below can give you a more personalized estimate.
             </p>
           </motion.div>
         </div>
@@ -45,8 +45,8 @@ export function SavingsBreakdown() {
             <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">Without the system</div>
             <div className="space-y-5 mb-8">
               {[
-                ["Soap, detergent & cleaners", "$120/mo"],
-                ["Bottled water", "$40/mo per person"],
+                ["Soap, detergent & cleaners", "~$80–160/mo"],
+                ["Bottled water", "~$30–80/mo per person"],
                 ["Hard water wear on appliances", "Ongoing"],
               ].map(([label, val]) => (
                 <div key={String(label)} className="flex justify-between items-center">
@@ -61,9 +61,9 @@ export function SavingsBreakdown() {
             <div className="pt-5 border-t border-slate-700/50">
               <div className="flex justify-between items-baseline">
                 <span className="text-slate-400">Monthly total</span>
-                <span className="text-3xl font-bold text-white">Varies by household</span>
+                <span className="text-2xl font-bold text-white">Varies by household</span>
               </div>
-              <p className="text-sm text-slate-500 text-right mt-1">Spent every month. Nothing to show for it.</p>
+              <p className="text-sm text-slate-500 text-right mt-1">Recurring costs with nothing to show for them.</p>
             </div>
           </motion.div>
 
@@ -79,7 +79,7 @@ export function SavingsBreakdown() {
               {[
                 ["Soap & cleaners", "$0", "Included via Pure & Gentle"],
                 ["Bottled water", "$0", "RO purified water on tap"],
-                ["System payment", "$160/mo", "Financed over 8–15 years for most households"],
+                ["System payment", "$160/mo", "Financed over 8–15 years typically"],
               ].map(([label, val, note]) => (
                 <div key={String(label)} className="flex justify-between items-start">
                   <div className="flex items-start gap-2 text-slate-300">
@@ -98,7 +98,7 @@ export function SavingsBreakdown() {
                 <span className="text-slate-300">Monthly total</span>
                 <span className="text-3xl font-bold text-blue-400">$160</span>
               </div>
-              <p className="text-sm text-slate-400 text-right mt-1">Same cost. You own the system when it’s done.</p>
+              <p className="text-sm text-slate-400 text-right mt-1">You own the system when it's paid off.</p>
             </div>
           </motion.div>
         </div>
@@ -110,7 +110,7 @@ export function SavingsBreakdown() {
           transition={{ duration: 0.5 }}
           className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-7"
         >
-          <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-5">What’s included in the $160/month</div>
+          <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-5">What's included in the $160/month</div>
           <div className="grid sm:grid-cols-2 gap-3">
             {included.map(({ icon, item, detail }) => (
               <div key={item} className="flex items-center justify-between gap-3 bg-slate-800/60 rounded-xl px-4 py-3">

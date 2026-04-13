@@ -4,7 +4,7 @@ const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 type Lead = {
   id: number; name: string; email: string; phone: string;
-  zipCode: string; preferredTime: string; createdAt: string;
+  zipCode: string; preferredTime: string; waterTest: boolean; createdAt: string;
 };
 
 type Order = {
@@ -261,7 +261,7 @@ export default function Admin() {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-slate-100">
-                        {["Name","Email","Phone","Zip","Best Time","Submitted"].map(h => (
+                        {["Name","Email","Phone","Zip","Best Time","Water Test","Submitted"].map(h => (
                           <th key={h} className="text-left font-semibold text-slate-500 px-5 py-3">{h}</th>
                         ))}
                       </tr>
@@ -274,6 +274,7 @@ export default function Admin() {
                           <td className="px-5 py-3"><a href={`tel:${lead.phone}`} className="text-slate-600 hover:text-blue-600">{lead.phone}</a></td>
                           <td className="px-5 py-3 text-slate-600">{lead.zipCode}</td>
                           <td className="px-5 py-3 text-slate-600">{formatTime(lead.preferredTime)}</td>
+                          <td className="px-5 py-3 text-slate-600">{lead.waterTest ? "Yes" : "No"}</td>
                           <td className="px-5 py-3 text-slate-500">{formatDate(lead.createdAt)}</td>
                         </tr>
                       ))}

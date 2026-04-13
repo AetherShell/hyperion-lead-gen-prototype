@@ -6,7 +6,7 @@ const steps = [
     icon: <Filter className="w-10 h-10 text-blue-600" />,
     tag: "Step 1",
     title: "Refine the water at the source — not just soften it",
-    body: "A water refiner does everything a softener does — removes hard minerals so soap works properly, your skin feels better, and your plumbing stays clean. But it goes further. It also filters out chemicals like chlorine, arsenic, and uranium that are common in Southwest groundwater. A basic softener can't do that. In desert areas, a refiner is what's needed for the safest possible water throughout your home.",
+    body: "A water refiner does everything a softener does — removes hard minerals so soap works properly, your skin feels better, and your plumbing stays clean. But it goes further. It also filters out chemicals like chlorine, arsenic, and uranium that are common in Southwest groundwater. A basic softener can't do that.",
     outcome: "Soft water + chemical filtration in one system",
   },
   {
@@ -38,10 +38,10 @@ export function HowItWorks() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-              A simpler approach: treat the water, not the symptoms.
+              One system that handles all of it.
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Instead of spending more on soap and bottled water, the Hyperion Elite system addresses the root cause — hard, unfiltered water — so the downstream costs take care of themselves.
+              Instead of buying soap, bottled water, and dealing with hard water damage separately, the Hyperion Elite system addresses the root cause — so the downstream problems take care of themselves.
             </p>
           </motion.div>
         </div>
@@ -85,9 +85,9 @@ export function HowItWorks() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-10 bg-blue-600 rounded-2xl p-7 text-white text-center"
         >
-          <p className="text-xl font-semibold mb-1">The monthly cost stays the same: $160.</p>
+          <p className="text-xl font-semibold mb-1">The system costs $160/month, financed typically over 8–15 years.</p>
           <p className="text-blue-100">
-            The difference is that now your money goes toward owning something — not replacing consumables every month. After about 5 years, the system is paid off and yours to keep.
+            Your money goes toward owning something — not replacing consumables every month. Once it's paid off, you own it outright.
           </p>
         </motion.div>
 

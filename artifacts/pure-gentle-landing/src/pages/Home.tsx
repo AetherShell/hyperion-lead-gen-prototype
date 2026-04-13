@@ -31,7 +31,7 @@ export default function Home() {
               onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
               className="text-sm font-bold px-5 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm"
             >
-              Calculate Savings
+              See How It Works
             </button>
           </div>
         </div>

@@ -5,12 +5,13 @@ import { db, leadsTable } from "@workspace/db";
 const router = Router();
 
 router.post("/leads", async (req: Request, res: Response) => {
-  const { name, email, phone, zipCode, time } = req.body as {
+  const { name, email, phone, zipCode, time, waterTest } = req.body as {
     name: string;
     email: string;
     phone: string;
     zipCode: string;
     time: string;
+    waterTest?: boolean;
   };
 
   if (!name || !email || !phone || !zipCode || !time) {
@@ -25,6 +26,7 @@ router.post("/leads", async (req: Request, res: Response) => {
       phone,
       zipCode,
       preferredTime: time,
+      waterTest: waterTest ?? false,
     });
 
     req.log.info({ email, zipCode }, "New lead submitted");
