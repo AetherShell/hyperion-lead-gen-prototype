@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Star, ExternalLink } from "lucide-react";
 import review1 from "@assets/Screenshot_2026-04-12_172053_1776039905038.png";
 import review2 from "@assets/Screenshot_2026-04-12_172116_1776039905038.png";
-import review3 from "@assets/Screenshot_2026-04-12_172312_1776039905038.png";
 
 const reviews = [
   {
@@ -12,10 +11,6 @@ const reviews = [
   {
     image: review2,
     alt: "Yelp review from David M. in Everett, WA",
-  },
-  {
-    image: review3,
-    alt: "Yelp review from Eileen L. in Dublin, CA",
   },
 ];
 

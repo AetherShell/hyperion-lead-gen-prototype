@@ -93,7 +93,7 @@ export function CTA() {
                 <div className="grid grid-cols-2 gap-4">
                   <Fld label="Your Name" error={errors.name}>
                     <input type="text" value={form.name} onChange={e => set("name", e.target.value)}
-                      placeholder="Jane Smith" className={inp(errors.name)} />
+                      placeholder="First Last" className={inp(errors.name)} />
                   </Fld>
                   <Fld label="Phone Number" error={errors.phone}>
                     <input type="tel" value={form.phone} onChange={e => set("phone", e.target.value)}
@@ -127,7 +127,7 @@ export function CTA() {
                   {loading ? "Sending..." : "Request a Callback"}
                 </button>
                 <p className="text-xs text-center text-slate-400">
-                  Or scroll up to get started online if you'd rather not wait for a call.
+                  Click calculate savings above to get started online to move forward without waiting for a call.
                 </p>
               </form>
             )}
