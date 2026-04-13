@@ -123,21 +123,6 @@ export function SavingsBreakdown() {
             ))}
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-8 text-center"
-        >
-          <p className="text-xl text-slate-300 font-light">
-            The payment is usually financed longer than 5 years.
-            <br className="hidden md:block" />
-            <span className="text-white font-semibold">For most households, it’s closer to 8–15 years, depending on credit and financing terms. Ongoing yearly service is separate.</span>
-          </p>
-        </motion.div>
-
       </div>
     </section>
   );

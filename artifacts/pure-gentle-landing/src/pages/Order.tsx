@@ -184,7 +184,7 @@ export default function Order() {
               </div>
               <F label="Do you own this home?" error={errors.ownershipType}>
                 <div className="grid grid-cols-2 gap-3">
-                  {[["own","I Own"],["rent","I Rent"]].map(([v,l]) => (
+                  {[ ["own","I Own"],["rent","I Rent"] ].map(([v,l]) => (
                     <button key={v} type="button" onClick={() => set("ownershipType", v)}
                       className={`h-11 rounded-lg border-2 font-medium text-sm transition-all ${form.ownershipType === v ? "border-blue-600 bg-blue-50 text-blue-700" : "border-slate-200 text-slate-600 hover:border-slate-300"}`}>
                       {l}
@@ -329,20 +329,22 @@ export default function Order() {
             <div className="bg-white rounded-2xl border border-slate-200 p-6 text-left space-y-4 max-w-md mx-auto">
               <div className="font-semibold text-slate-800">What happens next:</div>
               <div className="space-y-3">
-                {[
-                  ["Within 1 business day", "We'll call to confirm your installation on " + new Date(form.preferredDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })],
-                  ["Day before installation", "You'll get a reminder with your technician's name and arrival window"],
-                  ["Installation day", "3–4 hours, system demo included. We clean up after ourselves."],
-                  ["Within 30 days", "Your Pure & Gentle soap supply ships to your door"],
-                ].map(([t, d]) => (
-                  <div key={String(t)} className="flex gap-3">
-                    <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
-                    <div>
-                      <div className="text-sm font-semibold text-slate-800">{String(t)}</div>
-                      <div className="text-sm text-slate-500">{String(d)}</div>
+                {
+                  [
+                    ["Within 1 business day", "We'll call to confirm your installation on " + new Date(form.preferredDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })],
+                    ["Day before installation", "You'll get a reminder with your technician's name and arrival window"],
+                    ["Installation day", "3–4 hours, system demo included. We clean up after ourselves."],
+                    ["Within 30 days", "Your Pure & Gentle soap supply ships to your door"],
+                  ].map(([t, d]) => (
+                    <div key={String(t)} className="flex gap-3">
+                      <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0" />
+                      <div>
+                        <div className="text-sm font-semibold text-slate-800">{String(t)}</div>
+                        <div className="text-sm text-slate-500">{String(d)}</div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                }
               </div>
             </div>
 
