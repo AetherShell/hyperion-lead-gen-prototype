@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "What happens after the 5 years?",
-    a: "After about 60 months, the system is fully paid off and you own it. Your monthly payment goes to $0. Your only ongoing cost is around $50/year total for annual maintenance on the RO system and salt for the refiner. Because your water is still refined and soft, you'll continue using far less soap than a typical household — so the savings continue on their own.",
+    a: "In many cases, the payment continues well beyond 5 years. The typical financing term is closer to 8–15 years, depending on credit and lender terms. After the system is paid off, you own it. Ongoing annual service is separate and usually includes about $180 for RO service plus about $340 for alkaline filters each year. Because your water is still refined and soft, you'll continue using far less soap than a typical household — so the savings continue on their own.",
   },
   {
     q: "What does the RO system filter out?",

@@ -7,7 +7,7 @@ const included = [
   { icon: <PackageCheck className="w-4 h-4" />, item: "Pure & Gentle 5-year soap supply", detail: "$7,200 value" },
   { icon: <Wrench className="w-4 h-4" />, item: "Professional installation", detail: "Included" },
   { icon: <Check className="w-4 h-4" />, item: "1-year parts & labor warranty", detail: "Included" },
-  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "$50/year total" },
+  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "$180 RO + $340 alkaline filters" },
 ];
 
 export function SavingsBreakdown() {
@@ -79,7 +79,7 @@ export function SavingsBreakdown() {
               {[
                 ["Soap & cleaners", "$0", "Included via Pure & Gentle"],
                 ["Bottled water", "$0", "RO purified water on tap"],
-                ["System payment", "$160/mo", "Paid off in ~5 years"],
+                ["System payment", "$160/mo", "Financed over 8–15 years for most households"],
               ].map(([label, val, note]) => (
                 <div key={String(label)} className="flex justify-between items-start">
                   <div className="flex items-start gap-2 text-slate-300">
@@ -132,9 +132,9 @@ export function SavingsBreakdown() {
           className="mt-8 text-center"
         >
           <p className="text-xl text-slate-300 font-light">
-            After about 5 years, the system is paid off.
+            The payment is usually financed longer than 5 years.
             <br className="hidden md:block" />
-            <span className="text-white font-semibold">Your only ongoing cost is roughly $50/year total for maintenance. The savings continue.</span>
+            <span className="text-white font-semibold">For most households, it’s closer to 8–15 years, depending on credit and financing terms. Ongoing yearly service is separate.</span>
           </p>
         </motion.div>
 
