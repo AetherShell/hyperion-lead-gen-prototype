@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "Is there a warranty?",
-    a: "Yes. The system comes with a 1-year warranty covering parts and labor from the installation date. The soap supply is delivered within 30 days of installation. We stand behind the product because the vast majority of families see exactly the results we describe.",
+    a: "Yes. The system has a lifetime warranty: if anything ever breaks, we fix it; if it can't be fixed, we replace it with a new system. We believe something that protects you and your home should last a lifetime. The soap supply is delivered within 30 days of installation.",
   },
 ];
 
