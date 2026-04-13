@@ -7,7 +7,7 @@ const included = [
   { icon: <PackageCheck className="w-4 h-4" />, item: "Pure & Gentle 5-year soap supply", detail: "$7,200 value" },
   { icon: <Wrench className="w-4 h-4" />, item: "Professional installation", detail: "Included" },
   { icon: <Check className="w-4 h-4" />, item: "1-year parts & labor warranty", detail: "Included" },
-  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "$50/yr" },
+  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "$50/year total" },
 ];
 
 export function SavingsBreakdown() {
@@ -28,7 +28,7 @@ export function SavingsBreakdown() {
               Here’s how the numbers work.
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              The system costs $160/month — roughly the same amount a typical household already spends on soap and bottled water. You’re not adding a new expense. You’re redirecting one you already have.
+              The system costs $160/month — and for many households, that replaces roughly $120/month in soap plus about $40 per person each month in bottled water.
             </p>
           </motion.div>
         </div>
@@ -46,7 +46,7 @@ export function SavingsBreakdown() {
             <div className="space-y-5 mb-8">
               {[
                 ["Soap, detergent & cleaners", "$120/mo"],
-                ["Bottled water", "$40/mo"],
+                ["Bottled water", "$40/mo per person"],
                 ["Hard water wear on appliances", "Ongoing"],
               ].map(([label, val]) => (
                 <div key={String(label)} className="flex justify-between items-center">
@@ -61,7 +61,7 @@ export function SavingsBreakdown() {
             <div className="pt-5 border-t border-slate-700/50">
               <div className="flex justify-between items-baseline">
                 <span className="text-slate-400">Monthly total</span>
-                <span className="text-3xl font-bold text-white">$160+</span>
+                <span className="text-3xl font-bold text-white">Varies by household</span>
               </div>
               <p className="text-sm text-slate-500 text-right mt-1">Spent every month. Nothing to show for it.</p>
             </div>
@@ -134,7 +134,7 @@ export function SavingsBreakdown() {
           <p className="text-xl text-slate-300 font-light">
             After about 5 years, the system is paid off.
             <br className="hidden md:block" />
-            <span className="text-white font-semibold">Your only ongoing cost is roughly $50/year for maintenance. The savings continue.</span>
+            <span className="text-white font-semibold">Your only ongoing cost is roughly $50/year total for maintenance. The savings continue.</span>
           </p>
         </motion.div>
 

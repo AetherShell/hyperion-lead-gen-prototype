@@ -9,6 +9,7 @@ export function Quiz() {
   const [step, setStep] = useState(1);
   const [soapSpend, setSoapSpend] = useState<string>("120");
   const [bottledWaterSpend, setBottledWaterSpend] = useState<string>("40");
+  const [peopleInHome, setPeopleInHome] = useState<string>("1");
   const [consultationPulse, setConsultationPulse] = useState(false);
   const [result, setResult] = useState<null | {
     monthlySoapSpend: number;
@@ -20,7 +21,9 @@ export function Quiz() {
 
   const handleCalculate = (soap?: string) => {
     const monthlySoapSpend = Number(soap ?? soapSpend ?? 0);
-    const monthlyBottledWaterSpend = Number(bottledWaterSpend ?? 0);
+    const perPersonBottledWaterSpend = Number(bottledWaterSpend ?? 0);
+    const householdPeople = Math.max(1, Number(peopleInHome ?? 1));
+    const monthlyBottledWaterSpend = perPersonBottledWaterSpend * householdPeople;
     const totalCurrentSpend = monthlySoapSpend + monthlyBottledWaterSpend;
     const annualSavings = Math.max(0, totalCurrentSpend - 160) * 12;
     const fiveYearSavings = annualSavings * 5;
@@ -53,6 +56,7 @@ export function Quiz() {
     setStep(1);
     setSoapSpend("120");
     setBottledWaterSpend("40");
+    setPeopleInHome("1");
     setResult(null);
   };
 
@@ -87,12 +91,12 @@ export function Quiz() {
             {step === 2 && (
               <motion.div key="s2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Roughly how much do you spend on bottled water each month?</h3>
-                  <p className="text-slate-600">Include cases, delivery services, or fridge refills — whatever applies.</p>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">How many people are in the home?</h3>
+                  <p className="text-slate-600">Bottled water is usually around $40 per person each month, so this helps us estimate your household total.</p>
                 </div>
-                <div className="grid sm:grid-cols-3 gap-4">
-                  {[["20", "$20 or less"], ["40", "Around $40"], ["80", "$80+"]].map(([value, label]) => (
-                    <button key={value} onClick={() => { setBottledWaterSpend(value); setStep(3); }} className="h-20 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50 transition-all font-semibold text-lg">{label}</button>
+                <div className="grid sm:grid-cols-4 gap-4">
+                  {["1", "2", "3", "4"].map((value) => (
+                    <button key={value} onClick={() => { setPeopleInHome(value); setStep(3); }} className="h-20 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50 transition-all font-semibold text-lg">{value} {Number(value) === 1 ? "person" : "people"}</button>
                   ))}
                 </div>
               </motion.div>
@@ -105,7 +109,7 @@ export function Quiz() {
                   <p className="text-slate-600">Think about laundry detergent, dish soap, hand soap, shampoo, household cleaners — all of it.</p>
                 </div>
                 <div className="grid sm:grid-cols-3 gap-4">
-                  {[["80", "Around $80"], ["120", "Around $120"], ["160", "$160+"]].map(([value, label]) => (
+                  {[ ["80", "Around $80"], ["120", "Around $120"], ["160", "$160+"] ].map(([value, label]) => (
                     <button key={value} onClick={() => { setSoapSpend(value); handleCalculate(value); }} className="h-20 rounded-2xl border-2 border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50 transition-all font-semibold text-lg">{label}</button>
                   ))}
                 </div>
