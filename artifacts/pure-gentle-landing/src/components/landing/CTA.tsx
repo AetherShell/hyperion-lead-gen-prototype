@@ -47,7 +47,7 @@ export function CTA() {
   }
 
   return (
-    <section id="schedule" className="py-20 bg-slate-900 relative overflow-hidden">
+    <section id="schedule" className="py-20 bg-slate-900 relative overflow-hidden scroll-mt-24">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-slate-900 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -74,7 +74,7 @@ export function CTA() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl p-8 shadow-2xl">
+          <div id="consultation-form" className="bg-white rounded-2xl p-8 shadow-2xl scroll-mt-24">
             {submitted ? (
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
