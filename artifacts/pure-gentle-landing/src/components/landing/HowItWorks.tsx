@@ -91,27 +91,6 @@ export function HowItWorks() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-5 bg-white border-2 border-slate-200 rounded-2xl p-7 text-center"
-        >
-          <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
-            Find out what's actually in your water.
-          </h3>
-          <p className="text-slate-600 leading-relaxed mb-5 max-w-xl mx-auto">
-            Book a free in-home water test. A tech comes to you, tests your water on the spot — takes about 15 minutes. No charge, no obligation. We'll send you a <span className="font-bold text-emerald-700">$25 gift card</span> as a thank-you, whether you decide to move forward or not.
-          </p>
-          <button
-            onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
-            className="inline-flex items-center justify-center px-7 py-3 text-base font-bold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 hover:-translate-y-0.5"
-          >
-            Book Your Free Water Test
-          </button>
-        </motion.div>
-
       </div>
     </section>
   );

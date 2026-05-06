@@ -42,10 +42,13 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <button
                 onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 hover:-translate-y-0.5"
               >
-                <Droplets className="mr-2 w-5 h-5" />
-                See How It Works
+                <Droplets className="mr-2 w-5 h-5 shrink-0" />
+                <span className="flex flex-col items-start leading-tight text-left">
+                  <span className="text-lg font-bold">See How It Works</span>
+                  <span className="text-xs font-medium opacity-90">+ $25 gift card with free water test</span>
+                </span>
               </button>
               <a
                 href="tel:+18005550100"
