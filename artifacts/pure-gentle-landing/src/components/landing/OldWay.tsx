@@ -4,8 +4,8 @@ import { ShoppingCart, Droplets, Wrench, FlaskConical } from "lucide-react";
 const points = [
   {
     icon: <FlaskConical className="w-6 h-6 text-slate-500" />,
-    headline: "Desert groundwater often carries more than just hard minerals.",
-    body: "In parts of the Southwest, tap water can contain elevated levels of arsenic, uranium, chlorine, and other chemicals. A basic water softener only addresses hardness — it doesn't filter these out. That means they're in your shower, your cooking water, and what your family drinks.",
+    headline: "Desert groundwater is some of the hardest in the country.",
+    body: "Across the Southwest, tap water carries unusually high levels of calcium and magnesium — the minerals that leave white crust on faucets and showerheads, spot your dishes, and build up inside your pipes. A basic softener helps with the minerals, but most homes also deal with chlorine that comes through with municipal supply — and a softener doesn't filter that out.",
   },
   {
     icon: <Droplets className="w-6 h-6 text-slate-500" />,

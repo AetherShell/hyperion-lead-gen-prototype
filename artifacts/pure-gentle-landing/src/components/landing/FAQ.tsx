@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     q: "How is a water refiner different from a water softener?",
-    a: "A water softener removes hard minerals — calcium and magnesium — which helps with soap performance and scale buildup. A water refiner does all of that, plus it filters out chemicals like chlorine, arsenic, and uranium. In most of the U.S., a softener is fine. In the Southwest, where groundwater often contains elevated levels of these contaminants, a refiner is what's needed to get the safest water throughout your home. That's why the Hyperion Elite system uses a refiner, not just a softener — and it's also why the system costs more than a basic softener, which typically runs about a quarter of the price.",
+    a: "A water softener removes hard minerals — calcium and magnesium — which helps with soap performance and scale buildup. A water refiner does all of that, plus it filters out chlorine that comes through municipal water supply. In most of the U.S., a softener is fine. In the Southwest, where groundwater is unusually hard and chlorine comes through on top of that, a refiner is what's needed to get the cleanest water throughout your home. That's why the Hyperion Elite system uses a refiner, not just a softener — and it's also why the system costs more than a basic softener, which typically runs about a quarter of the price.",
   },
   {
     q: "How does the soap program work?",
