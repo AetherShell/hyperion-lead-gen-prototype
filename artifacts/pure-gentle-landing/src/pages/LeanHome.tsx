@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Droplets, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { CTA } from "@/components/landing/CTA";
@@ -41,7 +42,7 @@ function buildFaqs(retailer: Retailer) {
     },
     {
       q: "Is the test really free?",
-      a: `Yes. There's no charge and no obligation. You don't have to buy anything to get the test, and you don't have to make any decisions while the technician is there. As a thank-you for your time, we'll send you a $25 ${retailer.name} gift card whether you decide to move forward or not.`,
+      a: `Yes. No charge, no purchase necessary. We just ask that you and any household decision-makers be home for the full appointment, usually about 30 minutes. The $25 ${retailer.name} gift card comes after the appointment whether you decide to move forward or not.`,
     },
     {
       q: `How does the $25 ${retailer.name} gift card work?`,
@@ -57,6 +58,39 @@ function buildFaqs(retailer: Retailer) {
 export default function LeanHome() {
   const retailer = resolveRetailer();
   const faqs = buildFaqs(retailer);
+
+  const heroRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const [pastHero, setPastHero] = useState(false);
+  const [hasReachedForm, setHasReachedForm] = useState(false);
+
+  useEffect(() => {
+    const heroEl = heroRef.current;
+    const formEl = formRef.current;
+    if (!heroEl || !formEl) return;
+
+    const heroObs = new IntersectionObserver(
+      ([entry]) => setPastHero(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    const formObs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setHasReachedForm(true);
+      },
+      { threshold: 0.25 },
+    );
+    heroObs.observe(heroEl);
+    formObs.observe(formEl);
+    return () => {
+      heroObs.disconnect();
+      formObs.disconnect();
+    };
+  }, []);
+
+  const showBanner = pastHero && !hasReachedForm;
+
+  const scrollToForm = () =>
+    document.getElementById("book")?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div className="min-h-screen bg-white selection:bg-blue-200 selection:text-blue-900">
@@ -79,7 +113,7 @@ export default function LeanHome() {
       </header>
 
       <main>
-        <section className="relative min-h-[80vh] flex items-center pt-20 pb-20 overflow-hidden">
+        <section ref={heroRef} className="relative min-h-[80vh] flex items-center pt-20 pb-20 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img src="/hero-kitchen.png" alt="" className="w-full h-full object-cover object-center opacity-40" />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-50/95 via-blue-50/85 to-transparent" />
@@ -114,7 +148,7 @@ export default function LeanHome() {
                     <Droplets className="mr-2 w-5 h-5 shrink-0" />
                     <span className="flex flex-col items-start leading-tight text-left">
                       <span className="text-lg font-bold">Book My Free Water Test</span>
-                      <span className="text-xs font-medium opacity-90">+ $25 {retailer.name} gift card, no obligation</span>
+                      <span className="text-xs font-medium opacity-90">+ $25 {retailer.name} gift card, no purchase necessary</span>
                     </span>
                   </button>
                   <a
@@ -144,7 +178,7 @@ export default function LeanHome() {
           </div>
         </section>
 
-        <div id="book">
+        <div id="book" ref={formRef}>
           <CTA />
         </div>
 
@@ -181,6 +215,26 @@ export default function LeanHome() {
           <div className="text-sm">&copy; {new Date().getFullYear()} Hyperion Elite Systems. All rights reserved.</div>
         </div>
       </footer>
+
+      <div
+        aria-hidden={!showBanner}
+        className={`fixed bottom-0 left-0 right-0 z-40 bg-blue-600 text-white shadow-2xl border-t border-blue-700 transition-transform duration-300 ${
+          showBanner ? "translate-y-0" : "translate-y-full pointer-events-none"
+        }`}
+      >
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-3">
+          <div className="text-sm md:text-base leading-tight min-w-0">
+            <div className="font-bold">Schedule Your Free Water Test</div>
+            <div className="text-xs opacity-90 truncate">+ $25 {retailer.name} gift card, no purchase necessary</div>
+          </div>
+          <button
+            onClick={scrollToForm}
+            className="shrink-0 bg-white text-blue-700 font-bold px-4 py-2 md:px-5 md:py-2.5 rounded-lg text-sm hover:bg-blue-50 transition-colors"
+          >
+            Schedule
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
