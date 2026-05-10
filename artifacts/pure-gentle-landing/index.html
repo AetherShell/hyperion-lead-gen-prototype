@@ -3,11 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Pure and Gentle — Water Refiner Landing Page</title>
+    <title>Hyperion Elite Systems — Smarter Water for Your Home</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Facebook Pixel (base code; trackPageView/trackLead are called from src/lib/fb.ts).
+         FB_PIXEL_ID is substituted at build time from VITE_FB_PIXEL_ID; helpers no-op when empty. -->
+    <script>
+      window.FB_PIXEL_ID = "%VITE_FB_PIXEL_ID%";
+      (function () {
+        if (!window.FB_PIXEL_ID || window.FB_PIXEL_ID === "" || window.FB_PIXEL_ID.indexOf("%") === 0) return;
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        window.fbq('init', window.FB_PIXEL_ID);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

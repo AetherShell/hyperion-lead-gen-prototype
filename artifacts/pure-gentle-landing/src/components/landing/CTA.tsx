@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, CheckCircle, TestTube } from "lucide-react";
+import { CheckCircle, TestTube } from "lucide-react";
+import { readAttribution } from "@/lib/useUtmCapture";
+import { trackLead } from "@/lib/fb";
 
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+const LEAD_ENDPOINT = "https://bbccnglbxwnxpxlplxyv.supabase.co/functions/v1/lead-intake";
 
 export function CTA() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "", waterTest: false });
@@ -32,12 +34,25 @@ export function CTA() {
     if (!validate()) return;
     setLoading(true); setSubmitError("");
     try {
-      const res = await fetch(`${BASE}/api/leads`, {
+      const attribution = readAttribution();
+      const res = await fetch(LEAD_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, zipCode: form.zipCode, time: form.time, waterTest: form.waterTest }),
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          zipCode: form.zipCode,
+          time: form.time,
+          waterTest: form.waterTest,
+          attribution,
+        }),
       });
       if (!res.ok) throw new Error();
+      const data = (await res.json().catch(() => ({}))) as { id?: string };
+      if (data.id) {
+        trackLead(data.id);
+      }
       setSubmitted(true);
     } catch {
       setSubmitError("Something went wrong. Please call us directly.");

@@ -8,26 +8,56 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const faqs = [
-  {
-    q: "What does the water test involve?",
-    a: "A technician comes to your home and tests your water on the spot — usually about 15 minutes. They'll measure hardness, TDS (total dissolved solids), and chlorine, and check for common contaminants. You get the results right there, in plain English, and can ask whatever questions you have.",
-  },
-  {
-    q: "Is the test really free?",
-    a: "Yes. There's no charge and no obligation. You don't have to buy anything to get the test, and you don't have to make any decisions while the technician is there. As a thank-you for your time, we'll send you a $25 gift card whether you decide to move forward or not.",
-  },
-  {
-    q: "How does the $25 gift card work?",
-    a: "Once your in-home water test is complete, we'll send you a $25 gift card by mail. There's no purchase required. Book the test, let us run it, and the card is yours.",
-  },
-  {
-    q: "What happens after the test?",
-    a: "If your water shows hardness or contaminants worth addressing, the technician can walk you through what a Hyperion Elite system would mean for your home — pricing, timing, and how it works. If your water doesn't need it, they'll tell you that too. Either way, you keep the gift card.",
-  },
-];
+type RetailerKey = "home-depot" | "amazon" | "target";
+
+type Retailer = {
+  key: RetailerKey;
+  name: string;
+  logoSrc: string;
+};
+
+const RETAILER_CONFIG: Record<RetailerKey, Retailer> = {
+  "home-depot": { key: "home-depot", name: "Home Depot", logoSrc: "/logos/home-depot.svg" },
+  "amazon":     { key: "amazon",     name: "Amazon",     logoSrc: "/logos/amazon.svg"     },
+  "target":     { key: "target",     name: "Target",     logoSrc: "/logos/target.svg"     },
+};
+
+const DEFAULT_RETAILER: RetailerKey = "target";
+
+function resolveRetailer(): Retailer {
+  if (typeof window === "undefined") return RETAILER_CONFIG[DEFAULT_RETAILER];
+  const param = new URLSearchParams(window.location.search).get("giftcard");
+  if (param && param in RETAILER_CONFIG) {
+    return RETAILER_CONFIG[param as RetailerKey];
+  }
+  return RETAILER_CONFIG[DEFAULT_RETAILER];
+}
+
+function buildFaqs(retailer: Retailer) {
+  return [
+    {
+      q: "What does the water test involve?",
+      a: "A technician comes to your home and tests your water on the spot, usually about 15 minutes. They'll measure hardness, TDS (total dissolved solids), and chlorine, and check for common contaminants. You get the results right there, in plain English, and can ask whatever questions you have.",
+    },
+    {
+      q: "Is the test really free?",
+      a: `Yes. There's no charge and no obligation. You don't have to buy anything to get the test, and you don't have to make any decisions while the technician is there. As a thank-you for your time, we'll send you a $25 ${retailer.name} gift card whether you decide to move forward or not.`,
+    },
+    {
+      q: `How does the $25 ${retailer.name} gift card work?`,
+      a: `Once your in-home water test is complete, we'll send you a $25 ${retailer.name} gift card by mail. There's no purchase required. Book the test, let us run it, and the card is yours.`,
+    },
+    {
+      q: "What happens after the test?",
+      a: "If your water shows hardness or contaminants worth addressing, the technician can walk you through what a Hyperion Elite system would mean for your home: pricing, timing, and how it works. If your water doesn't need it, they'll tell you that too. Either way, you keep the gift card.",
+    },
+  ];
+}
 
 export default function LeanHome() {
+  const retailer = resolveRetailer();
+  const faqs = buildFaqs(retailer);
+
   return (
     <div className="min-h-screen bg-white selection:bg-blue-200 selection:text-blue-900">
       <header className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md border-b border-slate-100 z-50">
@@ -73,7 +103,7 @@ export default function LeanHome() {
                 </h1>
 
                 <p className="text-xl md:text-2xl text-slate-700 mb-8 leading-relaxed max-w-2xl font-light">
-                  Arizona water is some of the hardest in the country. A free in-home test tells you exactly what's in yours &mdash; and we'll send you a $25 gift card just for letting us take a look.
+                  Arizona water is some of the hardest in the country. A free in-home test tells you exactly what's in yours, and we'll send you a $25 {retailer.name} gift card just for letting us take a look.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -84,7 +114,7 @@ export default function LeanHome() {
                     <Droplets className="mr-2 w-5 h-5 shrink-0" />
                     <span className="flex flex-col items-start leading-tight text-left">
                       <span className="text-lg font-bold">Book My Free Water Test</span>
-                      <span className="text-xs font-medium opacity-90">+ $25 gift card, no obligation</span>
+                      <span className="text-xs font-medium opacity-90">+ $25 {retailer.name} gift card, no obligation</span>
                     </span>
                   </button>
                   <a
@@ -109,7 +139,7 @@ export default function LeanHome() {
               transition={{ duration: 0.5 }}
               className="text-lg md:text-xl text-slate-700 leading-relaxed"
             >
-              Hyperion Elite Systems are designed specifically for Arizona's water &mdash; built for the hardness levels and conditions found across the Phoenix valley and the broader Southwest. If your test shows you'd benefit from a system, we'll walk you through what that would look like for your home. If not, you keep the gift card and we move on.
+              Hyperion Elite Systems are designed specifically for Arizona's water, built for the hardness levels and conditions found across the Phoenix valley and the broader Southwest. If your test shows you'd benefit from a system, we'll walk you through what that would look like for your home. If not, you keep the gift card and we move on.
             </motion.p>
           </div>
         </section>

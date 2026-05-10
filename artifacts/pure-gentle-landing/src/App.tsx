@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,6 +8,8 @@ import Home from "@/pages/Home";
 import LeanHome from "@/pages/LeanHome";
 import Admin from "@/pages/Admin";
 import Order from "@/pages/Order";
+import { useUtmCapture } from "@/lib/useUtmCapture";
+import { trackPageView } from "@/lib/fb";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +32,11 @@ function Router() {
 }
 
 function App() {
+  useUtmCapture();
+  useEffect(() => {
+    trackPageView();
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
