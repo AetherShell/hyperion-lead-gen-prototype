@@ -60,34 +60,23 @@ export default function LeanHome() {
   const faqs = buildFaqs(retailer);
 
   const heroRef = useRef<HTMLElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
   const [pastHero, setPastHero] = useState(false);
-  const [hasReachedForm, setHasReachedForm] = useState(false);
 
   useEffect(() => {
     const heroEl = heroRef.current;
-    const formEl = formRef.current;
-    if (!heroEl || !formEl) return;
+    if (!heroEl) return;
 
     const heroObs = new IntersectionObserver(
       ([entry]) => setPastHero(!entry.isIntersecting),
       { threshold: 0 },
     );
-    const formObs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setHasReachedForm(true);
-      },
-      { threshold: 0.25 },
-    );
     heroObs.observe(heroEl);
-    formObs.observe(formEl);
     return () => {
       heroObs.disconnect();
-      formObs.disconnect();
     };
   }, []);
 
-  const showBanner = pastHero && !hasReachedForm;
+  const showBanner = pastHero;
 
   const scrollToForm = () =>
     document.getElementById("book")?.scrollIntoView({ behavior: "smooth" });
@@ -178,7 +167,7 @@ export default function LeanHome() {
           </div>
         </section>
 
-        <div id="book" ref={formRef}>
+        <div id="book">
           <CTA />
         </div>
 
