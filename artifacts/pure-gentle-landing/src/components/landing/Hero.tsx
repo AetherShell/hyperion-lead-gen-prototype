@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Droplets, Phone } from "lucide-react";
+import { Droplets } from "lucide-react";
 
 export function Hero() {
   return (
@@ -50,13 +50,6 @@ export function Hero() {
                   <span className="text-xs font-medium opacity-90">+ $25 gift card with free water test</span>
                 </span>
               </button>
-              <a
-                href="tel:+18005550100"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl border-2 border-slate-300 text-slate-700 hover:border-blue-400 hover:text-blue-700 transition-all"
-              >
-                <Phone className="mr-2 w-4 h-4" />
-                (800) 555-0100
-              </a>
             </div>
 
             <div className="flex items-center gap-5 text-sm text-slate-600 font-medium">

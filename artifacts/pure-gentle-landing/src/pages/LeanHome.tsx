@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Droplets, Phone } from "lucide-react";
+import { Droplets } from "lucide-react";
 import { motion } from "framer-motion";
 import { CTA } from "@/components/landing/CTA";
 import {
@@ -91,13 +91,6 @@ export default function LeanHome() {
             </div>
             <span className="font-bold text-xl tracking-tight text-slate-900">Hyperion Elite Systems</span>
           </div>
-          <a
-            href="tel:+18005550100"
-            className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
-          >
-            <Phone className="w-3.5 h-3.5" />
-            (800) 555-0100
-          </a>
         </div>
       </header>
 
@@ -140,13 +133,6 @@ export default function LeanHome() {
                       <span className="text-xs font-medium opacity-90">+ $25 {retailer.name} gift card, no purchase necessary</span>
                     </span>
                   </button>
-                  <a
-                    href="tel:+18005550100"
-                    className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl border-2 border-slate-300 text-slate-700 hover:border-blue-400 hover:text-blue-700 transition-all"
-                  >
-                    <Phone className="mr-2 w-4 h-4" />
-                    (800) 555-0100
-                  </a>
                 </div>
               </motion.div>
             </div>
@@ -200,7 +186,6 @@ export default function LeanHome() {
             <div className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-slate-400 font-bold text-sm">H</div>
             <span className="font-semibold text-slate-300">Hyperion Elite Systems</span>
           </div>
-          <a href="tel:+18005550100" className="text-slate-400 hover:text-slate-200 text-sm transition-colors">(800) 555-0100</a>
           <div className="text-sm">&copy; {new Date().getFullYear()} Hyperion Elite Systems. All rights reserved.</div>
         </div>
       </footer>

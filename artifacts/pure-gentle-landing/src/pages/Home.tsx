@@ -6,7 +6,6 @@ import { Quiz } from "@/components/landing/Quiz";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { FAQ } from "@/components/landing/FAQ";
 import { CTA } from "@/components/landing/CTA";
-import { Phone } from "lucide-react";
 
 export default function Home() {
   return (
@@ -20,13 +19,6 @@ export default function Home() {
             <span className="font-bold text-xl tracking-tight text-slate-900">Hyperion Elite Systems</span>
           </div>
           <div className="flex items-center gap-3">
-            <a
-              href="tel:+18005550100"
-              className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              (800) 555-0100
-            </a>
             <button
               onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
               className="text-sm font-bold px-5 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm"
@@ -69,7 +61,6 @@ export default function Home() {
             <div className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-slate-400 font-bold text-sm">H</div>
             <span className="font-semibold text-slate-300">Hyperion Elite Systems</span>
           </div>
-          <a href="tel:+18005550100" className="text-slate-400 hover:text-slate-200 text-sm transition-colors">(800) 555-0100</a>
           <div className="text-sm">&copy; {new Date().getFullYear()} Hyperion Elite Systems. All rights reserved.</div>
         </div>
       </footer>

@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
-import Home from "@/pages/Home";
 import LeanHome from "@/pages/LeanHome";
 import Admin from "@/pages/Admin";
 import Order from "@/pages/Order";
@@ -13,17 +12,10 @@ import { trackPageView } from "@/lib/fb";
 
 const queryClient = new QueryClient();
 
-function HomeOrLean() {
-  const isLean =
-    typeof window !== "undefined" &&
-    new URLSearchParams(window.location.search).get("lean") === "true";
-  return isLean ? <LeanHome /> : <Home />;
-}
-
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={HomeOrLean} />
+      <Route path="/" component={LeanHome} />
       <Route path="/admin" component={Admin} />
       <Route path="/order" component={Order} />
       <Route component={NotFound} />

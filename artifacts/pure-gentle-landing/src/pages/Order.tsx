@@ -348,10 +348,6 @@ export default function Order() {
               </div>
             </div>
 
-            <p className="text-sm text-slate-500">
-              Questions? Call{" "}
-              <a href="tel:+18005550100" className="text-blue-600 font-medium hover:underline">(800) 555-0100</a>
-            </p>
           </div>
         )}
       </main>

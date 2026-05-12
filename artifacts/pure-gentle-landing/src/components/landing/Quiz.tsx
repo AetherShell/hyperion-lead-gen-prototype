@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { RotateCcw, CheckCircle, PhoneCall, ShieldCheck, ChevronRight, TestTube } from "lucide-react";
-import { useLocation } from "wouter";
+import { RotateCcw, CheckCircle, PhoneCall, ShieldCheck, TestTube } from "lucide-react";
 
 export function Quiz() {
-  const [, navigate] = useLocation();
   const [step, setStep] = useState(1);
   const [soapSpend, setSoapSpend] = useState<string>("120");
   const [bottledWaterSpend, setBottledWaterSpend] = useState<string>("40");
@@ -47,10 +45,6 @@ export function Quiz() {
       const firstInput = el.querySelector<HTMLInputElement>("input, select, textarea");
       window.setTimeout(() => firstInput?.focus(), 350);
     }
-  };
-
-  const handleOrder = () => {
-    navigate(`/order?soap=${result?.monthlySoapSpend ?? soapSpend}&water=${result?.monthlyBottledWaterSpend ?? bottledWaterSpend}`);
   };
 
   const handleReset = () => {
@@ -171,7 +165,7 @@ export function Quiz() {
                     </p>
                   </div>
 
-                  <div className={`grid md:grid-cols-2 gap-4 transition-all ${consultationPulse ? "ring-2 ring-blue-400 ring-offset-4 ring-offset-white rounded-2xl" : ""}`}>
+                  <div className={`transition-all ${consultationPulse ? "ring-2 ring-blue-400 ring-offset-4 ring-offset-white rounded-2xl" : ""}`}>
                     <div className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-6 flex flex-col">
                       <div className="text-sm font-semibold text-blue-700 uppercase tracking-wider mb-3">Recommended</div>
                       <h5 className="text-xl font-bold text-slate-900 mb-2">Talk to a Water Specialist</h5>
@@ -185,18 +179,6 @@ export function Quiz() {
                       <Button onClick={handleConsultation} className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold">
                         Request a Callback
                         <PhoneCall className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
-
-                    <div className="rounded-2xl border border-slate-200 bg-white p-6 flex flex-col">
-                      <div className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Already decided?</div>
-                      <h5 className="text-xl font-bold text-slate-900 mb-2">Move Forward</h5>
-                      <p className="text-slate-600 text-sm leading-relaxed mb-5 flex-grow">
-                        If you've done your research and want to get started, you can go straight to the order flow and schedule installation.
-                      </p>
-                      <Button onClick={handleOrder} variant="outline" className="w-full h-12 rounded-xl border-slate-300 text-slate-800 font-bold">
-                        Move Forward
-                        <ChevronRight className="w-4 h-4 ml-2" />
                       </Button>
                     </div>
                   </div>
