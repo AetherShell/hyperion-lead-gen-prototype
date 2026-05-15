@@ -5,9 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
-import LeanHome from "@/pages/LeanHome";
 import Admin from "@/pages/Admin";
-import Order from "@/pages/Order";
 import { useUtmCapture } from "@/lib/useUtmCapture";
 import { trackPageView } from "@/lib/fb";
 
@@ -17,9 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/lean" component={LeanHome} />
       <Route path="/admin" component={Admin} />
-      <Route path="/order" component={Order} />
       <Route component={NotFound} />
     </Switch>
   );

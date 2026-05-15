@@ -6,11 +6,11 @@ import review2 from "@assets/Screenshot_2026-04-12_172116_1776039905038-dark.png
 const reviews = [
   {
     image: review1,
-    alt: "Yelp review from Sophie Y. in Phoenix, AZ",
+    alt: "Yelp review from Sophie Y.",
   },
   {
     image: review2,
-    alt: "Yelp review from David M. in Everett, WA",
+    alt: "Yelp review from David M.",
   },
 ];
 

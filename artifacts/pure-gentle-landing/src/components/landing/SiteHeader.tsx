@@ -18,11 +18,12 @@ export function SiteHeader() {
         </a>
         <div className="flex items-center gap-3">
           <a
-            href="tel:+18005550100"
-            className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-slate-200 hover:text-sky-300 transition-colors"
+            href="tel:+14808497274"
+            className="flex items-center gap-1.5 text-sm font-medium text-slate-200 hover:text-sky-300 transition-colors"
           >
             <Phone className="w-3.5 h-3.5" />
-            (800) 555-0100
+            <span className="hidden sm:inline">(480) 849-7274</span>
+            <span className="sm:hidden">Call</span>
           </a>
           <button
             onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}

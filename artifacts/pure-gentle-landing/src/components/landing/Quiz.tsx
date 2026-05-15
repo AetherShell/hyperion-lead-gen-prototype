@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { RotateCcw, CheckCircle, PhoneCall, ShieldCheck, ChevronRight, TestTube } from "lucide-react";
-import { useLocation } from "wouter";
+import { RotateCcw, CheckCircle, PhoneCall, ShieldCheck, TestTube } from "lucide-react";
 
 export function Quiz() {
-  const [, navigate] = useLocation();
   const [step, setStep] = useState(1);
   const [soapSpend, setSoapSpend] = useState<string>("120");
   const [bottledWaterSpend, setBottledWaterSpend] = useState<string>("60");
@@ -14,8 +12,7 @@ export function Quiz() {
     monthlySoapSpend: number;
     monthlyBottledWaterSpend: number;
     totalCurrentSpend: number;
-    annualSavingsLow: number;
-    annualSavingsHigh: number;
+    annualSavings: number;
   }>(null);
 
   const handleCalculate = (soap?: string) => {
@@ -23,14 +20,12 @@ export function Quiz() {
     const monthlyBottledWaterSpend = Number(bottledWaterSpend ?? 0);
     const totalCurrentSpend = monthlySoapSpend + monthlyBottledWaterSpend;
     const rawMonthly = Math.max(0, totalCurrentSpend - 160);
-    const annualSavingsLow = Math.round(rawMonthly * 12 * 0.75);
-    const annualSavingsHigh = rawMonthly * 12;
+    const annualSavings = rawMonthly * 12;
     setResult({
       monthlySoapSpend,
       monthlyBottledWaterSpend,
       totalCurrentSpend,
-      annualSavingsLow,
-      annualSavingsHigh,
+      annualSavings,
     });
     setStep(4);
   };
@@ -44,10 +39,6 @@ export function Quiz() {
       const firstInput = el.querySelector<HTMLInputElement>("input, select, textarea");
       window.setTimeout(() => firstInput?.focus(), 350);
     }
-  };
-
-  const handleOrder = () => {
-    navigate(`/order?soap=${result?.monthlySoapSpend ?? soapSpend}&water=${result?.monthlyBottledWaterSpend ?? bottledWaterSpend}`);
   };
 
   const handleReset = () => {
@@ -139,17 +130,17 @@ export function Quiz() {
                   <Stat label="Estimated total" value={`~$${result.totalCurrentSpend}/mo`} highlight />
                 </div>
 
-                {result.annualSavingsHigh > 0 && (
+                {result.annualSavings > 0 && (
                   <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 md:p-8 text-center">
-                    <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Estimated net savings range, first year</div>
+                    <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Projected savings, first year</div>
                     <div className="text-4xl font-bold text-sky-300 mb-2">
-                      ${result.annualSavingsLow.toLocaleString()} – ${result.annualSavingsHigh.toLocaleString()}
+                      ${result.annualSavings.toLocaleString()}
                     </div>
-                    <p className="text-slate-400 text-sm">This is a rough estimate. A free in-home water test can give you more accurate numbers for your specific situation.</p>
+                    <p className="text-slate-400 text-sm">This is a rough estimate based on your inputs. A free in-home water test can give you more accurate numbers for your specific situation.</p>
                   </div>
                 )}
 
-                {result.annualSavingsHigh === 0 && (
+                {result.annualSavings === 0 && (
                   <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 md:p-8 text-center">
                     <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Your monthly cost stays about the same</div>
                     <div className="text-3xl font-bold text-sky-300 mb-2">~$160/month</div>
@@ -169,7 +160,7 @@ export function Quiz() {
                     </p>
                   </div>
 
-                  <div className={`grid md:grid-cols-2 gap-4 transition-all ${consultationPulse ? "ring-2 ring-sky-400 ring-offset-4 ring-offset-slate-950 rounded-2xl" : ""}`}>
+                  <div className={`max-w-xl mx-auto transition-all ${consultationPulse ? "ring-2 ring-sky-400 ring-offset-4 ring-offset-slate-950 rounded-2xl" : ""}`}>
                     <div className="rounded-2xl border-2 border-sky-400/40 bg-sky-400/10 p-6 flex flex-col">
                       <div className="text-sm font-semibold text-sky-300 uppercase tracking-wider mb-3">Recommended</div>
                       <h5 className="text-xl font-bold text-white mb-2">Talk to a Water Specialist</h5>
@@ -183,18 +174,6 @@ export function Quiz() {
                       <Button onClick={handleConsultation} className="w-full h-12 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold">
                         Request a Callback
                         <PhoneCall className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
-
-                    <div className="rounded-2xl border border-white/10 bg-slate-900/50 p-6 flex flex-col">
-                      <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Already decided?</div>
-                      <h5 className="text-xl font-bold text-white mb-2">Move Forward</h5>
-                      <p className="text-slate-300 text-sm leading-relaxed mb-5 flex-grow">
-                        If you've done your research and want to get started, you can go straight to the order flow and schedule installation.
-                      </p>
-                      <Button onClick={handleOrder} variant="outline" className="w-full h-12 rounded-xl border-white/30 text-white bg-transparent hover:bg-white/10 hover:text-white font-bold">
-                        Move Forward
-                        <ChevronRight className="w-4 h-4 ml-2" />
                       </Button>
                     </div>
                   </div>

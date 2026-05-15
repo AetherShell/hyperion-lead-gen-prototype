@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 /**
  * Two fixed-position water streams that flank the page, scroll-linked:
@@ -6,9 +6,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
  *   - Right "clean water" stream strengthens and runs full length.
  *
  * pointer-events: none, low z-index — purely ambient.
+ * Respects prefers-reduced-motion: skips the scroll-linked animation entirely.
  */
 export function CascadingWater() {
+  const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
+
+  if (prefersReducedMotion) return null;
 
   // Hard stream: vivid through the Hero, withers across OldWay, gone before HowItWorks.
   const hardOpacity = useTransform(scrollYProgress, [0, 0.08, 0.22, 0.32], [0.45, 0.35, 0.12, 0]);
