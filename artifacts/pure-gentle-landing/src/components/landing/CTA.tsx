@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, TestTube } from "lucide-react";
-import { readAttribution } from "@/lib/useUtmCapture";
-import { trackLead } from "@/lib/fb";
+import { CheckCircle, TestTube, Gift } from "lucide-react";
 
-const LEAD_ENDPOINT = "https://bbccnglbxwnxpxlplxyv.supabase.co/functions/v1/lead-intake";
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 export function CTA() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "", waterTest: false });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "", waterTest: true });
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -34,25 +32,12 @@ export function CTA() {
     if (!validate()) return;
     setLoading(true); setSubmitError("");
     try {
-      const attribution = readAttribution();
-      const res = await fetch(LEAD_ENDPOINT, {
+      const res = await fetch(`${BASE}/api/leads`, {
         method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          zipCode: form.zipCode,
-          time: form.time,
-          waterTest: form.waterTest,
-          attribution,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, zipCode: form.zipCode, time: form.time, waterTest: form.waterTest }),
       });
       if (!res.ok) throw new Error();
-      const data = (await res.json().catch(() => ({}))) as { id?: string };
-      if (data.id) {
-        trackLead(data.id);
-      }
       setSubmitted(true);
     } catch {
       setSubmitError("Something went wrong. Please call us directly.");
@@ -62,47 +47,55 @@ export function CTA() {
   }
 
   return (
-    <section id="schedule" className="py-20 bg-slate-900 relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-slate-900 pointer-events-none" />
-
+    <section id="schedule" className="py-20 relative overflow-hidden scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
 
           <div className="text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight">
-              Want to talk it through first?
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 text-[#e8c652] text-sm font-semibold mb-5">
+              <Gift className="w-4 h-4" />
+              Limited availability — $25 gift card included
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight text-[#d4af37]">
+              Get a free water test + $25 gift card.
             </h2>
-            <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-              No pressure. Leave your info and a water specialist will call you at your preferred time. We'll answer your questions and help you figure out if it makes sense for your home.
+            <p className="text-lg text-[#e9d49a] mb-8 leading-relaxed">
+              Schedule a free in-home water test, talk to a specialist, and we'll send you a $25 gift card after the visit — no purchase necessary.
             </p>
             <div className="space-y-4">
               {[
-                "A 20-minute conversation: questions, not a pitch",
-                "We can schedule a free in-home water test if you want one",
-                "No purchase necessary: if it's not the right fit, we'll tell you",
+                "A technician tests your water on-site in 30–45 minutes",
+                "A specialist answers your questions — no pressure, no pitch",
+                "$25 gift card sent after your visit, regardless of outcome",
               ].map(item => (
                 <div key={item} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-emerald-300 shrink-0 mt-0.5" />
                   <span className="text-slate-300 text-sm">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div id="consultation-form" className="bg-white rounded-2xl p-8 shadow-2xl scroll-mt-24">
+          <div
+            id="consultation-form"
+            className="bg-slate-950/85 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl shadow-sky-900/30 scroll-mt-24"
+          >
             {submitted ? (
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 bg-emerald-400/15 rounded-full flex items-center justify-center mx-auto mb-5">
+                  <CheckCircle className="w-8 h-8 text-emerald-300" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">We'll be in touch.</h3>
-                <p className="text-slate-500 text-sm">A water specialist will call you at your preferred time. In the meantime, feel free to browse our FAQ above.</p>
+                <h3 className="text-2xl font-bold text-[#d4af37] mb-3">One step closer to good water.</h3>
+                <p className="text-slate-300 text-sm">We'll call to confirm your free water test. Your $25 gift card will be sent after the visit — no purchase necessary.</p>
               </motion.div>
             ) : (
               <form onSubmit={(e) => { void handleSubmit(e); }} className="space-y-4">
                 <div className="mb-5">
-                  <h3 className="text-xl font-bold text-slate-900">Request a Callback</h3>
-                  <p className="text-slate-400 text-sm mt-0.5">We'll reach out at your preferred time.</p>
+                  <div className="flex items-center gap-2 mb-1">
+                    <Gift className="w-4 h-4 text-sky-300" />
+                    <h3 className="text-xl font-bold text-[#d4af37]">Claim Your $25 Gift Card</h3>
+                  </div>
+                  <p className="text-slate-400 text-sm">Schedule a free water test. We'll call to confirm, then send your gift card after the visit.</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -135,26 +128,26 @@ export function CTA() {
                   </Fld>
                 </div>
 
-                <label className="flex items-start gap-3 p-3 rounded-xl bg-blue-50 border border-blue-100 cursor-pointer select-none">
+                <label className="flex items-start gap-3 p-3 rounded-xl bg-sky-400/10 border border-sky-300/30 cursor-pointer select-none">
                   <input type="checkbox" checked={form.waterTest} onChange={e => set("waterTest", e.target.checked)}
-                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" />
+                    className="mt-0.5 w-4 h-4 rounded border-white/20 text-sky-400 accent-sky-400 focus:ring-sky-400" />
                   <div>
-                    <div className="flex items-center gap-1.5 text-sm font-medium text-slate-800">
-                      <TestTube className="w-3.5 h-3.5 text-blue-600" />
+                    <div className="flex items-center gap-1.5 text-sm font-medium text-white">
+                      <TestTube className="w-3.5 h-3.5 text-sky-300" />
                       I'd also like a free in-home water test
                     </div>
-                    <div className="text-xs text-slate-500 mt-0.5">A technician tests your water on-site in about 15 minutes. No charge, no purchase necessary.</div>
+                    <div className="text-xs text-slate-400 mt-0.5">A technician tests your water on-site in 30–45 minutes. No charge, no obligation.</div>
                   </div>
                 </label>
 
-                {submitError && <p className="text-sm text-red-600">{submitError}</p>}
+                {submitError && <p className="text-sm text-rose-300">{submitError}</p>}
 
                 <button type="submit" disabled={loading}
-                  className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-bold text-base transition-colors mt-1">
-                  {loading ? "Sending..." : "Request a Callback"}
+                  className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 disabled:opacity-60 text-white font-bold text-base transition-colors mt-1 shadow-lg shadow-sky-500/30">
+                  {loading ? "Sending..." : "Claim My Gift Card"}
                 </button>
                 <p className="text-xs text-center text-slate-400">
-                  You can also scroll up and use the calculator to explore your options on your own.
+                  *Must complete the in-home water test and consultation to qualify. Subject to availability.
                 </p>
               </form>
             )}
@@ -168,13 +161,13 @@ export function CTA() {
 function Fld({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-slate-700 mb-1">{label}</label>
+      <label className="block text-sm font-medium text-slate-200 mb-1">{label}</label>
       {children}
-      {error && <p className="text-xs text-red-500 mt-0.5">{error}</p>}
+      {error && <p className="text-xs text-rose-300 mt-0.5">{error}</p>}
     </div>
   );
 }
 
 function inp(error?: string) {
-  return `w-full px-3.5 py-2.5 rounded-lg border text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${error ? "border-red-400 bg-red-50" : "border-slate-200 bg-slate-50"}`;
+  return `w-full px-3.5 py-2.5 rounded-lg border text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent ${error ? "border-rose-400/60 bg-rose-500/10" : "border-white/10 bg-white/5"}`;
 }

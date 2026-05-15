@@ -4,16 +4,16 @@ import { Check, X, PackageCheck, Droplets, Filter, Wrench, ShieldCheck } from "l
 const included = [
   { icon: <Filter className="w-4 h-4" />, item: "Whole-home water refiner", detail: "Installed" },
   { icon: <Droplets className="w-4 h-4" />, item: "Under-sink reverse osmosis system", detail: "Installed" },
-  { icon: <PackageCheck className="w-4 h-4" />, item: "Pure & Gentle 5-year soap supply", detail: "$7,200 value" },
+  { icon: <PackageCheck className="w-4 h-4" />, item: "Pure & Gentle 5-year soap supply", detail: "$9,800+ retail value" },
   { icon: <Wrench className="w-4 h-4" />, item: "Professional installation", detail: "Included" },
   { icon: <ShieldCheck className="w-4 h-4" />, item: "Lifetime warranty", detail: "Parts & labor" },
-  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "~$180 RO + ~$340 filters" },
+  { icon: <Check className="w-4 h-4" />, item: "Annual maintenance after payoff", detail: "$180–340/yr filters + ~$4–8/mo salt" },
 ];
 
 export function SavingsBreakdown() {
   return (
-    <section className="py-24 bg-slate-900 text-slate-50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900 pointer-events-none" />
+    <section className="py-24 text-slate-50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(56,189,248,0.12),transparent_70%)] pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
 
@@ -24,10 +24,10 @@ export function SavingsBreakdown() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#d4af37] tracking-tight mb-4">
               Here's how the cost compares.
             </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-[#e9d49a] max-w-2xl mx-auto">
               These are rough ranges — every household is different. The calculator below can give you a more personalized estimate.
             </p>
           </motion.div>
@@ -45,8 +45,8 @@ export function SavingsBreakdown() {
             <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">Without the system</div>
             <div className="space-y-5 mb-8">
               {[
-                ["Soap, detergent & cleaners", "~$80–160/mo"],
-                ["Bottled water", "~$30–80/mo per person"],
+                ["Soap, detergent & cleaners", "~$120/mo"],
+                ["Bottled water", "~$50–80/mo"],
                 ["Hard water wear on appliances", "Ongoing"],
               ].map(([label, val]) => (
                 <div key={String(label)} className="flex justify-between items-center">
@@ -60,8 +60,8 @@ export function SavingsBreakdown() {
             </div>
             <div className="pt-5 border-t border-slate-700/50">
               <div className="flex justify-between items-baseline">
-                <span className="text-slate-400">Monthly total</span>
-                <span className="text-2xl font-bold text-white">Varies by household</span>
+                <span className="text-slate-400">Average family of 4</span>
+                <span className="text-2xl font-bold text-white">~$170–200/mo</span>
               </div>
               <p className="text-sm text-slate-500 text-right mt-1">Recurring costs with nothing to show for them.</p>
             </div>
@@ -113,12 +113,12 @@ export function SavingsBreakdown() {
           <div className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-5">What's included in the $160/month</div>
           <div className="grid sm:grid-cols-2 gap-3">
             {included.map(({ icon, item, detail }) => (
-              <div key={item} className="flex items-center justify-between gap-3 bg-slate-800/60 rounded-xl px-4 py-3">
+              <div key={item} className="flex flex-wrap items-center gap-x-3 gap-y-1 bg-slate-800/60 rounded-xl px-4 py-3">
                 <div className="flex items-center gap-3 text-slate-300 text-sm">
                   <span className="text-blue-400">{icon}</span>
                   {item}
                 </div>
-                <span className="text-xs font-semibold text-green-400 shrink-0">{detail}</span>
+                <span className="text-xs font-semibold text-green-400 ml-auto">{detail}</span>
               </div>
             ))}
           </div>

@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     q: "How is a water refiner different from a water softener?",
-    a: "A water softener removes hard minerals — calcium and magnesium — which helps with soap performance and scale buildup. A water refiner does all of that, plus it filters out chlorine that comes through municipal water supply. In most of the U.S., a softener is fine. In the Southwest, where groundwater is unusually hard and chlorine comes through on top of that, a refiner is what's needed to get the cleanest water throughout your home. That's why the Hyperion Elite system uses a refiner, not just a softener — and it's also why the system costs more than a basic softener, which typically runs about a quarter of the price.",
+    a: "A water softener removes hard minerals — calcium and magnesium — which helps with soap performance and scale buildup. A water refiner does all of that, plus it filters out chemicals like chlorine, arsenic, and uranium. In most of the U.S., a softener is fine. In the Southwest, where groundwater often contains elevated levels of these contaminants, a refiner is what's needed to get the safest water throughout your home. That's why the Hyperion Elite system uses a refiner, not just a softener — and it's also why the system costs more than a basic softener, which typically runs about a quarter of the price.",
   },
   {
     q: "How does the soap program work?",
@@ -16,15 +16,15 @@ const faqs = [
   },
   {
     q: "What does the in-home water test involve?",
-    a: "A technician comes to your home and tests your water on the spot — usually takes about 15 minutes. They'll measure hardness, TDS (total dissolved solids), chlorine, and check for common contaminants. You get the results right there. There's no charge and no obligation. It just gives you accurate data about your specific water so you can make an informed decision.",
+    a: "A technician comes to your home and tests your water on the spot — usually takes 30–45 minutes. They'll measure hardness, TDS (total dissolved solids), chlorine, and check for common contaminants. You get the results right there. There's no charge and no obligation. It just gives you accurate data about your specific water so you can make an informed decision.",
   },
   {
     q: "What happens after the 5 years of soap?",
-    a: "In many cases, the payment continues well beyond 5 years. The typical financing term is closer to 8–15 years, depending on credit and lender terms. After the system is paid off, you own it. Ongoing annual service is separate and usually includes about $180 for RO service plus about $340 for alkaline filters each year. Because your water is still refined and soft, you'll continue using far less soap than a typical household — so the savings continue on their own.",
+    a: "It's about $50/year to keep all the household soaps coming after that — laundry detergent, dish soap, shampoo, conditioner, hand soap, and household cleaners, for the whole family. The 5-year supply included with your system has over $9,800 in retail value. Refined, soft water lets Pure & Gentle ship concentrated products instead of bottles full of water weight, and we partnered with them to pass those savings on — so every family can get good water and save money at the same time.",
   },
   {
     q: "What does the RO system filter out?",
-    a: "The reverse osmosis system removes up to 99% of common contaminants — including lead, fluoride, nitrates, heavy metals, microplastics, and PFAS (sometimes called forever chemicals). It provides a second layer of purification specifically for your drinking and cooking water, on top of the whole-home refiner.",
+    a: "The reverse osmosis system removes up to 99.9% of common contaminants — including lead, fluoride, nitrates, heavy metals, microplastics, and PFAS (sometimes called forever chemicals). It provides a second layer of purification specifically for your drinking and cooking water, on top of the whole-home refiner.",
   },
   {
     q: "How long does installation take?",
@@ -35,10 +35,6 @@ const faqs = [
     a: "Homeowners can move forward right away. If you rent, you'll need written approval from your landlord before installation. Our team can help you with that conversation if needed.",
   },
   {
-    q: "What if I change my mind after ordering?",
-    a: "You have 3 business days from signing to cancel with no penalty and no questions asked. After installation, any issues with the system or the products are handled under warranty.",
-  },
-  {
     q: "Is there a warranty?",
     a: "Yes. The system has a lifetime warranty: if anything ever breaks, we fix it; if it can't be fixed, we replace it with a new system. We believe something that protects you and your home should last a lifetime. The soap supply is delivered within 30 days of installation.",
   },
@@ -46,25 +42,25 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-24 bg-slate-50">
-      <div className="container mx-auto px-4 md:px-6 max-w-3xl">
+    <section className="py-24 relative">
+      <div className="container mx-auto px-4 md:px-6 max-w-3xl relative z-10">
 
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#d4af37] tracking-tight mb-3">
             Common questions.
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-[#e9d49a]">
             Straightforward answers to the things people ask most.
           </p>
         </div>
 
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-slate-200">
-              <AccordionTrigger className="text-left text-base font-semibold text-slate-800 hover:text-blue-600 hover:no-underline py-5">
+            <AccordionItem key={i} value={`item-${i}`} className="border-white/10">
+              <AccordionTrigger className="text-left text-base font-semibold text-[#d4af37] hover:text-[#e8c652] hover:no-underline py-5">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-slate-600 text-base leading-relaxed pb-5">
+              <AccordionContent className="text-slate-300 text-base leading-relaxed pb-5">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
