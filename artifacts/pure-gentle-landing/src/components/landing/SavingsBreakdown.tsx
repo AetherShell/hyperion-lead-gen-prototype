@@ -17,17 +17,18 @@ export function SavingsBreakdown() {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
 
-        <div className="text-center mb-14">
+        <div className="text-center mb-14 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 md:p-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#d4af37] tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
               Here's how the cost compares.
             </h2>
-            <p className="text-lg text-[#e9d49a] max-w-2xl mx-auto">
+            <p className="text-lg text-slate-100">
               These are rough ranges — every household is different. The calculator below can give you a more personalized estimate.
             </p>
           </motion.div>

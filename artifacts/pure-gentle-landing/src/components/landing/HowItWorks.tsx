@@ -30,17 +30,18 @@ export function HowItWorks() {
     <section className="py-24 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
 
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 md:p-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#d4af37] tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
               One system that handles all of it.
             </h2>
-            <p className="text-lg text-[#e9d49a] max-w-2xl mx-auto">
+            <p className="text-lg text-slate-100">
               Instead of buying soap, bottled water, and dealing with hard water damage separately, the Hyperion Elite system addresses the root cause — so the downstream problems take care of themselves.
             </p>
           </motion.div>
@@ -55,13 +56,13 @@ export function HowItWorks() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-[#d4af37]/15 p-7 flex gap-6 items-start">
+              <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 flex gap-6 items-start">
                 <div className="w-16 h-16 rounded-2xl bg-sky-400/10 border border-sky-300/20 flex items-center justify-center shrink-0">
                   {step.icon}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-xs font-bold text-sky-300 uppercase tracking-wider mb-1">{step.tag}</div>
-                  <h3 className="text-xl font-bold text-[#d4af37] mb-2">{step.title}</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
                   <p className="text-slate-200 leading-relaxed mb-4">{step.body}</p>
                   <div className="inline-flex items-center gap-2 bg-emerald-400/10 border border-emerald-300/30 text-emerald-200 text-sm font-medium px-3 py-1.5 rounded-full">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />

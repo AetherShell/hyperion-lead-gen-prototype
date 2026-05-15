@@ -45,19 +45,21 @@ export function FAQ() {
     <section className="py-24 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-3xl relative z-10">
 
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#d4af37] tracking-tight mb-3">
-            Common questions.
-          </h2>
-          <p className="text-lg text-[#e9d49a]">
-            Straightforward answers to the things people ask most.
-          </p>
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 md:p-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-3">
+              Common questions.
+            </h2>
+            <p className="text-lg text-slate-100">
+              Straightforward answers to the things people ask most.
+            </p>
+          </div>
         </div>
 
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, i) => (
             <AccordionItem key={i} value={`item-${i}`} className="border-white/10">
-              <AccordionTrigger className="text-left text-base font-semibold text-[#d4af37] hover:text-[#e8c652] hover:no-underline py-5">
+              <AccordionTrigger className="text-left text-base font-semibold text-white hover:text-sky-300 hover:no-underline py-5">
                 {faq.q}
               </AccordionTrigger>
               <AccordionContent className="text-slate-300 text-base leading-relaxed pb-5">

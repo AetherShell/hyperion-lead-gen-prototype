@@ -18,17 +18,18 @@ export function Testimonials() {
   return (
     <section className="py-24 relative">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-14">
+        <div className="text-center mb-14 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 md:p-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#d4af37] tracking-tight mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-3">
               Families who made the switch.
             </h2>
-            <p className="text-lg text-[#e9d49a]">Real households, real numbers.</p>
+            <p className="text-lg text-slate-100">Real households, real numbers.</p>
           </motion.div>
         </div>
 
@@ -43,7 +44,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group block bg-slate-950/60 backdrop-blur-md border border-[#d4af37]/15 p-4 md:p-5 rounded-2xl shadow-2xl shadow-sky-900/10 hover:border-[#d4af37]/40 transition-all"
+              className="group block bg-slate-950/60 backdrop-blur-md border border-white/10 p-4 md:p-5 rounded-2xl shadow-2xl shadow-sky-900/10 hover:border-white/30 transition-all"
             >
               <div className="flex items-center justify-between gap-3 mb-4">
                 <div className="flex gap-1">

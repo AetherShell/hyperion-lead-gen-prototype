@@ -35,11 +35,12 @@ export function OldWay() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 md:p-8"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#d4af37] tracking-tight mb-5">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-5">
               What most families are dealing with.
             </h2>
-            <p className="text-lg text-[#e9d49a] leading-relaxed">
+            <p className="text-lg text-slate-100 leading-relaxed">
               If your water leaves spots, your skin feels dry after a shower, or you buy bottled water because the tap doesn't taste right — you're not imagining it. Here's what's usually going on.
             </p>
           </motion.div>
@@ -53,14 +54,14 @@ export function OldWay() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-slate-950/60 backdrop-blur-md border border-[#d4af37]/15 rounded-2xl p-6"
+              className="bg-slate-950/60 backdrop-blur-md border border-white/10 rounded-2xl p-6"
             >
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-300/20 flex items-center justify-center shrink-0">
                   {p.icon}
                 </div>
                 <div>
-                  <div className="font-semibold text-[#d4af37] mb-2 leading-snug">{p.headline}</div>
+                  <div className="font-semibold text-white mb-2 leading-snug">{p.headline}</div>
                   <p className="text-slate-200 text-sm leading-relaxed">{p.body}</p>
                 </div>
               </div>
@@ -77,7 +78,7 @@ export function OldWay() {
         >
           <p className="text-lg text-slate-200 leading-relaxed">
             None of this is unusual — it's just how most tap water works in this part of the country.{" "}
-            <span className="font-semibold text-[#d4af37]">The question is whether there's a practical way to deal with all of it at once.</span>
+            <span className="font-semibold text-white">The question is whether there's a practical way to deal with all of it at once.</span>
           </p>
         </motion.div>
 

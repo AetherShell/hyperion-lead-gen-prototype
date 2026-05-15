@@ -19,23 +19,25 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#b8941f] leading-[1.04] mb-5 tracking-tight">
-              Do you know what's{" "}
-              <span className="text-sky-300 relative">
-                in your water?
-                <svg
-                  className="absolute -bottom-1.5 left-0 w-full h-3 text-sky-400/70"
-                  viewBox="0 0 100 10"
-                  preserveAspectRatio="none"
-                >
-                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
-                </svg>
-              </span>
-            </h1>
+            <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 md:p-8 mb-8">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.04] mb-5 tracking-tight">
+                Do you know what's{" "}
+                <span className="text-sky-300 relative">
+                  in your water?
+                  <svg
+                    className="absolute -bottom-1.5 left-0 w-full h-3 text-sky-400/70"
+                    viewBox="0 0 100 10"
+                    preserveAspectRatio="none"
+                  >
+                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
+                  </svg>
+                </span>
+              </h1>
 
-            <p className="text-xl md:text-2xl text-[#b8941f] mb-8 leading-relaxed font-light max-w-xl">
-              In much of the Southwest, tap water carries hard minerals, chlorine, arsenic, and other chemicals you can't see or taste. The Hyperion Elite system removes them at the source — so every faucet in your home delivers clean, refined water.
-            </p>
+              <p className="text-xl md:text-2xl text-white leading-relaxed font-light max-w-xl">
+                In much of the Southwest, tap water carries hard minerals, chlorine, arsenic, and other chemicals you can't see or taste. The Hyperion Elite system removes them at the source — so every faucet in your home delivers clean, refined water.
+              </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
@@ -61,16 +63,16 @@ export function Hero() {
                 ))}
               </div>
               <p className="text-sm text-slate-300 leading-snug">
-                <span className="font-semibold text-[#d4af37]">"The difference was amazing — we will never go back to hard water."</span>{" "}
+                <span className="font-semibold text-white">"The difference was amazing — we will never go back to hard water."</span>{" "}
                 — David M., Marana AZ · <span className="text-slate-400">Verified Yelp review</span>
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#d4af37] font-semibold mb-3">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white font-semibold mb-3">
               <span>$0 upfront</span>
-              <span className="w-1 h-1 rounded-full bg-[#d4af37]/60" />
+              <span className="w-1 h-1 rounded-full bg-slate-400/70" />
               <span>Professional installation included</span>
-              <span className="w-1 h-1 rounded-full bg-[#d4af37]/60" />
+              <span className="w-1 h-1 rounded-full bg-slate-400/70" />
               <span>Lifetime warranty</span>
             </div>
 

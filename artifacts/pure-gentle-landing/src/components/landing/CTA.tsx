@@ -56,12 +56,14 @@ export function CTA() {
               <Gift className="w-4 h-4" />
               Limited availability — $25 gift card included
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight text-[#d4af37]">
-              Get a free water test + $25 gift card.
-            </h2>
-            <p className="text-lg text-[#e9d49a] mb-8 leading-relaxed">
-              Schedule a free in-home water test, talk to a specialist, and we'll send you a $25 gift card after the visit — no purchase necessary.
-            </p>
+            <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight text-white">
+                Get a free water test + $25 gift card.
+              </h2>
+              <p className="text-lg text-slate-100 leading-relaxed">
+                Schedule a free in-home water test, talk to a specialist, and we'll send you a $25 gift card after the visit — no purchase necessary.
+              </p>
+            </div>
             <div className="space-y-4">
               {[
                 "A technician tests your water on-site in 30–45 minutes",
@@ -85,7 +87,7 @@ export function CTA() {
                 <div className="w-16 h-16 bg-emerald-400/15 rounded-full flex items-center justify-center mx-auto mb-5">
                   <CheckCircle className="w-8 h-8 text-emerald-300" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#d4af37] mb-3">One step closer to good water.</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">One step closer to good water.</h3>
                 <p className="text-slate-300 text-sm">We'll call to confirm your free water test. Your $25 gift card will be sent after the visit — no purchase necessary.</p>
               </motion.div>
             ) : (
@@ -93,7 +95,7 @@ export function CTA() {
                 <div className="mb-5">
                   <div className="flex items-center gap-2 mb-1">
                     <Gift className="w-4 h-4 text-sky-300" />
-                    <h3 className="text-xl font-bold text-[#d4af37]">Claim Your $25 Gift Card</h3>
+                    <h3 className="text-xl font-bold text-white">Claim Your $25 Gift Card</h3>
                   </div>
                   <p className="text-slate-400 text-sm">Schedule a free water test. We'll call to confirm, then send your gift card after the visit.</p>
                 </div>
