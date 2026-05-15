@@ -4,8 +4,8 @@ import { ShoppingCart, Droplets, Wrench, FlaskConical } from "lucide-react";
 const points = [
   {
     icon: <FlaskConical className="w-6 h-6 text-sky-300" />,
-    headline: "Desert groundwater often carries more than just hard minerals.",
-    body: "In parts of the Southwest, tap water can contain elevated levels of arsenic, uranium, chlorine, and other chemicals. A basic water softener only addresses hardness — it doesn't filter these out. That means they're in your shower, your cooking water, and what your family drinks.",
+    headline: "Arizona water is loaded with calcium and magnesium.",
+    body: "Groundwater across the Southwest carries high levels of calcium and magnesium — the minerals that make water 'hard.' Municipal treatment adds chlorine on top of that. A basic softener handles the hardness, but it doesn't touch the chlorine that comes through the tap.",
   },
   {
     icon: <Droplets className="w-6 h-6 text-sky-300" />,

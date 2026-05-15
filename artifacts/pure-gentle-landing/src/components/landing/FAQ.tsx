@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     q: "How is a water refiner different from a water softener?",
-    a: "A water softener removes hard minerals — calcium and magnesium — which helps with soap performance and scale buildup. A water refiner does all of that, plus it filters out chemicals like chlorine, arsenic, and uranium. In most of the U.S., a softener is fine. In the Southwest, where groundwater often contains elevated levels of these contaminants, a refiner is what's needed to get the safest water throughout your home. That's why the Hyperion Elite system uses a refiner, not just a softener — and it's also why the system costs more than a basic softener, which typically runs about a quarter of the price.",
+    a: "A water softener removes calcium and magnesium — the hard water minerals — which helps with soap performance and scale buildup. A water refiner does all of that, plus it filters out the chlorine that comes through the municipal supply. In most of the U.S., a softener is fine. In the Southwest, where the water is unusually hard and chlorine comes through on top of that, a refiner is what's needed to get the cleanest water throughout your home. That's why the Hyperion Elite system uses a refiner, not just a softener — and it's also why the system costs more than a basic softener, which typically runs about a quarter of the price.",
   },
   {
     q: "How does the soap program work?",
@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: "What does the in-home water test involve?",
-    a: "A technician comes to your home and tests your water on the spot — usually takes 30–45 minutes. They'll measure hardness, TDS (total dissolved solids), chlorine, and check for common contaminants. You get the results right there. There's no charge and no obligation. It just gives you accurate data about your specific water so you can make an informed decision.",
+    a: "A technician comes to your home and tests your water on the spot — usually takes 30–45 minutes. They'll measure hardness, TDS (total dissolved solids), and chlorine. You get the results right there. There's no charge and no obligation. It just gives you accurate data about your specific water so you can make an informed decision.",
   },
   {
     q: "What happens after the 5 years of soap?",
@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "What does the RO system filter out?",
-    a: "The reverse osmosis system removes up to 99.9% of common contaminants — including lead, fluoride, nitrates, heavy metals, microplastics, and PFAS (sometimes called forever chemicals). It provides a second layer of purification specifically for your drinking and cooking water, on top of the whole-home refiner.",
+    a: "The reverse osmosis system gives you purified drinking and cooking water through a separate tap at the kitchen sink. It reduces total dissolved solids to near zero — a deeper level of filtration than the whole-home refiner. The water tastes clean and pure, which is why most families stop buying bottled water within the first week.",
   },
   {
     q: "How long does installation take?",

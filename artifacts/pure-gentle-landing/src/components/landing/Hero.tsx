@@ -35,7 +35,7 @@ export function Hero() {
               </h1>
 
               <p className="text-xl md:text-2xl text-white leading-relaxed font-light max-w-xl">
-                In much of the Southwest, tap water carries hard minerals, chlorine, arsenic, and other chemicals you can't see or taste. The Hyperion Elite system removes them at the source — so every faucet in your home delivers clean, refined water.
+                In much of the Southwest, tap water is loaded with calcium and magnesium — the hard minerals that spot your shower glass, calcify your fixtures, and reduce soap performance — plus chlorine from the municipal supply. The Hyperion Elite system removes them at the source, so every faucet in your home delivers clean, refined water.
               </p>
             </div>
 

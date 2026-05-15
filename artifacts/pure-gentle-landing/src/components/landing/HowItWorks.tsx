@@ -6,14 +6,14 @@ const steps = [
     icon: <Filter className="w-10 h-10 text-sky-300" />,
     tag: "Step 1",
     title: "Refine the water at the source — not just soften it",
-    body: "A water refiner does everything a softener does — removes hard minerals so soap works properly, your skin feels better, and your plumbing stays clean. But it goes further. It also filters out chemicals like chlorine, arsenic, and uranium that are common in Southwest groundwater. A basic softener can't do that.",
-    outcome: "Soft water + chemical filtration in one system",
+    body: "A water refiner does everything a softener does — removes calcium and magnesium so soap works properly, your skin feels better, and your plumbing stays clean. But it goes further. It also filters out chlorine that comes through the municipal supply. A basic softener can't do that.",
+    outcome: "Soft water + chlorine filtration in one system",
   },
   {
     icon: <Droplets className="w-10 h-10 text-cyan-300" />,
     tag: "Step 2",
     title: "Replace bottled water with purified water on tap",
-    body: "A reverse osmosis system installs under your kitchen sink and filters out up to 99.9% of remaining contaminants — lead, fluoride, microplastics, and PFAS. The water tastes clean and pure. Most families stop buying bottles within the first week.",
+    body: "A reverse osmosis system installs under your kitchen sink and gives you purified drinking water through a separate tap. It reduces total dissolved solids to near zero — a deeper level of filtration than the whole-home refiner. The water tastes clean and pure. Most families stop buying bottles within the first week.",
     outcome: "No more monthly bottled water costs",
   },
   {
