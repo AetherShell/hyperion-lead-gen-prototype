@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-label="Home Depot">
-  <rect x="0" y="0" width="200" height="60" rx="6" fill="#F96302"/>
-  <text x="100" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="20" fill="#FFFFFF">HOME DEPOT</text>
-  <text x="100" y="52" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="500" font-size="9" fill="#FFFFFF" opacity="0.85">placeholder logo</text>
-</svg>
