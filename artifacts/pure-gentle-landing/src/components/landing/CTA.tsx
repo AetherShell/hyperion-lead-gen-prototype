@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, TestTube, Gift } from "lucide-react";
+import { readAttribution } from "@/lib/useUtmCapture";
+import { trackLead } from "@/lib/fb";
 
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+const LEAD_INTAKE_URL =
+  import.meta.env.VITE_LEAD_INTAKE_URL ||
+  "https://bbccnglbxwnxpxlplxyv.supabase.co/functions/v1/lead-intake";
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
 
 export function CTA() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "", waterTest: true });
@@ -32,12 +37,27 @@ export function CTA() {
     if (!validate()) return;
     setLoading(true); setSubmitError("");
     try {
-      const res = await fetch(`${BASE}/api/leads`, {
+      const attribution = readAttribution();
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (SUPABASE_ANON_KEY) {
+        headers["Authorization"] = `Bearer ${SUPABASE_ANON_KEY}`;
+        headers["apikey"] = SUPABASE_ANON_KEY;
+      }
+      const res = await fetch(LEAD_INTAKE_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone, zipCode: form.zipCode, time: form.time, waterTest: form.waterTest }),
+        headers,
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          zipCode: form.zipCode,
+          time: form.time,
+          waterTest: form.waterTest,
+          attribution,
+        }),
       });
       if (!res.ok) throw new Error();
+      trackLead(crypto.randomUUID());
       setSubmitted(true);
     } catch {
       setSubmitError("Something went wrong. Please call us directly.");
