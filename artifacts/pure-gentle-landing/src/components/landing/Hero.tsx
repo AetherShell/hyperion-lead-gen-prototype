@@ -59,7 +59,7 @@ export function Hero() {
             <div className="flex items-start gap-3 mb-6 max-w-xl">
               <div className="flex gap-0.5 shrink-0 mt-0.5">
                 {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  <Star key={s} className="w-3.5 h-3.5 fill-[#e8c652] text-[#e8c652]" />
                 ))}
               </div>
               <p className="text-sm text-slate-300 leading-snug">
