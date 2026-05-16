@@ -48,7 +48,7 @@ export function Testimonials() {
             >
               <div className="flex items-center justify-between gap-3 mb-4">
                 <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-amber-400 text-amber-400" />)}
+                  {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-[#d32323] text-[#d32323]" />)}
                 </div>
                 <div className="flex items-center gap-1 text-xs font-semibold text-slate-400 group-hover:text-sky-300 transition-colors">
                   <span>Open full size</span>
