@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import review1 from "@assets/Screenshot_2026-04-12_172053_1776039905038-dark.png";
 import review2 from "@assets/Screenshot_2026-04-12_172116_1776039905038-dark.png";
 
@@ -46,10 +46,7 @@ export function Testimonials() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group block bg-slate-950/60 backdrop-blur-md border border-white/10 p-4 md:p-5 rounded-2xl shadow-2xl shadow-sky-900/10 hover:border-white/30 transition-all"
             >
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-[#d32323] text-[#d32323]" />)}
-                </div>
+              <div className="flex items-center justify-end gap-3 mb-4">
                 <div className="flex items-center gap-1 text-xs font-semibold text-slate-400 group-hover:text-sky-300 transition-colors">
                   <span>Open full size</span>
                   <ExternalLink className="w-3.5 h-3.5" />
