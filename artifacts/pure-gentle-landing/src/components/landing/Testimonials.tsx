@@ -34,11 +34,8 @@ export function Testimonials() {
 
         <div className="grid gap-8 max-w-4xl mx-auto">
           {reviews.map((review, i) => (
-            <motion.a
+            <motion.div
               key={i}
-              href={review.image}
-              target="_blank"
-              rel="noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -50,7 +47,7 @@ export function Testimonials() {
                 alt={review.alt}
                 className="w-full rounded-xl border border-white/10 object-contain bg-black max-h-[560px]"
               />
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>

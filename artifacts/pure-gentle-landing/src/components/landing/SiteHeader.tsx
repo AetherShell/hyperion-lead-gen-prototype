@@ -33,7 +33,7 @@ export function SiteHeader() {
           </button>
           <button
             onClick={() => document.getElementById("schedule")?.scrollIntoView({ behavior: "smooth" })}
-            className="inline-flex items-center gap-1.5 text-sm font-bold px-4 sm:px-5 py-2 rounded-full bg-[#d4af37] text-slate-950 hover:bg-[#e8c652] transition-colors shadow-sm shadow-[#d4af37]/40"
+            className="inline-flex items-center gap-1.5 text-sm font-bold px-4 sm:px-5 py-2 rounded-full bg-[#79631a] text-slate-950 hover:bg-[#e8c652] transition-colors shadow-sm shadow-[#79631a]/40"
           >
             <Gift className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Free Water Test + $25</span>

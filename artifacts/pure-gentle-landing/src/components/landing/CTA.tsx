@@ -72,7 +72,7 @@ export function CTA() {
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
 
           <div className="text-white">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d4af37]/15 border border-[#d4af37]/40 text-[#e8c652] text-sm font-semibold mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#79631a]/15 border border-[#79631a]/40 text-[#e8c652] text-sm font-semibold mb-5">
               <Gift className="w-4 h-4" />
               Limited availability — $25 gift card included
             </div>
