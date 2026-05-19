@@ -48,11 +48,11 @@ export function Hero() {
                 Get a Free Water Test + $25 Gift Card
               </button>
               <a
-                href="tel:+14808497274"
+                href="tel:+16028505380"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl border-2 border-white/30 text-white hover:border-sky-300 hover:text-sky-200 transition-all bg-white/5 backdrop-blur"
               >
                 <Phone className="mr-2 w-4 h-4" />
-                (480) 849-7274
+                (602) 850-5380
               </a>
             </div>
 

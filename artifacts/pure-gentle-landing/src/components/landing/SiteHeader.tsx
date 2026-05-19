@@ -18,11 +18,11 @@ export function SiteHeader() {
         </a>
         <div className="flex items-center gap-3">
           <a
-            href="tel:+14808497274"
+            href="tel:+16028505380"
             className="flex items-center gap-1.5 text-sm font-medium text-slate-200 hover:text-sky-300 transition-colors"
           >
             <Phone className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">(480) 849-7274</span>
+            <span className="hidden sm:inline">(602) 850-5380</span>
             <span className="sm:hidden">Call</span>
           </a>
           <button
