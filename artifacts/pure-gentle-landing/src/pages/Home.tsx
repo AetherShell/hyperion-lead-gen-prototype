@@ -49,7 +49,7 @@ export default function Home() {
             <div className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-slate-400 font-bold text-sm">H</div>
             <span className="font-semibold text-slate-300">Hyperion Elite Systems</span>
           </div>
-          <a href="tel:+16028505380" className="text-slate-400 hover:text-slate-200 text-sm transition-colors">(602) 850-5380</a>
+          <a href="tel:+16238505380" className="text-slate-400 hover:text-slate-200 text-sm transition-colors">(623) 850-5380</a>
           <div className="text-sm">&copy; {new Date().getFullYear()} Hyperion Elite Systems. All rights reserved.</div>
         </div>
       </footer>
