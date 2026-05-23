@@ -45,7 +45,7 @@ export function Hero() {
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl bg-slate-900/80 backdrop-blur border border-sky-400/30 text-white hover:bg-slate-800/90 hover:border-sky-300/60 transition-all shadow-lg shadow-sky-500/10 hover:shadow-sky-400/30 hover:-translate-y-0.5"
               >
                 <Gift className="mr-2 w-5 h-5 text-sky-300" />
-                Get a Free Water Test + $25 Gift Card
+                Get a Free Water Test + $25 Gift Card to You
               </button>
               <a
                 href="tel:+16238505380"

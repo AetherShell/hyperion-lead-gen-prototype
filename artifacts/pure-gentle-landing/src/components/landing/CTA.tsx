@@ -10,7 +10,7 @@ const LEAD_INTAKE_URL =
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
 
 export function CTA() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "", waterTest: true });
+  const [form, setForm] = useState({ name: "", phone: "", zipCode: "", time: "", waterTest: true });
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,6 @@ export function CTA() {
   function validate() {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = "Required";
-    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = "Valid email required";
     if (!form.phone.trim() || form.phone.replace(/\D/g,"").length < 10) e.phone = "Valid phone required";
     if (!form.zipCode.trim() || form.zipCode.length < 5) e.zipCode = "Required";
     if (!form.time) e.time = "Required";
@@ -48,7 +47,6 @@ export function CTA() {
         headers,
         body: JSON.stringify({
           name: form.name,
-          email: form.email,
           phone: form.phone,
           zipCode: form.zipCode,
           time: form.time,
@@ -78,7 +76,7 @@ export function CTA() {
             </div>
             <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 mb-8">
               <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight text-white">
-                Get a free water test + $25 gift card.
+                Get a free water test — and we send you a $25 gift card.
               </h2>
               <p className="text-lg text-slate-100 leading-relaxed">
                 Schedule a free in-home water test, talk to a specialist, and we'll send you a $25 gift card after the visit — no purchase necessary.
@@ -130,10 +128,6 @@ export function CTA() {
                       placeholder="(555) 123-4567" className={inp(errors.phone)} />
                   </Fld>
                 </div>
-                <Fld label="Email" error={errors.email}>
-                  <input type="email" value={form.email} onChange={e => set("email", e.target.value)}
-                    placeholder="jane@example.com" className={inp(errors.email)} />
-                </Fld>
                 <div className="grid grid-cols-2 gap-4">
                   <Fld label="ZIP Code" error={errors.zipCode}>
                     <input type="text" value={form.zipCode} onChange={e => set("zipCode", e.target.value)}
