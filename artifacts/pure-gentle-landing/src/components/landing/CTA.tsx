@@ -57,7 +57,8 @@ export function CTA() {
         }),
       });
       if (!res.ok) throw new Error();
-      trackLead(crypto.randomUUID());
+      const result = await res.json().catch(() => ({} as { id?: string }));
+      trackLead(result.id ?? crypto.randomUUID());
       setSubmitted(true);
     } catch {
       setSubmitError("Something went wrong. Please call us directly.");

@@ -156,7 +156,9 @@ Deno.serve(async (req: Request) => {
   }
 
   // Fire-and-forget: notify CAPI edge function. Failure must not block the response.
-  if (dbRow && lead.email && lead.phone) {
+  // Fires whenever we have a phone (email is optional); fb-conversion hashes whatever
+  // identifiers are present and FB Graph matches on phone alone fine.
+  if (dbRow && lead.phone) {
     fetch(FB_CONVERSION_URL, {
       method: "POST",
       headers: {
@@ -168,7 +170,7 @@ Deno.serve(async (req: Request) => {
         email: lead.email,
         phone: lead.phone,
         eventName: "Lead",
-        eventSourceUrl: attr.landing_path ? `https://${req.headers.get("host") ?? ""}${attr.landing_path}` : null,
+        eventSourceUrl: `https://bookmywatertest.com${attr.landing_path ?? "/"}`,
         gift_card_variant: attr.gift_card_variant,
         utm_source: attr.utm_source,
         utm_medium: attr.utm_medium,
