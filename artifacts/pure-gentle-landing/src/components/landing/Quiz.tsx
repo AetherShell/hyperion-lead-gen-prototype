@@ -156,20 +156,20 @@ export function Quiz() {
                     </div>
                     <h4 className="text-2xl font-bold text-white mb-3">You don't need to decide right now.</h4>
                     <p className="text-slate-300 leading-relaxed">
-                      Most homeowners have questions first — and that's completely normal. A quick call or a free in-home water test is usually the best next step to see if it makes sense for your home.
+                      Most homeowners want to see what's actually in their water before deciding anything. The next step is a free in-home water test — we'll set up a time with a quick scheduling call.
                     </p>
                   </div>
 
                   <div className={`max-w-xl mx-auto transition-all ${consultationPulse ? "ring-2 ring-sky-400 ring-offset-4 ring-offset-slate-950 rounded-2xl" : ""}`}>
                     <div className="rounded-2xl border-2 border-sky-400/40 bg-sky-400/10 p-6 flex flex-col">
                       <div className="text-sm font-semibold text-sky-300 uppercase tracking-wider mb-3">Recommended</div>
-                      <h5 className="text-xl font-bold text-white mb-2">Talk to a Water Specialist</h5>
+                      <h5 className="text-xl font-bold text-white mb-2">Schedule Your Free Water Test</h5>
                       <p className="text-slate-300 text-sm leading-relaxed mb-2 flex-grow">
-                        A 20-minute call to answer your questions and help you figure out if this is right for your home. No pressure, no obligation.
+                        A 5-minute call to schedule your free in-home water test. No sales pitch on the phone — questions about your water are answered by the actual test.
                       </p>
                       <div className="flex items-start gap-2 mb-5">
                         <TestTube className="w-4 h-4 text-sky-300 shrink-0 mt-0.5" />
-                        <span className="text-xs text-slate-400">Includes a free in-home water test if you'd like one.</span>
+                        <span className="text-xs text-slate-400">The test takes about 30-45 minutes — a technician runs it at your home.</span>
                       </div>
                       <Button onClick={handleConsultation} className="w-full h-12 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold">
                         Request a Callback
