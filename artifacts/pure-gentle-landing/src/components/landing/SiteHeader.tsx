@@ -36,8 +36,8 @@ export function SiteHeader() {
             className="inline-flex items-center gap-1.5 text-sm font-bold px-4 sm:px-5 py-2 rounded-full bg-[#7e671b] text-slate-950 hover:bg-[#e8c652] transition-colors shadow-sm shadow-[#7e671b]/40"
           >
             <Gift className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Free Water Test + $25 to You</span>
-            <span className="sm:hidden">Get $25</span>
+            <span className="hidden sm:inline">Free Water Test + You Get $25</span>
+            <span className="sm:hidden">You Get $25</span>
           </button>
         </div>
       </div>

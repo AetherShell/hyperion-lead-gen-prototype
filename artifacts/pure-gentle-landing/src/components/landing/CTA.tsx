@@ -78,7 +78,7 @@ export function CTA() {
             </div>
             <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-7 mb-8">
               <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight leading-tight text-white">
-                Get a free water test — and we send you a $25 gift card.
+                Get a free water test — and you get a $25 gift card.
               </h2>
               <p className="text-lg text-slate-100 leading-relaxed">
                 Schedule a free in-home water test, talk to a specialist, and we'll send you a $25 gift card after the visit — no purchase necessary.
