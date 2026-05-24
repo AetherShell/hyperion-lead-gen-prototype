@@ -82,13 +82,13 @@ export function CTA() {
                 Get a free water test — and you get a $25 gift card.
               </h2>
               <p className="text-lg text-slate-100 leading-relaxed">
-                Schedule a free in-home water test, talk to a specialist, and we'll send you a $25 gift card after the visit — no purchase necessary.
+                Schedule a free in-home water test, get your questions answered on-site by a technician, and we'll send you a $25 gift card after the visit — no purchase necessary.
               </p>
             </div>
             <div className="space-y-4">
               {[
                 "A technician tests your water on-site in 30–45 minutes",
-                "A specialist answers your questions — no pressure, no pitch",
+                "Get your questions answered during the visit — no pressure, no pitch",
                 "$25 gift card sent after your visit, regardless of outcome",
               ].map(item => (
                 <div key={item} className="flex items-start gap-3">
