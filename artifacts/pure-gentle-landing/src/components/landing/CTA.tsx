@@ -168,7 +168,10 @@ export function CTA() {
                   className="w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 disabled:opacity-60 text-white font-bold text-base transition-colors mt-1 shadow-lg shadow-sky-500/30">
                   {loading ? "Sending..." : "Claim My Gift Card"}
                 </button>
-                <p className="text-xs text-center text-slate-400">
+                <p className="text-[11px] text-center text-slate-400 leading-relaxed mt-2">
+                  By submitting, I agree that Hyperion Elite Systems and its service partners may contact me by phone and SMS (including auto-dialed and pre-recorded calls) at the number above regarding the free water test and related offers. Consent is not required to purchase. Msg &amp; data rates may apply. Reply STOP to opt out of SMS.
+                </p>
+                <p className="text-xs text-center text-slate-400 mt-1">
                   *Must complete the in-home water test and consultation to qualify. Subject to availability.
                 </p>
               </form>
