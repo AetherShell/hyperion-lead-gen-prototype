@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, TestTube, Gift } from "lucide-react";
+import { CheckCircle, Gift } from "lucide-react";
 import { readAttribution } from "@/lib/useUtmCapture";
 import { trackLead } from "@/lib/fb";
 
@@ -150,18 +150,6 @@ export function CTA() {
                     </select>
                   </Fld>
                 </div>
-
-                <label className="flex items-start gap-3 p-3 rounded-xl bg-sky-400/10 border border-sky-300/30 cursor-pointer select-none">
-                  <input type="checkbox" checked={form.waterTest} onChange={e => set("waterTest", e.target.checked)}
-                    className="mt-0.5 w-4 h-4 rounded border-white/20 text-sky-400 accent-sky-400 focus:ring-sky-400" />
-                  <div>
-                    <div className="flex items-center gap-1.5 text-sm font-medium text-white">
-                      <TestTube className="w-3.5 h-3.5 text-sky-300" />
-                      I'd also like a free in-home water test
-                    </div>
-                    <div className="text-xs text-slate-400 mt-0.5">A technician tests your water on-site in 30–45 minutes. No charge, no obligation.</div>
-                  </div>
-                </label>
 
                 {submitError && <p className="text-sm text-rose-300">{submitError}</p>}
 
