@@ -9,6 +9,13 @@ const LEAD_INTAKE_URL =
   "https://bbccnglbxwnxpxlplxyv.supabase.co/functions/v1/lead-intake";
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
 
+// Arizona ZIPs run 85001–86556 (865xx is Navajo Nation AZ, administered via Gallup NM).
+const AZ_ONLY_MSG = "Only Arizona residents serviced currently — we'll let you know when we open service in your ZIP code!";
+function isArizonaZip(zip: string) {
+  const n = Number(zip);
+  return /^\d{5}$/.test(zip) && n >= 85001 && n <= 86556;
+}
+
 export function CTA() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", zipCode: "", time: "", waterTest: true });
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
@@ -27,6 +34,7 @@ export function CTA() {
     if (form.email.trim() && !/\S+@\S+\.\S+/.test(form.email)) e.email = "Invalid email format";
     if (!form.phone.trim() || form.phone.replace(/\D/g,"").length < 10) e.phone = "Valid phone required";
     if (!form.zipCode.trim() || form.zipCode.length < 5) e.zipCode = "Required";
+    else if (!isArizonaZip(form.zipCode.trim())) e.zipCode = AZ_ONLY_MSG;
     if (!form.time) e.time = "Required";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -56,6 +64,15 @@ export function CTA() {
           attribution,
         }),
       });
+      if (res.status === 422) {
+        // Server-side service-area guard (e.g. stale client) — surface the AZ-only message.
+        const body = await res.json().catch(() => ({} as { reason?: string }));
+        if (body.reason === "out_of_area") {
+          setErrors(err => ({ ...err, zipCode: AZ_ONLY_MSG }));
+          return;
+        }
+        throw new Error();
+      }
       if (!res.ok) throw new Error();
       const result = await res.json().catch(() => ({} as { id?: string }));
       trackLead(result.id ?? crypto.randomUUID());

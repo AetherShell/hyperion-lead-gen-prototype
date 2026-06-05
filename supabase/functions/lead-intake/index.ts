@@ -100,6 +100,11 @@ Deno.serve(async (req: Request) => {
     return json({ error: "name and phone are required" }, 400);
   }
 
+  // AZ-only service area (ZIPs 85001–86556; 865xx is Navajo Nation AZ). Out-of-area
+  // leads are stored for the "we'll let you know" list but skip the dialer/CAPI/Sheets fan-out.
+  const zip = (lead.zipCode ?? "").trim();
+  const outOfArea = /^\d{5}$/.test(zip) && !(Number(zip) >= 85001 && Number(zip) <= 86556);
+
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
 
   const attr = lead.attribution ?? {};
@@ -127,6 +132,16 @@ Deno.serve(async (req: Request) => {
     .single();
 
   if (dbError) console.error("DB insert failed:", dbError);
+
+  if (outOfArea) {
+    if (dbRow) {
+      await supabase
+        .from("leads")
+        .update({ five9_status: "skipped_out_of_area" })
+        .eq("id", dbRow.id);
+    }
+    return json({ ok: false, reason: "out_of_area", id: dbRow?.id }, 422);
+  }
 
   const params = new URLSearchParams();
   params.set("F9domain", F9_DOMAIN);
