@@ -17,7 +17,7 @@
  * Trickle layer — at the very bottom, the column visually breaks into
  *   falling droplets so the water doesn't just disappear into the dark.
  */
-export function PageBackdrop({ src = `${import.meta.env.BASE_URL}faucet-split.png` }: { src?: string }) {
+export function PageBackdrop({ src = "/faucet-split.png" /* absolute: BASE_URL ('./') breaks under /v3/ */ }: { src?: string }) {
   return (
     <div
       aria-hidden

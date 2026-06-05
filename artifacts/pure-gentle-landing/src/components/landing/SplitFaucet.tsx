@@ -11,7 +11,7 @@ interface SplitFaucetProps {
  * If a rendered image is supplied (e.g. /faucet-split.png) it's shown; otherwise an
  * SVG placeholder communicates the split so layout work can proceed.
  */
-export function SplitFaucet({ imageSrc = `${import.meta.env.BASE_URL}faucet-split.png`, className = "" }: SplitFaucetProps) {
+export function SplitFaucet({ imageSrc = "/faucet-split.png" /* absolute: BASE_URL ('./') breaks under /v3/ */, className = "" }: SplitFaucetProps) {
   const [imgFailed, setImgFailed] = useState(false);
 
   return (

@@ -10,7 +10,7 @@ export function SiteHeader() {
       <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         <a href={import.meta.env.BASE_URL} className="flex items-center">
           <img
-            src={`${import.meta.env.BASE_URL}HES_Logo_White.png`}
+            src="/HES_Logo_White.png" /* absolute: BASE_URL ('./') breaks under /v3/ */
             alt="Hyperion Elite Systems"
             className="h-12 w-auto"
             draggable={false}
