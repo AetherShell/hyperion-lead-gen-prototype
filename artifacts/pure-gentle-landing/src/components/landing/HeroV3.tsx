@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { Gift, Phone, Star } from "lucide-react";
+import { Calendar, Phone, Star } from "lucide-react";
 
 /**
- * Hero copy block. The faucet image is rendered at the page level (see PageBackdrop
- * in Home.tsx) so the water column can continue flowing through subsequent sections
- * without a hard cut at the hero boundary.
+ * v3 hero — used ONLY by the /v3 landing page (the tuned ad's destination).
+ * Soft-water-first framing, no $25 incentive, no on-page savings link.
+ * The shared Hero.tsx (old page) is intentionally left unchanged.
  */
-export function Hero() {
+export function HeroV3() {
   return (
     <section className="relative min-h-[100vh] flex items-center pt-24 pb-20 overflow-hidden">
       {/* Left-side darkening gradient so copy stays legible over the photo behind */}
@@ -21,9 +21,9 @@ export function Hero() {
           >
             <div className="bg-slate-950/60 backdrop-blur-md rounded-2xl border border-white/10 p-6 md:p-8 mb-8">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.04] mb-5 tracking-tight">
-                Do you know what's{" "}
+                Soft water through your{" "}
                 <span className="text-sky-300 relative">
-                  in your water?
+                  whole home
                   <svg
                     className="absolute -bottom-1.5 left-0 w-full h-3 text-sky-400/70"
                     viewBox="0 0 100 10"
@@ -35,7 +35,7 @@ export function Hero() {
               </h1>
 
               <p className="text-xl md:text-2xl text-white leading-relaxed font-light max-w-xl">
-                In much of the Southwest, tap water is loaded with calcium and magnesium — the hard minerals that spot your shower glass, calcify your fixtures, and reduce soap performance — plus chlorine from the municipal supply. The Hyperion Elite system removes them at the source, so every faucet in your home delivers clean, refined water.
+                Phoenix's hard water leaves minerals behind on everything — spotty dishes, scale on fixtures, soap that won't lather, and wear on your appliances. A whole-home system treats it at the source: softer water through the whole house, plus pure drinking water at your kitchen tap and fridge. Most families are surprised it costs less per month than they expect — we'll show you your exact numbers at a free water test.
               </p>
             </div>
 
@@ -44,15 +44,15 @@ export function Hero() {
                 onClick={() => document.getElementById("schedule")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl bg-slate-900/80 backdrop-blur border border-sky-400/30 text-white hover:bg-slate-800/90 hover:border-sky-300/60 transition-all shadow-lg shadow-sky-500/10 hover:shadow-sky-400/30 hover:-translate-y-0.5"
               >
-                <Gift className="mr-2 w-5 h-5 text-sky-300" />
-                Find Out What Your Home Qualifies For
+                <Calendar className="mr-2 w-5 h-5 text-sky-300" />
+                Book Your Free Water Test
               </button>
               <a
-                href="tel:+16238505380"
+                href="tel:+14808497274"
                 className="inline-flex items-center justify-center whitespace-nowrap px-8 py-4 text-lg font-semibold rounded-xl border-2 border-white/30 text-white hover:border-sky-300 hover:text-sky-200 transition-all bg-white/5 backdrop-blur"
               >
                 <Phone className="mr-2 w-4 h-4" />
-                (623) 850-5380
+                (480) 849-7274
               </a>
             </div>
 
@@ -69,25 +69,16 @@ export function Hero() {
             </div>
 
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white font-semibold mb-3">
-              <span>$0 upfront</span>
+              <span>$0 down</span>
               <span className="w-1 h-1 rounded-full bg-slate-400/70" />
               <span>Professional installation included</span>
               <span className="w-1 h-1 rounded-full bg-slate-400/70" />
               <span>Lifetime warranty</span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <p className="text-xs text-slate-400">
-                *Must complete the in-home water test and consultation to qualify. Subject to availability.
-              </p>
-              <span className="text-slate-500">·</span>
-              <button
-                onClick={() => document.getElementById("schedule")?.scrollIntoView({ behavior: "smooth" })}
-                className="text-xs text-sky-300 hover:text-sky-200 hover:underline whitespace-nowrap"
-              >
-                Find out what your home qualifies for →
-              </button>
-            </div>
+            <p className="text-xs text-slate-400 max-w-xl">
+              *Must complete the in-home water test and consultation to qualify. Subject to availability.
+            </p>
           </motion.div>
         </div>
       </div>

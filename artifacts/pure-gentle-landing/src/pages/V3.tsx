@@ -1,14 +1,22 @@
-import { Hero } from "@/components/landing/Hero";
+import { HeroV3 } from "@/components/landing/HeroV3";
 import { OldWay } from "@/components/landing/OldWay";
-import { HowItWorks } from "@/components/landing/HowItWorks";
+import { HowItWorks } from "@/components/landing/HowItWorksV3";
 import { Testimonials } from "@/components/landing/Testimonials";
-import { FAQ } from "@/components/landing/FAQ";
+import { FAQ } from "@/components/landing/FAQV3";
 import { CTA } from "@/components/landing/CTA";
 import { CascadingWater } from "@/components/landing/CascadingWater";
 import { SiteHeader } from "@/components/landing/SiteHeader";
 import { PageBackdrop } from "@/components/landing/PageBackdrop";
 
-export default function Home() {
+/**
+ * /v3 landing — destination for the tuned ad.
+ * Same shell as Home, but:
+ *   - HeroV3 (soft-water-first, no $25)
+ *   - SavingsBreakdown + Quiz removed
+ *   - HowItWorks + FAQ run with hideEconomics (no $160/mo banner, no soap economics)
+ * The money/savings story is reserved for the in-home water test.
+ */
+export default function V3() {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-[#0a1633] via-[#0b1f4d] to-[#02050f] text-slate-100 selection:bg-sky-400/40 selection:text-white overflow-x-clip">
       <PageBackdrop />
@@ -16,22 +24,22 @@ export default function Home() {
       <SiteHeader />
 
       <main className="relative z-10">
-        {/* 1. Acknowledge the common approach */}
-        <Hero />
+        {/* 1. Lead with the outcome */}
+        <HeroV3 />
 
-        {/* 2. Explain its limitations — gently */}
+        {/* 2. Agitate the problem — gently */}
         <OldWay />
 
-        {/* 3. Introduce a simpler approach */}
-        <HowItWorks />
+        {/* 3. How it works — water tech only, economics held for the demo */}
+        <HowItWorks hideEconomics />
 
-        {/* 6. Social proof — real families */}
+        {/* 4. Social proof — real families */}
         <Testimonials />
 
-        {/* 7. Answer common questions */}
-        <FAQ />
+        {/* 5. Common questions — soap economics held for the demo */}
+        <FAQ hideEconomics />
 
-        {/* 8. Simple call to action */}
+        {/* 6. Book the free water test */}
         <CTA />
       </main>
 
@@ -41,7 +49,7 @@ export default function Home() {
             <div className="w-6 h-6 rounded-md bg-slate-800 flex items-center justify-center text-slate-400 font-bold text-sm">H</div>
             <span className="font-semibold text-slate-300">Hyperion Elite Systems</span>
           </div>
-          <a href="tel:+16238505380" className="text-slate-400 hover:text-slate-200 text-sm transition-colors">(623) 850-5380</a>
+          <a href="tel:+14808497274" className="text-slate-400 hover:text-slate-200 text-sm transition-colors">(480) 849-7274</a>
           <div className="text-sm">&copy; {new Date().getFullYear()} Hyperion Elite Systems. All rights reserved.</div>
         </div>
       </footer>

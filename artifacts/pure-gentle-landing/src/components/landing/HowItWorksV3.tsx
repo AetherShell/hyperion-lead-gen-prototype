@@ -5,29 +5,33 @@ const steps = [
   {
     icon: <Filter className="w-10 h-10 text-sky-300" />,
     tag: "Step 1",
-    title: "Refine the water at the source",
-    body: "One whole-home system treats the hard, chlorinated water that comes through the municipal supply, so every faucet in your home delivers cleaner, softer water.",
-    outcome: "Cleaner, softer water at every tap",
+    title: "Refine the water at the source — not just soften it",
+    body: "A water refiner does everything a softener does — removes calcium and magnesium so soap works properly, your skin feels better, and your plumbing stays clean. But it goes further. It also filters out chlorine that comes through the municipal supply. A basic softener can't do that.",
+    outcome: "Soft water + chlorine filtration in one system",
   },
   {
     icon: <Droplets className="w-10 h-10 text-cyan-300" />,
     tag: "Step 2",
-    title: "Purified drinking water on tap",
-    body: "A dedicated tap at your kitchen sink gives you clean, great-tasting drinking water. Most families stop buying bottles within the first week.",
-    outcome: "No more bottled water",
+    title: "Replace bottled water with purified water on tap",
+    body: "A reverse osmosis system installs under your kitchen sink and gives you purified drinking water through a separate tap. It reduces total dissolved solids to near zero — a deeper level of filtration than the whole-home refiner. The water tastes clean and pure. Most families stop buying bottles within the first week.",
+    outcome: "No more monthly bottled water costs",
   },
   {
     icon: <PackageCheck className="w-10 h-10 text-emerald-300" />,
     tag: "Step 3",
-    title: "Everyday products included",
-    body: "Because refined water needs less product, our partner Pure & Gentle includes a supply of cleaning and personal-care products with the system, so you buy less at the store.",
-    outcome: "Cleaning & personal-care products included",
+    title: "Get your soap and cleaning products included",
+    body: "Because refined water reduces how much product you need, our partner Pure & Gentle provides a 5-year supply of household cleaners, laundry detergent, dish soap, shampoo, and personal care products — included with the system. You stop buying them at the store.",
+    outcome: "5-year soap supply included",
   },
 ];
 
-export function HowItWorks() {
+export function HowItWorks({ hideEconomics = false }: { hideEconomics?: boolean }) {
+  // On the /v3 landing we hold the money/soap story for the in-home test:
+  // drop the soap-included step and the monthly-price banner.
+  const visibleSteps = hideEconomics ? steps.slice(0, 2) : steps;
+
   return (
-    <section id="how-it-works" className="py-24 relative">
+    <section className="py-24 relative">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
 
         <div className="text-center mb-16 max-w-3xl mx-auto">
@@ -48,7 +52,7 @@ export function HowItWorks() {
         </div>
 
         <div className="space-y-5">
-          {steps.map((step, i) => (
+          {visibleSteps.map((step, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -70,7 +74,7 @@ export function HowItWorks() {
                   </div>
                 </div>
               </div>
-              {i < steps.length - 1 && (
+              {i < visibleSteps.length - 1 && (
                 <div className="flex justify-center my-1">
                   <ArrowDown className="w-5 h-5 text-white/30" />
                 </div>
@@ -78,6 +82,21 @@ export function HowItWorks() {
             </motion.div>
           ))}
         </div>
+
+        {!hideEconomics && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-10 bg-sky-500 rounded-2xl p-7 text-white text-center shadow-lg shadow-sky-500/20"
+          >
+            <p className="text-xl font-semibold mb-1">The system costs $160/month, financed typically over 8–15 years.</p>
+            <p className="text-sky-100">
+              Your money goes toward owning something — not replacing consumables every month. Once it's paid off, you own it outright.
+            </p>
+          </motion.div>
+        )}
 
       </div>
     </section>

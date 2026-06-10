@@ -22,6 +22,7 @@ export function CTA() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [callingNow, setCallingNow] = useState(true);
 
   function set(field: keyof typeof form, value: string | boolean) {
     setForm(f => ({ ...f, [field]: value }));
@@ -76,6 +77,8 @@ export function CTA() {
       if (!res.ok) throw new Error();
       const result = await res.json().catch(() => ({} as { id?: string }));
       trackLead(result.id ?? crypto.randomUUID());
+      const azHour = Number(new Intl.DateTimeFormat("en-US", { hour: "numeric", hour12: false, timeZone: "America/Phoenix" }).format(new Date())) % 24;
+      setCallingNow(azHour >= 7 && azHour < 19);
       setSubmitted(true);
     } catch {
       setSubmitError("Something went wrong. Please call us directly.");
@@ -99,13 +102,13 @@ export function CTA() {
                 Get a free water test — and you get a $25 gift card.
               </h2>
               <p className="text-lg text-slate-100 leading-relaxed">
-                Schedule a free in-home water test, get your questions answered on-site by a technician, and we'll send you a $25 gift card after the visit — no purchase necessary.
+                Schedule a free in-home water test, get your questions answered on-site by a water specialist, and we'll send you a $25 gift card after the visit — no purchase necessary.
               </p>
             </div>
             <div className="space-y-4">
               {[
-                "A technician tests your water on-site in 30–45 minutes",
-                "Get your questions answered during the visit — no pressure, no pitch",
+                "A water specialist tests your water on-site in 30–45 minutes",
+                "Get your questions answered during the visit — no obligation to buy",
                 "$25 gift card sent after your visit, regardless of outcome",
               ].map(item => (
                 <div key={item} className="flex items-start gap-3">
@@ -125,8 +128,8 @@ export function CTA() {
                 <div className="w-16 h-16 bg-emerald-400/15 rounded-full flex items-center justify-center mx-auto mb-5">
                   <CheckCircle className="w-8 h-8 text-emerald-300" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">One step closer to good water.</h3>
-                <p className="text-slate-300 text-sm">We'll call to confirm your free water test. Your $25 gift card will be sent after the visit — no purchase necessary.</p>
+                <h3 className="text-2xl font-bold text-white mb-3">{`Thank you, ${form.name.trim().split(/\s+/)[0]}! You're all set.`}</h3>
+                <p className="text-slate-300 text-sm">{callingNow ? "A water specialist is calling you in the next few minutes to lock in your free test. It's a quick call, no pitch. Answer when it rings, and your $25 gift card ships after the visit, no purchase necessary." : "A water specialist will call you first thing in the morning to lock in your free test. It's a quick call, no pitch. Answer when it rings, and your $25 gift card ships after the visit, no purchase necessary."}</p>
               </motion.div>
             ) : (
               <form onSubmit={(e) => { void handleSubmit(e); }} className="space-y-4">
@@ -135,7 +138,7 @@ export function CTA() {
                     <Gift className="w-4 h-4 text-sky-300" />
                     <h3 className="text-xl font-bold text-white">Claim Your $25 Gift Card</h3>
                   </div>
-                  <p className="text-slate-400 text-sm">Schedule a free water test. We'll call to confirm, then send your gift card after the visit.</p>
+                  <p className="text-slate-400 text-sm">Schedule a free water test. We'll call you within minutes to confirm, then send your gift card after the visit.</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -157,7 +160,7 @@ export function CTA() {
                     <input type="text" value={form.zipCode} onChange={e => set("zipCode", e.target.value)}
                       placeholder="85001" maxLength={5} className={inp(errors.zipCode)} />
                   </Fld>
-                  <Fld label="Best Time to Call" error={errors.time}>
+                  <Fld label="Best time for your visit" error={errors.time}>
                     <select value={form.time} onChange={e => set("time", e.target.value)} className={inp(errors.time)}>
                       <option value="">Select</option>
                       <option value="morning">Morning (8am – 12pm)</option>

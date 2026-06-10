@@ -26,7 +26,7 @@ export function SiteHeader() {
             <span className="sm:hidden">Call</span>
           </a>
           <button
-            onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
             className="hidden md:inline-flex text-sm font-semibold px-4 py-2 rounded-full border border-white/20 text-white hover:bg-white/10 hover:border-white/40 transition-colors"
           >
             See How It Works

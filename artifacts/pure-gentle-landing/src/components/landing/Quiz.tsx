@@ -169,7 +169,7 @@ export function Quiz() {
                       </p>
                       <div className="flex items-start gap-2 mb-5">
                         <TestTube className="w-4 h-4 text-sky-300 shrink-0 mt-0.5" />
-                        <span className="text-xs text-slate-400">The test takes about 30-45 minutes — a technician runs it at your home.</span>
+                        <span className="text-xs text-slate-400">The test takes about 30-45 minutes — a water specialist runs it at your home.</span>
                       </div>
                       <Button onClick={handleConsultation} className="w-full h-12 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold">
                         Request a Callback
